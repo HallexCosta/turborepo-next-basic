@@ -1,5 +1,4 @@
 import { Container, Header, SocialLink } from "ui";
-// import "../styles.css";
 
 export default function Page() {
   return (
