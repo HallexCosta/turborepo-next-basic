@@ -7,15 +7,24 @@ importers:
       '@turbo/gen':
         specifier: ^1.9.7
         version: 1.9.7(@types/node@17.0.45)(typescript@4.9.5)
+      autoprefixer:
+        specifier: ^10.4.14
+        version: 10.4.14(postcss@8.4.27)
       eslint:
         specifier: ^7.32.0
         version: 7.32.0
       eslint-config-custom:
         specifier: workspace:*
         version: link:packages/eslint-config-custom
+      postcss:
+        specifier: ^8.4.27
+        version: 8.4.27
       prettier:
         specifier: ^2.5.1
         version: 2.8.8
+      tailwindcss:
+        specifier: ^3.3.3
+        version: 3.3.3
       turbo:
         specifier: ^1.9.7
         version: 1.9.7
@@ -44,12 +53,21 @@ importers:
       '@types/react-dom':
         specifier: ^18.0.7
         version: 18.2.3
+      autoprefixer:
+        specifier: ^10.4.14
+        version: 10.4.14(postcss@8.4.27)
       config:
         specifier: workspace:*
         version: link:../../packages/config
       eslint-config-custom:
         specifier: workspace:*
         version: link:../../packages/eslint-config-custom
+      postcss:
+        specifier: ^8.4.27
+        version: 8.4.27
+      tailwindcss:
+        specifier: ^3.3.3
+        version: 3.3.3
       tsconfig:
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -91,17 +109,7 @@ importers:
         specifier: ^4.5.3
         version: 4.9.5
 
-  packages/config:
-    devDependencies:
-      autoprefixer:
-        specifier: ^10.4.14
-        version: 10.4.14(postcss@8.4.27)
-      postcss:
-        specifier: ^8.4.27
-        version: 8.4.27
-      tailwindcss:
-        specifier: ^3.3.3
-        version: 3.3.3
+  packages/config: {}
 
   packages/eslint-config-custom:
     dependencies:
@@ -125,6 +133,9 @@ importers:
       next:
         specifier: ^13.4.1
         version: 13.4.1(react-dom@18.2.0)(react@17.0.2)
+      phosphor-react:
+        specifier: ^1.4.1
+        version: 1.4.1(react@17.0.2)
     devDependencies:
       '@types/react':
         specifier: ^18.2.0
@@ -713,7 +724,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.10
-      caniuse-lite: 1.0.30001482
+      caniuse-lite: 1.0.30001519
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -850,6 +861,7 @@ packages:
 
   /caniuse-lite@1.0.30001482:
     resolution: {integrity: sha512-F1ZInsg53cegyjroxLNW9DmrEQ1SuGRTO1QlpA0o2/6OpQ0gFeDRoq1yFmnr8Sakn9qwwt9DmbxHB6w167OSuQ==}
+    dev: false
 
   /caniuse-lite@1.0.30001519:
     resolution: {integrity: sha512-0QHgqR+Jv4bxHMp8kZ1Kn8CH55OikjKJ6JmKkZYP1F3D7w+lnFXF70nG5eNfsZS89jadi5Ywy5UCSKLAglIRkg==}
@@ -2796,6 +2808,15 @@ packages:
   /path-type@4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
+
+  /phosphor-react@1.4.1(react@17.0.2):
+    resolution: {integrity: sha512-gO5j7U0xZrdglTAYDYPACU4xDOFBTJmptrrB/GeR+tHhCZF3nUMyGmV/0hnloKjuTrOmpSFlbfOY78H39rgjUQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      react: 17.0.2
+    dev: false
 
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
