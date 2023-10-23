@@ -101,7 +101,7 @@ export default function Page() {
                 <Project
                   title="League of Legends"
                   description="The project is basead on the League of Legends Oficial Client"
-                  imageUrl="https://github.com/HallexCosta/league-of-legends-login-page/raw/main/docs/images/light/lg.png?raw=true"
+                  imageUrl="https://raw.githubusercontent.com/HallexCosta/league-of-legends-login-page/main/docs/images/light/lg.png"
                   previewUrl="https://league-of-legends-client-login.netlify.app"
                   repositoryUrl="https://github.com/HallexCosta/league-of-legends-login-page"
                 />
