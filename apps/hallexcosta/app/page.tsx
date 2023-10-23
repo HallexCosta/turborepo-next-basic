@@ -138,12 +138,12 @@ export default function Page() {
 
                 <Technology.Root>
                   <Technology.Bullet />
-                  <Technology.Content text="PostgreSQL" />
+                  <Technology.Content text="MySQL" />
                 </Technology.Root>
 
                 <Technology.Root>
                   <Technology.Bullet />
-                  <Technology.Content text="MySQL" />
+                  <Technology.Content text="PostgreSQL" />
                 </Technology.Root>
 
                 <Technology.Root>
@@ -153,8 +153,18 @@ export default function Page() {
 
                 <Technology.Root>
                   <Technology.Bullet />
-                  <Technology.Content text="AWS" />
+                  <Technology.Content text="Docker Compose" />
                 </Technology.Root>
+
+                <Technology.Root>
+                  <Technology.Bullet />
+                  <Technology.Content text="Nginx" />
+                </Technology.Root>
+
+                {/* <Technology.Root>
+                  <Technology.Bullet />
+                  <Technology.Content text="AWS" />
+                </Technology.Root> */}
 
                 <Technology.Root>
                   <Technology.Bullet />
