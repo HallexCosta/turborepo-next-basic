@@ -1,11 +1,13 @@
 import Image from "next/image";
-import { Poppins } from "next/font/google";
+// import { Poppins } from "next/font/google";
 
-const poppins = Poppins({
-  weight: "600",
-  subsets: ["latin"],
-});
-
+// const poppins = Poppins({
+//   weight: "600",
+//   subsets: ["latin"],
+// });
+const poppins = {
+  className: ''
+}
 interface ProjectProps {
   title?: string;
   description?: string;
