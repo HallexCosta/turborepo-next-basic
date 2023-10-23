@@ -7,8 +7,8 @@ const poppins = Poppins({
   display: "swap",
 });
 interface HeaderContentProps {
-  children: ReactNode;
-  className: string;
+  children?: ReactNode;
+  className?: string;
 }
 export function Content({ children, className }: HeaderContentProps) {
   return (
