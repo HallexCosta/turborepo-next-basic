@@ -95,6 +95,15 @@ export default function Page() {
                   imageUrl="https://github.com/HallexCosta/habits-tracker/blob/main/docs/images/web/home.png?raw=true"
                   previewUrl="https://your-habits.netlify.app/"
                   repositoryUrl="https://github.com/HallexCosta/habits-tracker"
+                  personal
+                />
+
+                <Project
+                  title="League of Legends"
+                  description="The project is basead on the League of Legends Oficial Client"
+                  imageUrl="https://github.com/HallexCosta/league-of-legends-login-page/blob/main/docs/images/light/lg.png"
+                  previewUrl="https://league-of-legends-client-login.netlify.app"
+                  repositoryUrl="https://github.com/HallexCosta/league-of-legends-login-page"
                 />
 
                 {/* <Project

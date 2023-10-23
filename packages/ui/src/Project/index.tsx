@@ -14,6 +14,8 @@ interface ProjectProps {
   imageUrl?: string;
   previewUrl?: string;
   repositoryUrl?: string;
+  personal?: boolean; // personal is tag used to show project is a personal project 
+  realworld?: boolean; // realworld is tag used to show project is project maked for real clients
 }
 
 export function Project({
