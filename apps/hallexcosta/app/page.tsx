@@ -155,40 +155,10 @@ export default function Page() {
                   <Technology.Bullet />
                   <Technology.Content text="Digital Ocean" />
                 </Technology.Root>
-
-                <Technology.Root>
-                  <Technology.Bullet />
-                  <Technology.Content text="Git" />
-                </Technology.Root>
-
+                
                 <Technology.Root>
                   <Technology.Bullet />
                   <Technology.Content text="PHP" />
-                </Technology.Root>
-              </div>
-            </div>
-          </Container>
-        </Section>
-
-        <Section>
-          <Container>
-            <div className="flex flex-col mt-[152px] w-full">
-              <h2
-                id="technologies"
-                className={`${poppins.className} text-5xl text-white w-full`}
-              >
-                Secondary Stacks
-              </h2>
-
-              <div className="grid grid-cols-3 w-full mt-16 gap-10">
-                <Technology.Root>
-                  <Technology.Bullet />
-                  <Technology.Content text="PHP" />
-                </Technology.Root>
-
-                <Technology.Root>
-                  <Technology.Bullet />
-                  <Technology.Content text="Yii 2 as API" />
                 </Technology.Root>
 
                 <Technology.Root>
@@ -204,6 +174,7 @@ export default function Page() {
             </div>
           </Container>
         </Section>
+
 
       </main>
     </>
