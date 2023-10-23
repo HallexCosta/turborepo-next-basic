@@ -1,4 +1,4 @@
-import { Avatar, ButtonGradient, Circle, Container, Description, Header, Project, ScrollUp, Section, SocialLink, Title } from "ui";
+import { Avatar, ButtonGradient, Circle, Container, Description, Header, Project, ScrollUp, Section, SocialLink, Technology, Title } from "ui";
 
 // import { Poppins } from "next/font/google";
 
@@ -7,6 +7,10 @@ import { Avatar, ButtonGradient, Circle, Container, Description, Header, Project
 //   subsets: ["latin"],
 //   display: "swap",
 // });
+
+const poppins = {
+  className: ''
+}
 
 export default function Page() {
   return (
@@ -72,7 +76,7 @@ export default function Page() {
             <div className="flex flex-col mt-[152px] w-full">
               <h2
                 id="projects"
-                className={`text-5xl text-white w-full`}
+                className={`${poppins.className} text-5xl text-white w-full`}
               >
                 Projects
               </h2>
@@ -101,6 +105,66 @@ export default function Page() {
                   previewUrl="https://google.com"
                   repositoryUrl="https://github.com/hallexcosta"
                 /> */}
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        <Section>
+          <Container>
+            <div className="flex flex-col mt-[152px] w-full">
+              <h2
+                id="technologies"
+                className={`${poppins.className} text-5xl text-white w-full`}
+              >
+                Technologies
+              </h2>
+
+              <div className="grid grid-cols-3 w-full mt-16 gap-10">
+                <Technology.Root>
+                  <Technology.Bullet />
+                  <Technology.Content text="Git" />
+                </Technology.Root>
+
+                <Technology.Root>
+                  <Technology.Bullet />
+                  <Technology.Content text="Typescript" />
+                </Technology.Root>
+
+                <Technology.Root>
+                  <Technology.Bullet />
+                  <Technology.Content text="Node.js" />
+                </Technology.Root>
+
+                <Technology.Root>
+                  <Technology.Bullet />
+                  <Technology.Content text="PostgreSQL" />
+                </Technology.Root>
+
+                <Technology.Root>
+                  <Technology.Bullet />
+                  <Technology.Content text="MySQL" />
+                </Technology.Root>
+
+                <Technology.Root>
+                  <Technology.Bullet />
+                  <Technology.Content text="Docker" />
+                </Technology.Root>
+
+                <Technology.Root>
+                  <Technology.Bullet />
+                  <Technology.Content text="AWS" />
+                </Technology.Root>
+
+                <Technology.Root>
+                  <Technology.Bullet />
+                  <Technology.Content text="Digital Ocean" />
+                </Technology.Root>
+
+                <Technology.Root>
+                  <Technology.Bullet />
+                  <Technology.Content text="PHP" />
+                </Technology.Root>
               </div>
             </div>
           </Container>
