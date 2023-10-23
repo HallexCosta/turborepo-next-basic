@@ -1,12 +1,12 @@
 import { Avatar, ButtonGradient, Circle, Container, Description, Header, Project, ScrollUp, Section, SocialLink, Title } from "ui";
 
-import { Poppins } from "next/font/google";
+// import { Poppins } from "next/font/google";
 
-const poppins = Poppins({
-  weight: "600",
-  subsets: ["latin"],
-  display: "swap",
-});
+// const poppins = Poppins({
+//   weight: "600",
+//   subsets: ["latin"],
+//   display: "swap",
+// });
 
 export default function Page() {
   return (
@@ -72,7 +72,7 @@ export default function Page() {
             <div className="flex flex-col mt-[152px] w-full">
               <h2
                 id="projects"
-                className={`${poppins.className} text-5xl text-white w-full`}
+                className={`text-5xl text-white w-full`}
               >
                 Projects
               </h2>
