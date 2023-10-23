@@ -117,7 +117,7 @@ export default function Page() {
                 id="technologies"
                 className={`${poppins.className} text-5xl text-white w-full`}
               >
-                Principal Stacks
+                Technologies
               </h2>
 
               <div className="grid grid-cols-3 w-full mt-16 gap-10">
@@ -155,7 +155,7 @@ export default function Page() {
                   <Technology.Bullet />
                   <Technology.Content text="Digital Ocean" />
                 </Technology.Root>
-                
+
                 <Technology.Root>
                   <Technology.Bullet />
                   <Technology.Content text="PHP" />
