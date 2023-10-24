@@ -1,4 +1,4 @@
-import { Avatar, ButtonGradient, Circle, Container, Description, Header, Project, ScrollUp, Section, SocialLink, Technology, Title } from "ui";
+import { Avatar, BoxInvisible, ButtonGradient, Circle, Container, Description, Header, Project, ScrollUp, Section, SocialLink, Technology, Timeline, Title } from "ui";
 
 // import { Poppins } from "next/font/google";
 
@@ -16,29 +16,29 @@ export default function Page() {
   return (
     <>
       <Header.Root>
-        <Container className="justify-between">
+        <Container className="lg:justify-between">
           <Header.Content className="text-white font-medium text-2xl">
             I.M portifolio
           </Header.Content>
 
-          <Header.Content className="text-white font-sm text-md flex gap-20">
+          <Header.Content className="text-white font-sm text-md flex gap-20 justify-center mb-4 mt-4">
             <a href="#projects">Projects</a>
             <a href="#technologies">Technologies</a>
             <a href="#about-me">About me</a>
           </Header.Content>
 
-          <Header.Content className="text-white font-sm text-md flex gap-6">
+          <Header.Content className="text-white lg:font-sm lg:text-md flex gap-6 justify-end">
             <SocialLink name="github" url="https://github.com/hallexcosta" />
-            <SocialLink name="linkedin" url="https://github.com/hallexcosta" />
-            <SocialLink name="instagram" url="https://github.com/hallexcosta" />
+            <SocialLink name="linkedin" url="https://linkedin.com/in/hallexcosta" />
+            <SocialLink name="instagram" url="https://instagram/hallexcosta" />
             <SocialLink name="facebook" url="https://github.com/hallexcosta" />
           </Header.Content>
         </Container>
       </Header.Root>
 
-      <main className="mt-28">
+      <main className="lg:mt-28">
         <Section>
-          <Container>
+          <Container className="lg:flex lg:flex-row">
             <div className="w-full">
               <Title.Root>
                 <Title.Top name="Hállex Costa" />
@@ -52,9 +52,9 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="relative -z-10">
+            <div className="hidden lg:block relative -z-10 mt-40 lg:mt-0">
               <Avatar>
-                <Circle.Root size="lg" />
+                <Circle.Root size="lg" className="hidden lg:block"/>
 
                 <Circle.Root
                   size="sm"
@@ -71,9 +71,9 @@ export default function Page() {
           <ScrollUp />
         </Section>
 
-        <Section>
+        <Section className="">
           <Container>
-            <div className="flex flex-col mt-[152px] w-full">
+            <div className="flex flex-col mt-6 lg:mt-[152px] w-full">
               <h2
                 id="projects"
                 className={`${poppins.className} text-5xl text-white w-full`}
@@ -81,7 +81,7 @@ export default function Page() {
                 Projects
               </h2>
 
-              <div className="grid grid-cols-2 w-full mt-16 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 w-full mt-16 gap-8">
                 <Project
                   title="Be a Savior - Server - NGO and Donor Management System"
                   description="Be a Savior is a service provider for managing information about NGOs and donors. It provides an easy to use interface to facilitate taxpayers and sponsors who want to help or fund an incident of one or more animals.Be a Savior is a service provider for managing information about NGOs and donors. It provides an easy to use interface to facilitate taxpayers and sponsors who want to help or fund an incident of one or more animals.Be a Savior is a service provider for managing information about NGOs and donors. It provides an easy to use interface to facilitate taxpayers and sponsors who want to help or fund an incident of one or more animals.Be a Savior is a service provider for managing information about NGOs and donors. It provides an easy to use interface to facilitate taxpayers and sponsors who want to help or fund an incident of one or more animals.Be a Savior is a service provider for managing information about NGOs and donors. It provides an easy to use interface to facilitate taxpayers and sponsors who want to help or fund an incident of one or more animals.Be a Savior is a service provider for managing information about NGOs and donors. It provides an easy to use interface to facilitate taxpayers and sponsors who want to help or fund an incident of one or more animals.Be a Savior is a service provider for managing information about NGOs and donors. It provides an easy to use interface to facilitate taxpayers and sponsors who want to help or fund an incident of one or more animals.Be a Savior is a service provider for managing information about NGOs and donors. It provides an easy to use interface to facilitate taxpayers and sponsors who want to help or fund an incident of one or more animals.Be a Savior is a service provider for managing information about NGOs and donors. It provides an easy to use interface to facilitate taxpayers and sponsors who want to help or fund an incident of one or more animals.Be a Savior is a service provider for managing information about NGOs and donors. It provides an easy to use interface to facilitate taxpayers and sponsors who want to help or fund an incident of one or more animals.Be a Savior is a service provider for managing information about NGOs and donors. It provides an easy to use interface to facilitate taxpayers and sponsors who want to help or fund an incident of one or more animals.Be a Savior is a service provider for managing information about NGOs and donors. It provides an easy to use interface to facilitate taxpayers and sponsors who want to help or fund an incident of one or more animals."
@@ -101,7 +101,7 @@ export default function Page() {
                 <Project
                   title="League of Legends"
                   description="The project is basead on the League of Legends Oficial Client"
-                  imageUrl="https://raw.githubusercontent.com/HallexCosta/league-of-legends-login-page/main/docs/images/light/lg.png"
+                  imageUrl="https://github.com/HallexCosta/league-of-legends-login-page/blob/main/docs/images/light/lg.png?raw=true"
                   previewUrl="https://league-of-legends-client-login.netlify.app"
                   repositoryUrl="https://github.com/HallexCosta/league-of-legends-login-page"
                 />
@@ -121,7 +121,7 @@ export default function Page() {
 
         <Section>
           <Container>
-            <div className="flex flex-col mt-[152px] w-full">
+            <div className="flex flex-col mt-6 lg:mt-[152px] w-full">
               <h2
                 id="technologies"
                 className={`${poppins.className} text-5xl text-white w-full`}
@@ -129,12 +129,17 @@ export default function Page() {
                 Technologies
               </h2>
 
-              <div className="grid grid-cols-3 w-full mt-16 gap-10">
+              <div className="grid grid-cols-2 lg:grid-cols-3 w-full mt-16 gap-10">
                 <Technology.Root>
                   <Technology.Bullet />
-                  <Technology.Content text="Javascript/Typescript" />
+                  <Technology.Content text="Javascript" />
                 </Technology.Root>
 
+                <Technology.Root>
+                  <Technology.Bullet />
+                  <Technology.Content text="Typescript" />
+                </Technology.Root>
+                
                 <Technology.Root>
                   <Technology.Bullet />
                   <Technology.Content text="Node.js" />
@@ -184,7 +189,97 @@ export default function Page() {
           </Container>
         </Section>
 
+        {/* <BoxInvisible /> */}
 
+        <Section>
+          <Container>
+          <div className="flex flex-col mt-6 lg:mt-[152px] w-full">
+              <h2
+                id="about-me"
+                className={`${poppins.className} text-5xl text-white w-full`}
+              >
+                About me
+              </h2>
+
+              {/* <div>
+  <Timeline.Root>
+    <Timeline.Separator>
+      <Timeline.Dot />
+      <Timeline.Connector />
+    </Timeline.Separator>    
+    <Timeline.Content>
+      Eat
+    </Timeline.Content>
+  </Timeline.Root>
+</div> */}
+            <div className="flex items-center justify-center">
+               <ol className="border-l-4 border-zinc-300 mt-16 max-w-6">
+                <Timeline.Root>
+                  <Timeline.Dot>
+                    01.07.2021
+                  </Timeline.Dot>
+
+                  <Timeline.Content>
+                    <Timeline.Title>
+                      Title of section 1
+                    </Timeline.Title>
+
+                    <Timeline.Description>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Quisque scelerisque diam non nisi semper, et elementum
+                      lorem ornare. Maecenas placerat facilisis mollis. Duis
+                      sagittis ligula in sodales vehicula.
+                    </Timeline.Description>
+                  </Timeline.Content>
+                </Timeline.Root>
+                
+
+                <Timeline.Root>
+                  <Timeline.Dot>
+                    01.07.2022
+                  </Timeline.Dot>
+
+                  <Timeline.Content>
+                    <Timeline.Title>
+                      Title of section 2
+                    </Timeline.Title>
+
+                    <Timeline.Description>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Quisque scelerisque diam non nisi semper, et elementum
+                      lorem ornare. Maecenas placerat facilisis mollis. Duis
+                      sagittis ligula in sodales vehicula.
+                    </Timeline.Description>
+                  </Timeline.Content>
+                </Timeline.Root>
+
+                <Timeline.Root>
+                  <Timeline.Dot>
+                    01.07.2023
+                  </Timeline.Dot>
+
+                  <Timeline.Content>
+                    <Timeline.Title>
+                      Title of section 3
+                    </Timeline.Title>
+
+                    <Timeline.Description>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Quisque scelerisque diam non nisi semper, et elementum
+                      lorem ornare. Maecenas placerat facilisis mollis. Duis
+                      sagittis ligula in sodales vehicula.
+                    </Timeline.Description>
+                  </Timeline.Content>
+                </Timeline.Root>
+                </ol> 
+
+              </div>
+
+              <BoxInvisible/>
+              <BoxInvisible/>
+            </div>
+          </Container>
+        </Section>
       </main>
     </>
   );

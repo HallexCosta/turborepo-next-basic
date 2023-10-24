@@ -12,15 +12,26 @@ interface Props {
 }
 
 export function Top({ name }: Props) {
+  const [initAnimation, setInitAnimation] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setAnimationComplete(true), 2000);
   }, []);
 
+
+  useEffect(() => {
+    console.log('fui chamado 2')
+    setTimeout(() => {
+      setAnimationComplete(!animationComplete)
+      setInitAnimation(!animationComplete)
+    }, 2000);
+  }, [animationComplete]);
+
+
   return (
     <h1
-      className={`${poppins.className} max-h-[62px] w-fit inline-block text-6xl font-semibold animate-typewriter
+      className={`${poppins.className} max-h-[62px] w-fit inline-block text-4xl lg:text-6xl font-semibold ${initAnimation ? 'animate-typewriter' : ''}
       text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-400 to-blue-400
     `}
       style={{

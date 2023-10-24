@@ -12,6 +12,6 @@ interface Props {
 
 export function Content({ text }: Props) {
   return (
-    <span className={`${poppins.className} text-3xl text-white`}>{text}</span>
+    <span className={`${poppins.className} text-xl lg:text-3xl text-white`}>{text}</span>
   );
 }

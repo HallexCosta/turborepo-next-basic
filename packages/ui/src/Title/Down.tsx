@@ -11,7 +11,7 @@ interface TitleDownProps {
 
 export function Down({ content }: TitleDownProps) {
   return (
-    <h1 className={`${poppins.className} text-white text-7xl font-semibold`}>
+    <h1 className={`${poppins.className} text-white text-5xl lg:text-7xl font-semibold`}>
       {content}
     </h1>
   );

@@ -12,3 +12,5 @@ export * from "./Circle"
 export * from "./ButtonGradient"
 export * from "./Project"
 export * from "./Technology"
+export * from "./BoxInvisible"
+export * from './Timeline'

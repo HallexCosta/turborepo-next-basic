@@ -54,9 +54,9 @@ export function Project({
           {previewUrl && (
             <a
               className={`
-          text-center
-          px-14 py-6 text-white font-semibold rounded-full w-full
-          bg-gradient-to-r from-purple-500 via-blue-600 to-blue-400 
+              text-center
+              lg:px-14 lg:py-6 text-white font-semibold rounded-full w-40 lg:w-full
+              bg-gradient-to-r from-purple-500 via-blue-600 to-blue-400 h-14 text-md p-4 lg:p-0
           `}
               href={previewUrl}
               target="_blank"
@@ -67,7 +67,7 @@ export function Project({
 
           {repositoryUrl && (
             <a
-              className="p-6 text-center border border-white text-white font-semibold rounded-full w-full"
+              className="p-6 text-center border border-white text-white font-semibold rounded-full w-40 lg:w-full h-14 p-4 lg:p-0 text-md"
               href={repositoryUrl}
               target="_blank"
             >

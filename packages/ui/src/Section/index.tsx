@@ -7,7 +7,7 @@ interface SectionProps {
 
 export function Section({ children, className }: SectionProps) {
   return (
-    <section className={`w-full px-2 flex flex-row ${className}`}>
+    <section className={`p-10 lg:w-full lg:px-2 flex flex-row ${className}`}>
       {children}
     </section>
   );

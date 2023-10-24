@@ -15,6 +15,12 @@ module.exports = {
         port: "",
         pathname: "/HallexCosta/habits-tracker/blob/main/docs/images/web/**",
       },
+      {
+        protocol: "https",
+        hostname: "github.com",
+        port: "",
+        pathname: "/HallexCosta/league-of-legends-login-page/blob/main/docs/images/light/**",
+      },
     ],
   }
 };

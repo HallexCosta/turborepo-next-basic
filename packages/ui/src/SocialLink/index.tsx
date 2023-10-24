@@ -15,12 +15,12 @@ interface SocialLinkProps {
 
 export function SocialLink({ name, url, className }: SocialLinkProps) {
   className = className || ''
-  url = url || "";
+  url = url || "https://google.com";
   let icon = () => <></>;
   switch (name) {
     case "linkedin":
       const linkedinIcon = () => (
-        <Link href={{ href: url }} target="_blank">
+        <Link href={url as string} target="_blank">
           <LinkedinLogo
             className={`${className} cursor-pointer`}
             color="white"
@@ -47,7 +47,7 @@ export function SocialLink({ name, url, className }: SocialLinkProps) {
       break;
     case "github":
       const githubIcon = () => (
-        <Link href={{ href: url }} target="_blank">
+        <Link href={url as string} target="_blank">
           <GithubLogo
             className={`${className} cursor-pointer`}
             color="white"
