@@ -31,13 +31,14 @@ export function Project({
   return (
     <div className="flex flex-col justify-between p-12 max-h-[700px] max-w-[570px] border border-purple-800 rounded-xl">
       <div className="flex flex-col justify-between w-full gap-y-4 mb-8">
-        <Image
+        {imageUrl.includes('https://') ? <Image
           src={imageUrl}
           alt=""
           width={480}
           height={255}
           className="mb-8"
-        />
+        /> : <img src={imageUrl} alt="" /> }
+        
 
         <h3 className={`${poppins.className} text-white text-2xl`}>{title}</h3>
         <p
@@ -50,12 +51,13 @@ export function Project({
       </div>
 
       <div className="flex flex-col justify-between gap-12">
-        <div className="flex gap-x-3">
+        <div className="flex flex-column justify-center items-center gap-4">
           {previewUrl && (
             <a
               className={`
+              flex items-center justify-center 
               text-center
-              lg:px-14 lg:py-6 text-white font-semibold rounded-full w-40 lg:w-full
+              text-white font-semibold rounded-full w-40 lg:w-full
               bg-gradient-to-r from-purple-500 via-blue-600 to-blue-400 h-14 text-md p-4 lg:p-0
           `}
               href={previewUrl}
@@ -67,7 +69,7 @@ export function Project({
 
           {repositoryUrl && (
             <a
-              className="p-6 text-center border border-white text-white font-semibold rounded-full w-40 lg:w-full h-14 p-4 lg:p-0 text-md"
+              className="flex items-center justify-center text-center border border-white text-white font-semibold rounded-full w-40 lg:w-full h-14 p-4 lg:p-0 text-md "
               href={repositoryUrl}
               target="_blank"
             >

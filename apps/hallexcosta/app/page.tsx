@@ -1,5 +1,5 @@
 import { Avatar, BoxInvisible, ButtonGradient, Circle, Container, Description, Header, Project, ScrollUp, Section, SocialLink, Technology, Timeline, Title } from "ui";
-
+import AnimesUnitedThumbnail from '../assets/images/animes-united-thumbnail.png'
 // import { Poppins } from "next/font/google";
 
 // const poppins = Poppins({
@@ -41,7 +41,7 @@ export default function Page() {
           <Container className="lg:flex lg:flex-row">
             <div className="w-full">
               <Title.Root>
-                <Title.Top name="Hállex Costa" />
+                <Title.Top message="Hállex Costa" />
                 <Title.Down content="backend developer" />
               </Title.Root>
 
@@ -66,11 +66,13 @@ export default function Page() {
                 </Circle.Root>
               </Avatar>
             </div>
+
           </Container>
 
-          <ScrollUp />
         </Section>
 
+        <ScrollUp />
+        
         <Section className="">
           <Container>
             <div className="flex flex-col mt-6 lg:mt-[152px] w-full">
@@ -106,14 +108,13 @@ export default function Page() {
                   repositoryUrl="https://github.com/HallexCosta/league-of-legends-login-page"
                 />
 
-                {/* <Project
-                  title="Furniture store landing page"
-                  description="Responsive HTML/CSS layout for online furniture store. HTML5, CSS3
-                  (SCSS)"
-                  imageUrl="https://github.com/exif-js/exif-js/assets/55293671/37717c42-5aa1-41c6-94a9-8314888e42f5"
+                <Project
+                  title="Animes United"
+                  description="Your platform for streaming/watch animes"
+                  imageUrl={AnimesUnitedThumbnail.src}
                   previewUrl="https://google.com"
-                  repositoryUrl="https://github.com/hallexcosta"
-                /> */}
+                  repositoryUrl="https://github.com/hallexcosta/animes-united"
+                />
               </div>
             </div>
           </Container>

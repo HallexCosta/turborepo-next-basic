@@ -1,5 +1,6 @@
 "use client";
 import { Poppins } from "next/font/google";
+import { TypeAnimation } from "react-type-animation";
 
 import { useEffect, useState } from "react";
 
@@ -8,10 +9,10 @@ const poppins = Poppins({
   subsets: ["latin"],
 });
 interface Props {
-  name: string;
+  message: string;
 }
 
-export function Top({ name }: Props) {
+export function Top({ message }: Props) {
   const [initAnimation, setInitAnimation] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
 
@@ -30,7 +31,15 @@ export function Top({ name }: Props) {
 
 
   return (
-    <h1
+    <>
+    <TypeAnimation
+      className={`${poppins.className} max-h-[62px] w-fit inline-block text-4xl lg:text-6xl font-semibold
+      text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-400 to-blue-400`}
+      sequence={[
+        "Hello I'm Hállex Costa"
+      ]}
+    />
+    {/* <h1
       className={`${poppins.className} max-h-[62px] w-fit inline-block text-4xl lg:text-6xl font-semibold ${initAnimation ? 'animate-typewriter' : ''}
       text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-400 to-blue-400
     `}
@@ -39,6 +48,7 @@ export function Top({ name }: Props) {
       }}
     >
       Hello, I{"'"}m {name},
-    </h1>
+    </h1> */}
+    </>
   );
 }

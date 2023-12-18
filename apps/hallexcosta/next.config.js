@@ -21,6 +21,12 @@ module.exports = {
         port: "",
         pathname: "/HallexCosta/league-of-legends-login-page/blob/main/docs/images/light/**",
       },
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+        port: "",
+        pathname: "/HallexCosta/animes-united/main/assets/screens/anime-detail-watched-episodes.png"
+      },
     ],
   }
 };

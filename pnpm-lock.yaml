@@ -1,8 +1,16 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 importers:
 
   .:
+    dependencies:
+      react-type-animation:
+        specifier: ^3.2.0
+        version: 3.2.0(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@turbo/gen':
         specifier: ^1.9.7
@@ -21,6 +29,52 @@ importers:
         version: 1.9.7
 
   apps/docs:
+    dependencies:
+      next:
+        specifier: ^13.4.1
+        version: 13.4.1(react-dom@18.2.0)(react@18.2.0)
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      ui:
+        specifier: workspace:*
+        version: link:../../packages/ui
+    devDependencies:
+      '@types/node':
+        specifier: ^17.0.12
+        version: 17.0.45
+      '@types/react':
+        specifier: ^18.0.22
+        version: 18.2.5
+      '@types/react-dom':
+        specifier: ^18.0.7
+        version: 18.2.3
+      autoprefixer:
+        specifier: ^10.4.14
+        version: 10.4.14(postcss@8.4.27)
+      config:
+        specifier: workspace:*
+        version: link:../../packages/config
+      eslint-config-custom:
+        specifier: workspace:*
+        version: link:../../packages/eslint-config-custom
+      postcss:
+        specifier: ^8.4.27
+        version: 8.4.27
+      tailwindcss:
+        specifier: ^3.3.3
+        version: 3.3.3
+      tsconfig:
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
+      typescript:
+        specifier: ^4.5.3
+        version: 4.9.5
+
+  apps/hallexcosta:
     dependencies:
       next:
         specifier: ^13.4.1
@@ -2527,7 +2581,7 @@ packages:
       '@next/env': 13.4.1
       '@swc/helpers': 0.5.1
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001482
+      caniuse-lite: 1.0.30001519
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2933,6 +2987,18 @@ packages:
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+    dev: false
+
+  /react-type-animation@3.2.0(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-WXTe0i3rRNKjmggPvT5ntye1QBt0ATGbijeW6V3cQe2W0jaMABXXlPPEdtofnS9tM7wSRHchEvI9SUw+0kUohw==}
+    peerDependencies:
+      prop-types: ^15.5.4
+      react: '>= 15.0.0'
+      react-dom: '>= 15.0.0'
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react@17.0.2:
