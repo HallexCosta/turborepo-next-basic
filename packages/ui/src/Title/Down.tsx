@@ -8,7 +8,7 @@ const poppins = Poppins({
 });
 
 interface TitleDownProps {
-  messages: (string | number)[];
+  messages: any;
 }
 
 export function Down({ messages }: TitleDownProps) {

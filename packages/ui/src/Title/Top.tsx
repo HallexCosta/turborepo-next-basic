@@ -9,10 +9,10 @@ const poppins = Poppins({
   subsets: ["latin"],
 });
 interface Props {
-  message: string;
+  messages: any;
 }
 
-export function Top({ message }: Props) {
+export function Top({ messages }: Props) {
   const [initAnimation, setInitAnimation] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
 
@@ -35,9 +35,7 @@ export function Top({ message }: Props) {
     <TypeAnimation
       className={`${poppins.className} max-h-[62px] w-fit inline-block text-4xl lg:text-6xl font-semibold
       text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-400 to-blue-400`}
-      sequence={[
-        "Hello I'm Hállex Costa"
-      ]}
+      sequence={messages}
     />
     {/* <h1
       className={`${poppins.className} max-h-[62px] w-fit inline-block text-4xl lg:text-6xl font-semibold ${initAnimation ? 'animate-typewriter' : ''}
