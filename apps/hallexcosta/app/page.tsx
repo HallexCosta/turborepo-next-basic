@@ -1,18 +1,70 @@
-import { Avatar, BoxInvisible, ButtonGradient, Circle, Container, Description, Header, Project, ScrollUp, Section, SocialLink, Technology, Timeline, Title } from "ui";
+'use client'
+import { Avatar, BoxInvisible, ButtonGradient, Circle, Container, Description, Header, Project, ScrollUp, Section, SocialLink, Technology, Title } from "ui";
 import AnimesUnitedThumbnail from '../assets/images/animes-united-thumbnail.png'
 // import { Poppins } from "next/font/google";
-
+import { useEffect, useState } from "react";
+// Timeline
 // const poppins = Poppins({
 //   weight: "600",
 //   subsets: ["latin"],
 //   display: "swap",
 // });
 
+import {Timeline} from 'primereact/timeline'
+import { Card } from 'primereact/card';
+import { Button } from 'primereact/button';
+// import './TimelineDemo.css';
+
 const poppins = {
   className: ''
 }
 
 export default function Page() {
+  const [timelines, setTimelines] = useState([])
+  
+  const events = [
+    { status: 'Ordered', date: '15/10/2020 10:30', icon: 'pi pi-shopping-cart', color: '#9C27B0', image: 'game-controller.jpg' },
+    { status: 'Processing', date: '15/10/2020 14:00', icon: 'pi pi-cog', color: '#673AB7' },
+    { status: 'Shipped', date: '15/10/2020 16:15', icon: 'pi pi-shopping-cart', color: '#FF9800' },
+    { status: 'Delivered', date: '16/10/2020 10:00', icon: 'pi pi-check', color: '#607D8B' }
+];
+
+const customizedMarker = (item) => {
+    return (
+        <span className="flex w-2rem h-2rem align-items-center justify-content-center text-white border-circle z-1 shadow-1" style={{ backgroundColor: item.color }}>
+            <i className={item.icon}></i>
+        </span>
+    );
+};
+
+const customizedContent = (item) => {
+    return (
+        <Card title={item.status} subTitle={item.date} className="bg-slate-800 rounded-xl p-7 text-white">
+           <div className="flex flex-col gap-8">
+           { item.image && <img src={`https://primefaces.org/cdn/primereact/images/product/${item.image}`} alt={item.name} width={200} className="shadow-1" />}
+            <p className="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
+                quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
+            <Button label="Read more" className="p-button-text"></Button>
+           </div>
+        </Card>
+    );
+};
+
+  useEffect(() => {
+    setTimelines([
+      {
+        date: '2023.12.11',
+        title: 'Some Title',
+        description: 'Descriptiion',
+      },
+      {
+        date: '2023.12.11',
+        title: 'Some Title',
+        description: 'Descriptiion',
+      }
+    ])
+  }, [])
+
   return (
     <>
       <Header.Root>
@@ -41,14 +93,20 @@ export default function Page() {
           <Container className="lg:flex lg:flex-row">
             <div className="w-full">
               <Title.Root>
-                <Title.Top message="Hállex Costa" />
-                <Title.Down content="backend developer" />
+                <Title.Top messages={["I'm Hállex Costa"]} />
+                <Title.Down messages={[
+                    1300,
+                    'Backend developer',
+                    1300,
+                    'Fullstack BE-heavy developer on focus backend'
+                  ]}
+                />
               </Title.Root>
 
               <Description content="A FullStack Web Developer BE-heavy. Passionate about typescript programming. I am enthusiastic and committed to harnessing the power of technology to develop solutions innovative. I am always looking for ways to apply my knowledge and technology skills to solve problems and make the world a better place." />
 
               <div className="mt-16">
-                <ButtonGradient content="Download CV" />
+                <ButtonGradient slot pdfUrl="/assets/pdf/curriculo-hallexcosta.pdf" content="Download CV"/>
               </div>
             </div>
 
@@ -91,6 +149,7 @@ export default function Page() {
                   previewUrl="https://google.com"
                   repositoryUrl="https://github.com/hallexcosta/be-a-savior"
                 />
+
                 <Project
                   title="NLW Setup - Habits"
                   description="The project is a Habit Tracker, that allow a user to create a new Habit and see your summary of habits completed or non-completed changing the colors tone acoordingly with progress of user."
@@ -195,85 +254,36 @@ export default function Page() {
         <Section>
           <Container>
           <div className="flex flex-col mt-6 lg:mt-[152px] w-full">
-              <h2
-                id="about-me"
-                className={`${poppins.className} text-5xl text-white w-full`}
-              >
-                About me
-              </h2>
+            <h2
+              id="about-me"
+              className={`${poppins.className} text-5xl text-white w-full`}
+            >
+              About me (Coming soon)
+            </h2>
 
-              {/* <div>
-  <Timeline.Root>
-    <Timeline.Separator>
-      <Timeline.Dot />
-      <Timeline.Connector />
-    </Timeline.Separator>    
-    <Timeline.Content>
-      Eat
-    </Timeline.Content>
-  </Timeline.Root>
-</div> */}
             <div className="flex items-center justify-center">
                <ol className="border-l-4 border-zinc-300 mt-16 max-w-6">
-                <Timeline.Root>
-                  <Timeline.Dot>
-                    01.07.2021
-                  </Timeline.Dot>
+                {/* {timelines.map(timeline => (
+                  <Timeline.Root>
+                    <Timeline.Dot>
+                      {timeline.date}
+                    </Timeline.Dot>
 
-                  <Timeline.Content>
-                    <Timeline.Title>
-                      Title of section 1
-                    </Timeline.Title>
+                    <Timeline.Content>
+                      <Timeline.Title>
+                        {timeline.title}
+                      </Timeline.Title>
 
-                    <Timeline.Description>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Quisque scelerisque diam non nisi semper, et elementum
-                      lorem ornare. Maecenas placerat facilisis mollis. Duis
-                      sagittis ligula in sodales vehicula.
-                    </Timeline.Description>
-                  </Timeline.Content>
-                </Timeline.Root>
-                
+                      <Timeline.Description>
+                        {timeline.description}
+                      </Timeline.Description>
+                    </Timeline.Content>
+                  </Timeline.Root>
+                ))}                 */}
 
-                <Timeline.Root>
-                  <Timeline.Dot>
-                    01.07.2022
-                  </Timeline.Dot>
 
-                  <Timeline.Content>
-                    <Timeline.Title>
-                      Title of section 2
-                    </Timeline.Title>
-
-                    <Timeline.Description>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Quisque scelerisque diam non nisi semper, et elementum
-                      lorem ornare. Maecenas placerat facilisis mollis. Duis
-                      sagittis ligula in sodales vehicula.
-                    </Timeline.Description>
-                  </Timeline.Content>
-                </Timeline.Root>
-
-                <Timeline.Root>
-                  <Timeline.Dot>
-                    01.07.2023
-                  </Timeline.Dot>
-
-                  <Timeline.Content>
-                    <Timeline.Title>
-                      Title of section 3
-                    </Timeline.Title>
-
-                    <Timeline.Description>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Quisque scelerisque diam non nisi semper, et elementum
-                      lorem ornare. Maecenas placerat facilisis mollis. Duis
-                      sagittis ligula in sodales vehicula.
-                    </Timeline.Description>
-                  </Timeline.Content>
-                </Timeline.Root>
+                  <Timeline value={events} align="alternate" className="customized-timeline" marker={customizedMarker} content={customizedContent} />
                 </ol> 
-
               </div>
 
               <BoxInvisible/>

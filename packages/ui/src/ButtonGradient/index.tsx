@@ -2,6 +2,7 @@ interface ButtonProps {
   content?: string;
   className?: string;
   slot?: boolean;
+  pdfUrl: string
 }
 
 // const gradient = tv({
@@ -17,7 +18,7 @@ const poppins = Poppins({
   subsets: ['latin']
 })
 
-export const ButtonGradient = ({ content, className, slot }: ButtonProps) => {
+export const ButtonGradient = ({ content, className, slot, pdfUrl }: ButtonProps) => {
   slot = slot || false;
   className = className || "";
   className = `${poppins.className} px-12 py-6 text-center text-white rounded-full
@@ -26,8 +27,15 @@ export const ButtonGradient = ({ content, className, slot }: ButtonProps) => {
   active:bg-gradient-to-r active:from-purple-500 active:via-blue-600 active:to-blue-400 
   ${className}`;
 
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = 'curriculo-hallexcosta.pdf';
+    link.click();
+  };
+
   return slot ? (
-    <a className={className} target="_blank">
+    <a className={className} href={pdfUrl} target="_blank">
       {content}
     </a>
   ) : (

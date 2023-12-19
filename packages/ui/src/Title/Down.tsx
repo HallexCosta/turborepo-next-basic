@@ -8,20 +8,15 @@ const poppins = Poppins({
 });
 
 interface TitleDownProps {
-  content: string;
+  messages: (string | number)[];
 }
 
-export function Down({ content }: TitleDownProps) {
+export function Down({ messages }: TitleDownProps) {
   return (
     <>
     <TypeAnimation
       className={`${poppins.className} text-white text-5xl lg:text-7xl font-semibold`}
-      sequence={[
-        1300,
-        'Backend developer',
-        1300,
-        'Fullstack BE-heavy developer on focus backend'
-      ]}
+      sequence={messages}
     />
     {/* <h1 className={`${poppins.className} text-white text-5xl lg:text-7xl font-semibold`}>
       {content}
