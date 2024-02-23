@@ -9,8 +9,7 @@
     "generate:component": "turbo gen react-component"
   },
   "dependencies": {
-    "next": "^13.4.1",
-    "phosphor-react": "^1.4.1"
+    "next": "^13.4.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",
