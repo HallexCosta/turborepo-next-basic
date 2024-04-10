@@ -1,6 +1,8 @@
-export const Root = ({children}) => {
+import {twMerge} from "tailwind-merge";
+
+export const Root = ({children, className = ''}) => {
     return (
-        <div className="mt-6">
+        <div className={twMerge('', className)}>
             {children}
         </div>
     )

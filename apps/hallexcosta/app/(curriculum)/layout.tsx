@@ -1,6 +1,7 @@
 import "../../styles.css";
 import {Poppins, Open_Sans} from 'next/font/google'
-
+import dayjs from "dayjs";
+import('dayjs/locale/pt-br')
 // export const runtime = 'edge'
 
 const poppins =  Poppins({

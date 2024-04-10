@@ -1,6 +1,14 @@
 'use client';
 
-export const Contact  = ({children, name }) => {
+import {twMerge} from "tailwind-merge";
+
+type ContactProps = {
+    name?: string
+    children: React.ReactNode
+    className?: string
+}
+
+export const Contact  = ({ children, name, className }: ContactProps) => {
 
     const redirectTo = (entry: string) => {
         const matches = {
@@ -14,7 +22,7 @@ export const Contact  = ({children, name }) => {
         if (match) window.open(match, '_blank')
     }
     return (
-        <div onClick={() => redirectTo(name)} className="contact-item flex items-center gap-1 cursor-pointer">
+        <div onClick={() => redirectTo(name)} className={twMerge("contact-item flex items-center gap-1 cursor-pointer", className)}>
             {children}
         </div>
     )
