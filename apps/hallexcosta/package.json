@@ -6,24 +6,43 @@
     "dev": "next dev --port 3001",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate": "drizzle-kit generate:sqlite",
+    "migrate": "tsx database/migrate.ts"
   },
   "dependencies": {
+    "@paralleldrive/cuid2": "^2.2.2",
+    "better-sqlite3": "^9.4.3",
+    "dayjs": "^1.11.10",
+    "drizzle-orm": "^0.29.4",
+    "flowbite": "^2.3.0",
+    "flowbite-react": "^0.7.2",
+    "jotai": "^2.6.5",
+    "lodash": "^4.17.21",
     "next": "^13.4.1",
+    "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "ui": "workspace:*"
+    "react-use-draggable-scroll": "^0.4.7",
+    "sqlite3": "^5.1.7",
+    "ui": "workspace:*",
+    "zustand": "^4.5.1"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.202",
     "@types/node": "^17.0.12",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
-    "eslint-config-custom": "workspace:*",
-    "config": "workspace:*",
-    "tsconfig": "workspace:*",
-    "typescript": "^4.5.3",
     "autoprefixer": "^10.4.14",
+    "config": "workspace:*",
+    "drizzle-kit": "^0.20.14",
+    "eslint-config-custom": "workspace:*",
     "postcss": "^8.4.27",
-    "tailwindcss": "^3.3.3"
+    "tailwind-merge": "^2.2.2",
+    "tailwindcss": "^3.3.3",
+    "tsconfig": "workspace:*",
+    "tsx": "^4.7.1",
+    "typescript": "^4.5.3",
+    "utility-types": "^3.11.0"
   }
 }

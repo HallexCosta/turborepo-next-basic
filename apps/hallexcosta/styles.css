@@ -3,11 +3,7 @@
 @tailwind utilities;
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@400;500;700;900&display=swap'); */
 
-:root {
-  /* color: white; */
-  /* font-family: 'Poppins', sans-serif; */
-  /* font-weight: 600; */
-}
+
 .animate-typewriter  {
   border-right: 5px solid whitesmoke;
   animation: typing 3s steps(24), cursor .4s step-end infinite alternate;
