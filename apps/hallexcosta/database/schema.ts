@@ -26,6 +26,7 @@ export const workExperiences = sqliteTable('work_experiences', {
     id: text("id").primaryKey().$defaultFn(() => createId()),
     enterprise: text("enterprise"),
     role: text("role"), // think to change name from column to my_role
+    workModel: text("work_model"),
     type: text("type"),
     startDate: integer("start_date", {mode: 'timestamp'}),
     endDate: integer("end_date", {mode: 'timestamp'}),
