@@ -14,3 +14,4 @@ export * from "./Project"
 export * from "./Technology"
 export * from "./BoxInvisible"
 export * from './Timeline'
+export { default as Icons  } from './Icons'
