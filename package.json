@@ -1,5 +1,6 @@
 {
   "private": true,
+  "name": "@portfolios",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
@@ -16,6 +17,7 @@
   "packageManager": "pnpm@8.6.10",
   "dependencies": {
     "primereact": "^10.2.1",
+    "phosphor-react": "^1.4.1",
     "react-type-animation": "^3.2.0"
   }
 }
