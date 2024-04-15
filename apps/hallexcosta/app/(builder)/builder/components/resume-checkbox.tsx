@@ -49,7 +49,7 @@ const ResumeCheckbox = memo((props: ResumeCheckboxProps) => {
 
     return (
         <div className="flex items-center gap-2">
-            <Checkbox onChange={onToggleCheckbox} checked={currentlyPosition}/>
+            <Checkbox onChange={onToggleCheckbox} checked={props.value}/>
             <Label className="flex">
                 {props.label}
             </Label>

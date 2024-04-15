@@ -99,13 +99,13 @@ const FormResume = (props: FormResumeProps) => {
         const requestContactsUpdate = fetch(`http://localhost:3001/api/contacts/update/${props.person.id}`, {
             method,
             body: JSON.stringify({
-                website: fullResume.contacts.website,
-                github: fullResume.contacts.github,
-                linkedin: fullResume.contacts.linkedin,
-                city: fullResume.contacts.city,
-                state: fullResume.contacts.state,
-                email: fullResume.contacts.email,
-                phone: fullResume.contacts.phone
+                website: fullResume.contact.website,
+                github: fullResume.contact.github,
+                linkedin: fullResume.contact.linkedin,
+                city: fullResume.contact.city,
+                state: fullResume.contact.state,
+                email: fullResume.contact.email,
+                phone: fullResume.contact.phone
             }),
             headers
         })

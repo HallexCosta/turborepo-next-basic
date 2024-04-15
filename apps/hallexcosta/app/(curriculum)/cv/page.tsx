@@ -1,12 +1,10 @@
 import Experience from "./components/Experience";
 import {Contact} from "./components/Contact";
 import {Icons} from "ui";
+import dayjs from 'dayjs'
 import Person from "../../../domains/Person";
-import('dayjs/locale/pt-br')
-import dayjs from "dayjs";
 import _ from "lodash";
 import {twMerge} from "tailwind-merge";
-dayjs.locale('pt-br')
 
 const Dot = () => <>{'•'}</>
 export function CVTemplatePageEditable({person, className = '' }) {
@@ -142,7 +140,7 @@ export function CVTemplatePageEditable({person, className = '' }) {
                 <Experience.Root className="flex flex-col gap-4">
                     <Experience.Header
                         enterprise="FATEC Araçatuba"
-                        workModel="Presencial"
+                        workModel="in-office"
                         role="Ánalise e Desenvolvimento de Sistemas"
                         type="university"
                         startDate={dayjs(new Date('2020-02-02').toISOString()).format('MMM/YYYY')}
@@ -152,7 +150,7 @@ export function CVTemplatePageEditable({person, className = '' }) {
 
                     <Experience.Header
                         enterprise="ETEC Araçatuba"
-                        workModel="Presencial"
+                        workModel="in-office"
                         role="Desenvolvimento de Sistemas"
                         type="course"
                         startDate={dayjs(new Date('2018-07-20').toISOString()).format('MMM/YYYY')}
@@ -162,7 +160,7 @@ export function CVTemplatePageEditable({person, className = '' }) {
 
                     <Experience.Header
                         enterprise="C.E.L Araçatuba"
-                        workModel="Presencial"
+                        workModel="in-office"
                         role="Espanhol"
                         type="course"
                         startDate={dayjs(new Date('2017-02-02').toISOString()).format('MMM/YYYY')}
@@ -172,7 +170,7 @@ export function CVTemplatePageEditable({person, className = '' }) {
 
                     <Experience.Header
                         enterprise="C.E.L Araçatuba"
-                        workModel="Presencial"
+                        workModel="in-office"
                         role="Inglês"
                         type="course"
                         startDate={dayjs(new Date('2018-02-02').toISOString()).format('MMM/YYYY')}

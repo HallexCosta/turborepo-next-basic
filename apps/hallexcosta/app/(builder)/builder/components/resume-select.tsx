@@ -9,7 +9,7 @@ type ResumeSelectProps = {
     label: string
     tag: string
     data?: DeepPartial<Resume>
-    value?: string
+    value?: string | null
     placeholder: string
     onChange?: void
     updateState?: void
@@ -36,6 +36,7 @@ const ResumeSelect = memo((props: ResumeSelectProps) => {
     useEffect(() => {
         console.log({loadash: _.get(resume, props.tag)})
         updateResume(createUpdateResumeData(props.tag, props.value))
+        // handleUpdateResume(props.value)
     }, [])
 
     return (
@@ -47,7 +48,7 @@ const ResumeSelect = memo((props: ResumeSelectProps) => {
                     onChange={(e) => handleUpdateResume(e.target.value)}
                     value={props.value}
                 >
-                    <option disabled selected>{props.placeholder}</option>
+                    <option disabled selected value="">{props.placeholder}</option>
                     {props.options.map(
                         ({value, label}, index) => <option key={index} value={value}>{label}</option>
                     )}
