@@ -1,12 +1,11 @@
-"use client";
+import Image from 'next/image'
 
 export function BackgroundImage({ url }: { url: string }) {
   return (
-    <img
-      onClick={() => alert("open profile")}
+    <Image
       className="rounded-full w-full h-full"
       src={url}
-      alt=""
+      alt="Circle"
     />
   );
 }

@@ -1,7 +1,5 @@
 import {memo} from "react";
-import {TextInput, Textarea} from "flowbite-react";
-import {useAchievements} from "../stores/achievements-store";
-import {useWorkExperiences} from "../stores/work-experiences-store";
+import {TextInput, Textarea} from "flowbite-react"
 import {useResume} from "../stores/resume-store";
 
 type TextInputAchievementProps = {

@@ -5,7 +5,7 @@ import { Location } from './Location'
 import { Whatsapp } from './Whatsapp'
 import { Plus } from './Plus'
 
-export default {
+const Icons = {
     Email,
     Github,
     Linkedin,
@@ -13,3 +13,5 @@ export default {
     Whatsapp,
     Plus
 }
+
+export default Icons

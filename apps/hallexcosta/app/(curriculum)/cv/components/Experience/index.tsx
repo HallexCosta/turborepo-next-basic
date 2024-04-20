@@ -6,7 +6,7 @@ import {Root} from "./Root";
 import {Lines} from './Lines'
 import {Line} from './Line'
 
-export default {
+const Experience = {
     Root,
     Container,
     Content,
@@ -15,3 +15,6 @@ export default {
     Lines,
     Line
 }
+
+export default Experience
+

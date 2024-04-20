@@ -15,7 +15,7 @@ interface ProjectProps {
   previewUrl?: string;
   repositoryUrl?: string;
   personal?: boolean; // personal is tag used to show project is a personal project 
-  realworld?: boolean; // realworld is tag used to show project is project maked for real clients
+  realWorld?: boolean; // real world is tag used to show project is project maked for real clients
 }
 
 export function Project({
@@ -37,7 +37,7 @@ export function Project({
           width={480}
           height={255}
           className="mb-8"
-        /> : <img src={imageUrl} alt="" /> }
+        /> : <Image src={imageUrl} alt="" /> }
         
 
         <h3 className={`${poppins.className} text-white text-2xl`}>{title}</h3>
