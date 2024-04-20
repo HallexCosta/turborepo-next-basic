@@ -17,15 +17,22 @@ export type WorkExperience = {
     workModel: WorkExperienceModel
     startDate?: Date
     endDate?: Date
-    currentlyPosition?: boolean
+    currentlyPosition: boolean
     achievements: Achievement[]
 }
 
 type Action = {
-    addWorkExperience,
-    updateWorkeExperience,
-    addAchievement
-    updateAchievement
+    addWorkExperience: () => void
+    updateWorkExperience: (
+        workExperienceIndex: number,
+        updatedWorkExperience: Partial<WorkExperience>
+    ) => void
+    addAchievement: (workExperienceIndex: number) => void
+    updateAchievement: (
+        workExperienceIndex: number,
+        inputIndex: number,
+        updatedAchievement: Achievement
+    ) => void
 }
 
 type State = {

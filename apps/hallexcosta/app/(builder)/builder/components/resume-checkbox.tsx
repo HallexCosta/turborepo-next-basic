@@ -9,7 +9,6 @@ type ResumeCheckboxProps = {
     label: string
     tag: string
     value: boolean
-    currentlyPosition: number
     onChange?: void
     selectOptions?: string[]
 }
