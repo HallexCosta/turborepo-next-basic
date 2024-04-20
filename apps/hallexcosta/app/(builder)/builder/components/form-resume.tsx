@@ -4,7 +4,7 @@ import router from 'next/navigation'
 import {useState} from 'react'
 import {Button, Modal} from "flowbite-react";
 import {Icons} from "ui";
-import {useWorkExperiences} from "../stores/work-experiences-store";
+import {WorkExperience as WorkExperienceStore} from "../stores/work-experiences-store";
 import {WorkExperience} from './work-experience'
 import {Resume, useResume} from "../stores/resume-store";
 import {useEffect} from "react";
@@ -18,7 +18,7 @@ import {useResumePreviewMode} from "../../../../hooks/use-resume-preview-mode";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
 
-type FormResumeProps = Resume & { workExperiences: WorkExperience[] }
+type FormResumeProps = Resume & { workExperiences: WorkExperienceStore[] }
 
 const FormResume = (props: FormResumeProps) => {
     const { showPreviewMode, enablePreviewMode } = useResumePreviewMode()
@@ -40,7 +40,7 @@ const FormResume = (props: FormResumeProps) => {
 
     useEffect(() => {
         updateResume(props)
-    }, [])
+    }, [props, updateResume])
 
 
     const [openModal, setOpenModal] = useState(false);
@@ -49,7 +49,7 @@ const FormResume = (props: FormResumeProps) => {
 
         const clonedWorkExperiences = _.clone(resume.workExperiences)
 
-        const fullResume: Resume & { workExperiences: WorkExperience[] } = {
+        const fullResume: Resume & { workExperiences: WorkExperienceStore[] } = {
             ...resume,
             workExperiences: clonedWorkExperiences
         }

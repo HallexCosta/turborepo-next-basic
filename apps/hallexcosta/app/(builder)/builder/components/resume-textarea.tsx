@@ -45,5 +45,5 @@ const ResumeTextarea = memo((props: ResumeTextareaProps) => {
         </div>
     )
 })
-
+ResumeTextarea.displayName = 'ResumeTextarea'
 export { ResumeTextarea }

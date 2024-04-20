@@ -56,5 +56,6 @@ const ResumeDatePicker = memo((props: ResumeDatePickerProps) => {
         </div>
     )
 })
+ResumeDatePicker.displayName = 'ResumeDatePicker'
 
 export { ResumeDatePicker }

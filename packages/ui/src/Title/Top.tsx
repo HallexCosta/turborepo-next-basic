@@ -1,13 +1,13 @@
 "use client";
-import { Poppins } from "next/font/google";
+// import { Poppins } from "next/font/google";
 import { TypeAnimation } from "react-type-animation";
 
 import { useEffect, useState } from "react";
 
-const poppins = Poppins({
-  weight: "600",
-  subsets: ["latin"],
-});
+// const poppins = Poppins({
+//   weight: "600",
+//   subsets: ["latin"],
+// });
 interface Props {
   messages: any;
 }
@@ -33,7 +33,7 @@ export function Top({ messages }: Props) {
   return (
     <>
     <TypeAnimation
-      className={`${poppins.className} max-h-[62px] w-fit inline-block text-4xl lg:text-6xl font-semibold
+      className={`max-h-[62px] w-fit inline-block text-4xl lg:text-6xl font-semibold
       text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-400 to-blue-400`}
       sequence={messages}
     />

@@ -56,5 +56,5 @@ const ResumeCheckbox = memo((props: ResumeCheckboxProps) => {
         </div>
     )
 })
-
+ResumeCheckbox.displayName = 'ResumeCheckbox'
 export { ResumeCheckbox }

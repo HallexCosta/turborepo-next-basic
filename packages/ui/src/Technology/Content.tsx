@@ -1,10 +1,10 @@
-import { Poppins } from "next/font/google";
+// import { Poppins } from "next/font/google";
 
-const poppins = Poppins({
-  weight: "600",
-  subsets: ["latin"],
-  display: "swap",
-});
+// const poppins = Poppins({
+//   weight: "600",
+//   subsets: ["latin"],
+//   display: "swap",
+// });
 
 interface Props {
   text: string;
@@ -12,6 +12,6 @@ interface Props {
 
 export function Content({ text }: Props) {
   return (
-    <span className={`${poppins.className} text-xl lg:text-3xl text-white`}>{text}</span>
+    <span className={`text-xl lg:text-3xl text-white`}>{text}</span>
   );
 }

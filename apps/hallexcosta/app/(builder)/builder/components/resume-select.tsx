@@ -9,7 +9,7 @@ type ResumeSelectProps = {
     label: string
     tag: string
     data?: DeepPartial<Resume>
-    value?: string | null
+    value?: string
     placeholder: string
     onChange?: void
     updateState?: void
@@ -25,7 +25,7 @@ const ResumeSelect = memo((props: ResumeSelectProps) => {
     const handleUpdateResume = (value: string) => {
         updateResume(createUpdateResumeData(props.tag, value))
     }
-    const createUpdateResumeData = (tag: string, value: string) => {
+    const createUpdateResumeData = (tag: string, value: string | undefined) => {
         const updatedResume: DeepPartial<Resume> = {}
         _.set(updatedResume, tag, value)
 
@@ -57,5 +57,6 @@ const ResumeSelect = memo((props: ResumeSelectProps) => {
         </div>
     )
 })
+ResumeSelect.displayName = 'ResumeSelect'
 
 export { ResumeSelect }

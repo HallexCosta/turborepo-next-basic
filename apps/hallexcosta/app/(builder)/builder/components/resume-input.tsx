@@ -64,5 +64,6 @@ const ResumeInput = memo((props: ResumeInputProps) => {
         </div>
     )
 })
+ResumeInput.displayName = 'ResumeInput'
 
 export { ResumeInput }

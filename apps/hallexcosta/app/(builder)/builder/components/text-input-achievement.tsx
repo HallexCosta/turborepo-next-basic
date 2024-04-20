@@ -55,6 +55,7 @@ export const TextInputAchievement = memo(({ id, content, workExperienceId, workE
         </div>
     )
 })
+TextInputAchievement.displayName = 'TextInputAchievement'
 
 const MinusIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" strokeWidth="2" fill="#fff" viewBox="0 0 256 256">
