@@ -22,10 +22,10 @@ const ResumeDatePicker = memo((props: ResumeDatePickerProps) => {
 
     const {resume, updateResume} =  useResume()
 
-    const handleUpdateResume = (value: string | Date) => {
+    const handleUpdateResume = (value: Date) => {
         updateResume(createUpdateResumeData(props.tag, value))
     }
-    const createUpdateResumeData = (tag: string, value: string) => {
+    const createUpdateResumeData = (tag: string, value: Date) => {
         const updatedResume: DeepPartial<Resume> = {}
         _.set(updatedResume, tag, value)
 

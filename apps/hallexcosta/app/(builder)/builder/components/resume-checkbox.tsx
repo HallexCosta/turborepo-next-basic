@@ -28,8 +28,10 @@ const ResumeCheckbox = memo((props: ResumeCheckboxProps) => {
         setCurrentlyPosition(stateCurrentlyPosition)
     }
     const handleUpdateResume = (currentlyPosition: boolean) => {
-        let endDate = null
-        if (!currentlyPosition) endDate = new Date()
+        let endDate: Date | null = null
+        if (!currentlyPosition) {
+            endDate = new Date()
+        }
         updateResume(createUpdateResumeData(props.tag, currentlyPosition, endDate))
     }
     const createUpdateResumeData = (tag: string, currentlyPosition: boolean, endDate: null | Date) => {
