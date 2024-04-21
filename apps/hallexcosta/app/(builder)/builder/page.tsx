@@ -1,10 +1,3 @@
-import { Label, TextInput, Textarea, Button } from "flowbite-react";
-import { Icons } from "ui";
-
-import { Resume, useResume } from "./stores/resume-store";
-import { WorkExperience } from "./components/work-experience";
-import { useWorkExperiences } from "./stores/work-experiences-store";
-import { ResumeInput } from "./components/resume-input";
 import { FormResume } from "./components/form-resume";
 import { db } from "../../../database";
 import { eq } from "drizzle-orm";
