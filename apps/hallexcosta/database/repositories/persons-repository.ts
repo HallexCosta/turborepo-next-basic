@@ -1,7 +1,10 @@
 import { BetterSQLite3Database } from 'drizzle-orm/better-sqlite3'
 import * as schema from '../schema'
-import { PersonsRepositoryInterface } from '../../app/api/repositories/presons-repository-interface'
 import { eq } from 'drizzle-orm'
+
+interface PersonsRepositoryInterface {
+  findPersonByUsername: (username: string, relations?: string[]) => void
+}
 
 export default class PersonsRepository implements PersonsRepositoryInterface {
   public constructor(private db: BetterSQLite3Database<typeof schema>) {}
