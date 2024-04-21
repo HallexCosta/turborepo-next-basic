@@ -12,9 +12,6 @@ interface DescriptionProps {
 export function Description({ content }: DescriptionProps) {
   return (
     // <p className={`${poppins.className} text-sm text-gray-500 max-w-2xl`}>
-    <p className={`text-sm text-gray-500 max-w-2xl`}>
-
-      {content}
-    </p>
+    <p className={`text-sm text-gray-500 max-w-2xl`}>{content}</p>
   );
 }

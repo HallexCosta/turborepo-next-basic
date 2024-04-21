@@ -13,7 +13,7 @@ export function ScrollUp() {
           md:block
           mr-12
         `}
-        style={{display: 'flex'}}
+        style={{ display: "flex" }}
       >
         <ArrowDown className="rotate-180" color="white" width={20} />
       </div>

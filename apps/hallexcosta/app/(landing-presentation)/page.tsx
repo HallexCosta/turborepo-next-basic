@@ -1,12 +1,25 @@
-import { Avatar, BoxInvisible, ButtonGradient, Circle, Container, Description, Header, Project, ScrollUp, Section, SocialLink, Technology, Title } from "ui";
-import AnimesUnitedThumbnail from '../../assets/images/animes-united-thumbnail.png'
-import { headers } from 'next/headers'
+import {
+  Avatar,
+  BoxInvisible,
+  ButtonGradient,
+  Circle,
+  Container,
+  Description,
+  Header,
+  Project,
+  ScrollUp,
+  Section,
+  SocialLink,
+  Technology,
+  Title,
+} from "ui";
+import AnimesUnitedThumbnail from "../../assets/images/animes-united-thumbnail.png";
+import { headers } from "next/headers";
 const poppins = {
-  className: ''
-}
+  className: "",
+};
 
 export default function Page() {
-
   return (
     <>
       <Header.Root>
@@ -23,7 +36,10 @@ export default function Page() {
 
           <Header.Content className="text-white lg:font-sm lg:text-md flex gap-6 justify-end">
             <SocialLink name="github" url="https://github.com/hallexcosta" />
-            <SocialLink name="linkedin" url="https://linkedin.com/in/hallexcosta" />
+            <SocialLink
+              name="linkedin"
+              url="https://linkedin.com/in/hallexcosta"
+            />
             <SocialLink name="instagram" url="https://instagram/hallexcosta" />
             <SocialLink name="facebook" url="https://github.com/hallexcosta" />
           </Header.Content>
@@ -36,11 +52,12 @@ export default function Page() {
             <div className="w-full">
               <Title.Root>
                 <Title.Top messages={["I'm Hállex Costa"]} />
-                <Title.Down messages={[
+                <Title.Down
+                  messages={[
                     1300,
-                    'Backend developer',
+                    "Backend developer",
                     1300,
-                    'Fullstack BE-heavy developer on focus backend'
+                    "Fullstack BE-heavy developer on focus backend",
                   ]}
                 />
               </Title.Root>
@@ -48,14 +65,18 @@ export default function Page() {
               <Description content="A FullStack Web Developer BE-heavy. Passionate about typescript programming. I am enthusiastic and committed to harnessing the power of technology to develop solutions innovative. I am always looking for ways to apply my knowledge and technology skills to solve problems and make the world a better place." />
 
               <div className="mt-16">
-                <ButtonGradient slot pdfUrl="/assets/pdf/curriculo-hallexcosta.pdf" content="Download CV"/>
+                <ButtonGradient
+                  slot
+                  pdfUrl="/assets/pdf/curriculo-hallexcosta.pdf"
+                  content="Download CV"
+                />
                 {/* curriculum */}
               </div>
             </div>
 
             <div className="hidden lg:block relative -z-10 mt-40 lg:mt-0">
               <Avatar>
-                <Circle.Root size="lg" className="hidden lg:block"/>
+                <Circle.Root size="lg" className="hidden lg:block" />
 
                 <Circle.Root
                   size="sm"
@@ -67,13 +88,11 @@ export default function Page() {
                 </Circle.Root>
               </Avatar>
             </div>
-
           </Container>
-
         </Section>
 
         <ScrollUp />
-        
+
         <Section className="">
           <Container>
             <div className="flex flex-col mt-6 lg:mt-[152px] w-full">
@@ -142,7 +161,7 @@ export default function Page() {
                   <Technology.Bullet />
                   <Technology.Content text="Typescript" />
                 </Technology.Root>
-                
+
                 <Technology.Root>
                   <Technology.Bullet />
                   <Technology.Content text="Node.js" />
@@ -196,17 +215,17 @@ export default function Page() {
 
         <Section>
           <Container>
-          <div className="flex flex-col mt-6 lg:mt-[152px] w-full">
-            <h2
-              id="about-me"
-              className={`${poppins.className} text-5xl text-white w-full`}
-            >
-              About me (Coming soon)
-            </h2>
+            <div className="flex flex-col mt-6 lg:mt-[152px] w-full">
+              <h2
+                id="about-me"
+                className={`${poppins.className} text-5xl text-white w-full`}
+              >
+                About me (Coming soon)
+              </h2>
 
-            <div className="flex items-center justify-center">
-               <ol className="border-l-4 border-zinc-300 mt-16 max-w-6">
-                {/* {timelines.map(timeline => (
+              <div className="flex items-center justify-center">
+                <ol className="border-l-4 border-zinc-300 mt-16 max-w-6">
+                  {/* {timelines.map(timeline => (
                   <Timeline.Root>
                     <Timeline.Dot>
                       {timeline.date}
@@ -224,13 +243,12 @@ export default function Page() {
                   </Timeline.Root>
                 ))}                 */}
 
-
                   {/* <Timeline value={events} align="alternate" className="customized-timeline" marker={customizedMarker} content={customizedContent} /> */}
-                </ol> 
+                </ol>
               </div>
 
-              <BoxInvisible/>
-              <BoxInvisible/>
+              <BoxInvisible />
+              <BoxInvisible />
             </div>
           </Container>
         </Section>

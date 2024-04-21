@@ -2,7 +2,7 @@ interface ButtonProps {
   content?: string;
   className?: string;
   slot?: boolean;
-  pdfUrl: string
+  pdfUrl: string;
 }
 
 // const gradient = tv({
@@ -18,7 +18,12 @@ interface ButtonProps {
 //   subsets: ['latin']
 // })
 
-export const ButtonGradient = ({ content, className, slot, pdfUrl }: ButtonProps) => {
+export const ButtonGradient = ({
+  content,
+  className,
+  slot,
+  pdfUrl,
+}: ButtonProps) => {
   slot = slot || false;
   className = className || "";
   className = `px-12 py-6 text-center text-white rounded-full
@@ -28,9 +33,9 @@ export const ButtonGradient = ({ content, className, slot, pdfUrl }: ButtonProps
   ${className}`;
 
   const handleDownload = () => {
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = pdfUrl;
-    link.download = 'curriculo-hallexcosta.pdf';
+    link.download = "curriculo-hallexcosta.pdf";
     link.click();
   };
 

@@ -1,4 +1,4 @@
-export const createDefaultAchievement = () =>({
-    id: String(Date.now()),
-    content: ''
-})
+export const createDefaultAchievement = () => ({
+  id: String(Date.now()),
+  content: "",
+});

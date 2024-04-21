@@ -6,15 +6,15 @@ import Image from "next/image";
 //   subsets: ["latin"],
 // });
 const poppins = {
-  className: ''
-}
+  className: "",
+};
 interface ProjectProps {
   title?: string;
   description?: string;
   imageUrl?: string;
   previewUrl?: string;
   repositoryUrl?: string;
-  personal?: boolean; // personal is tag used to show project is a personal project 
+  personal?: boolean; // personal is tag used to show project is a personal project
   realWorld?: boolean; // real world is tag used to show project is project maked for real clients
 }
 
@@ -31,14 +31,17 @@ export function Project({
   return (
     <div className="flex flex-col justify-between p-12 max-h-[700px] max-w-[570px] border border-purple-800 rounded-xl">
       <div className="flex flex-col justify-between w-full gap-y-4 mb-8">
-        {imageUrl.includes('https://') ? <Image
-          src={imageUrl}
-          alt=""
-          width={480}
-          height={255}
-          className="mb-8"
-        /> : <Image src={imageUrl} alt="" /> }
-        
+        {imageUrl.includes("https://") ? (
+          <Image
+            src={imageUrl}
+            alt=""
+            width={480}
+            height={255}
+            className="mb-8"
+          />
+        ) : (
+          <Image src={imageUrl} alt="" />
+        )}
 
         <h3 className={`${poppins.className} text-white text-2xl`}>{title}</h3>
         <p

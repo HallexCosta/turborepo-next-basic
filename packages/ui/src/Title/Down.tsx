@@ -1,4 +1,4 @@
-'use client'
+"use client";
 // import { Poppins } from "next/font/google";
 import { TypeAnimation } from "react-type-animation";
 
@@ -14,11 +14,11 @@ interface TitleDownProps {
 export function Down({ messages }: TitleDownProps) {
   return (
     <>
-    <TypeAnimation
-      className={`text-white text-5xl lg:text-7xl font-semibold`}
-      sequence={messages}
-    />
-    {/* <h1 className={`${poppins.className} text-white text-5xl lg:text-7xl font-semibold`}>
+      <TypeAnimation
+        className={`text-white text-5xl lg:text-7xl font-semibold`}
+        sequence={messages}
+      />
+      {/* <h1 className={`${poppins.className} text-white text-5xl lg:text-7xl font-semibold`}>
       {content}
     </h1> */}
     </>

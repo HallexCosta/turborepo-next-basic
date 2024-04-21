@@ -1,200 +1,239 @@
-import {create, useStore} from 'zustand'
-import _ from 'lodash'
-import {WorkExperience} from "./work-experiences-store";
-import {createDefaultAchievement} from "../common/create-default-achievement";
-import {Achievement} from "./achievements-store";
-import {workExperiences} from "../../../../database/schema";
+import { create, useStore } from "zustand";
+import _ from "lodash";
+import { WorkExperience } from "./work-experiences-store";
+import { createDefaultAchievement } from "../common/create-default-achievement";
+import { Achievement } from "./achievements-store";
+import { workExperiences } from "../../../../database/schema";
 
 export type Resume = {
-    person: {
-        id: string
-        username: string
-        name: string
-        role: string
-    }
-    contact: {
-        city: string
-        state: string
-        phone: string
-        email: string
-        linkedin: string
-        github: string
-        website: string
-    }
-    summary: string
-    skills: string
-    workExperiences: WorkExperience[]
-}
+  person: {
+    id: string;
+    username: string;
+    name: string;
+    role: string;
+  };
+  contact: {
+    city: string;
+    state: string;
+    phone: string;
+    email: string;
+    linkedin: string;
+    github: string;
+    website: string;
+  };
+  summary: string;
+  skills: string;
+  workExperiences: WorkExperience[];
+};
 
 type Action = {
-    updateResume,
-    addWorkExperienceById
-    addWorkExperience
-    addNewAchievement
-    updateAchievement
-    updateWorkExperienceById
-    removeAchievementByIndexes
-    updateAchievementByIds
-    removeAchievement
-}
+  updateResume;
+  addWorkExperienceById;
+  addWorkExperience;
+  addNewAchievement;
+  updateAchievement;
+  updateWorkExperienceById;
+  removeAchievementByIndexes;
+  updateAchievementByIds;
+  removeAchievement;
+};
 
 type State = {
-    resume: Resume
-}
+  resume: Resume;
+};
 
-type ResumeStore = Action & State
+type ResumeStore = Action & State;
 
-export const useResume = create<ResumeStore>(set => {
-    const updateResume = (resume: Partial<Resume>) => set((state) => {
-        state.resume = _.merge(state.resume, resume)
-        console.log(state.resume)
-        return {
-            ...state
+export const useResume = create<ResumeStore>((set) => {
+  const updateResume = (resume: Partial<Resume>) =>
+    set((state) => {
+      state.resume = _.merge(state.resume, resume);
+      console.log(state.resume);
+      return {
+        ...state,
+      };
+    });
+
+  const addWorkExperience = () =>
+    set((state) => {
+      console.log("CALLED");
+      const newWorkExperience: WorkExperience = {
+        id: String(Date.now()),
+        enterprise: "",
+        role: "",
+        type: "",
+        workModel: "",
+        // endDate: new Date(),
+        // startDate: new Date(),
+        achievements: [createDefaultAchievement()],
+      };
+      state.resume.workExperiences.unshift(newWorkExperience);
+      return {
+        ...state,
+      };
+    });
+
+  const addNewAchievement = (workExperienceIndex: number) =>
+    set((state) => {
+      state.resume.workExperiences[workExperienceIndex].achievements.unshift(
+        createDefaultAchievement()
+      );
+      return {
+        ...state,
+      };
+    });
+
+  const updateWorkExperienceById = (
+    id: string,
+    updatedWorkExperience: Partial<WorkExperience>
+  ) => {
+    return set((state) => {
+      const newWorkExperiences: any[] = [];
+      for (const workExperience of state.resume.workExperiences) {
+        if (workExperience.id === id) {
+          newWorkExperiences.push(
+            _.merge(workExperience, updatedWorkExperience)
+          );
+        } else {
+          newWorkExperiences.push(workExperience);
         }
-    })
+      }
+      state.resume.workExperiences = newWorkExperiences;
+      return state;
+    });
+  };
 
-    const addWorkExperience = () => set(state => {
-        console.log('CALLED')
-        const newWorkExperience: WorkExperience = {
-            id: String(Date.now()),
-            enterprise: '',
-            role: '',
-            type: '',
-            workModel: '',
-            // endDate: new Date(),
-            // startDate: new Date(),
-            achievements: [
-                createDefaultAchievement()
-            ],
+  // beta -> I haven't found a purpose for this function yet
+  const updateAchievement = (
+    workExperienceIndex: number,
+    achievementIndex: number,
+    updatedAchievement: Partial<Achievement>
+  ) =>
+    set((state) => {
+      console.log("updateAchievement", updatedAchievement);
+      state.resume.workExperiences[workExperienceIndex].achievements.splice(
+        achievementIndex,
+        1,
+        {
+          ...state.resume.workExperiences[workExperienceIndex].achievements[
+            achievementIndex
+          ],
+          ...updatedAchievement,
         }
-        state.resume.workExperiences.unshift(newWorkExperience)
-        return {
-            ...state
+      );
+      return {
+        ...state,
+      };
+    });
+
+  const updateAchievementByIds = (
+    workExperienceId: string,
+    achievementId: string,
+    updatedAchievement: Partial<Achievement>
+  ) =>
+    set((state) => {
+      const workExperienceIndex = state.resume.workExperiences.findIndex(
+        (workExperience) => workExperience.id === workExperienceId
+      );
+
+      const achievementIndex = state.resume.workExperiences[
+        workExperienceIndex
+      ].achievements.findIndex(
+        (achievement) => achievement.id === achievementId
+      );
+
+      state.resume.workExperiences[workExperienceIndex].achievements.splice(
+        achievementIndex,
+        1,
+        {
+          ...state.resume.workExperiences[workExperienceIndex].achievements[
+            achievementIndex
+          ],
+          ...updatedAchievement,
         }
-    })
+      );
 
-    const addNewAchievement = (workExperienceIndex: number) => set((state) => {
-        state.resume.workExperiences[workExperienceIndex].achievements.unshift(createDefaultAchievement())
-        return {
-            ...state,
-        }
-    })
+      return {
+        ...state,
+      };
+    });
 
-    const updateWorkExperienceById = (id: string, updatedWorkExperience: Partial<WorkExperience>) => {
-        return set(state => {
-            const newWorkExperiences: any[] = []
-            for (const workExperience of state.resume.workExperiences) {
-                if (workExperience.id === id) {
-                    newWorkExperiences.push(_.merge(workExperience, updatedWorkExperience))
-                } else {
-                    newWorkExperiences.push(workExperience)
-                }
-            }
-            state.resume.workExperiences = newWorkExperiences
-            return state
-        })
-    }
+  const removeAchievementByIndexes = (
+    workExperienceIndex: number,
+    achievementIndex: number
+  ) =>
+    set((state) => {
+      delete state.resume.workExperiences[workExperienceIndex].achievements[
+        achievementIndex
+      ];
+      return {
+        ...state,
+      };
+    });
 
-    // beta -> I haven't found a purpose for this function yet
-    const updateAchievement = (workExperienceIndex: number, achievementIndex: number, updatedAchievement: Partial<Achievement>) => set(state => {
-        console.log('updateAchievement', updatedAchievement)
-        state.resume.workExperiences[workExperienceIndex].achievements.splice(achievementIndex, 1, {
-            ...state.resume.workExperiences[workExperienceIndex].achievements[achievementIndex],
-            ...updatedAchievement
-        })
-        return {
-            ...state
-        }
-    })
+  const removeAchievement = (workExperienceId: string, achievementId: string) =>
+    set((state) => {
+      const workExperienceIndex = state.resume.workExperiences.findIndex(
+        (workExperience) => workExperience.id === workExperienceId
+      );
 
-    const updateAchievementByIds = (workExperienceId: string, achievementId: string, updatedAchievement: Partial<Achievement>) => set(state => {
-        const workExperienceIndex = state.resume
-            .workExperiences
-            .findIndex(workExperience => workExperience.id === workExperienceId)
+      const achievementIndex = state.resume.workExperiences[
+        workExperienceIndex
+      ].achievements.findIndex(
+        (achievement) => achievement.id === achievementId
+      );
 
-        const achievementIndex = state.resume
-            .workExperiences[workExperienceIndex]
-            .achievements
-            .findIndex(achievement => achievement.id === achievementId)
+      console.log("removeAchievement", {
+        workExperienceIndex,
+        achievementIndex,
+        workExperienceId,
+        achievementId,
+      });
+      delete state.resume.workExperiences[workExperienceIndex].achievements[
+        achievementIndex
+      ];
 
-        state.resume.workExperiences[workExperienceIndex].achievements.splice(achievementIndex, 1, {
-            ...state.resume.workExperiences[workExperienceIndex].achievements[achievementIndex],
-            ...updatedAchievement
-        })
+      return {
+        ...state,
+      };
+    });
 
-        return {
-            ...state
-        }
-    })
-
-    const removeAchievementByIndexes = (workExperienceIndex: number, achievementIndex: number) => set(state => {
-        delete state.resume.workExperiences[workExperienceIndex].achievements[achievementIndex]
-        return {
-            ...state
-        }
-    })
-
-    const removeAchievement = (workExperienceId: string, achievementId: string) => set(state => {
-        const workExperienceIndex = state.resume
-            .workExperiences
-            .findIndex(workExperience => workExperience.id === workExperienceId)
-
-        const achievementIndex = state.resume
-            .workExperiences[workExperienceIndex]
-            .achievements
-            .findIndex(achievement => achievement.id === achievementId)
-
-        console.log('removeAchievement', {
-            workExperienceIndex,
-            achievementIndex,
-            workExperienceId,
-            achievementId
-        })
-        delete state.resume.workExperiences[workExperienceIndex].achievements[achievementIndex]
-
-        return {
-            ...state
-        }
-    })
-
-    return {
-        resume: {
-            person: {
-                name: '',
-                role: ''
-            },
-            contact: {
-                city: '',
-                email: '',
-                github: '',
-                linkedin: '',
-                phone: '',
-                website: '',
-                state: ''
-            },
-            summary: '',
-            skills: '',
-            workExperiences: [
-                {
-                    id: String(Date.now()),
-                    enterprise: '',
-                    endDate: new Date(),
-                    startDate: new Date(),
-                    type: 'full-time',
-                    workModel: 'home-office',
-                    achievements: [
-                        createDefaultAchievement()
-                    ]
-                }
-            ]
+  return {
+    resume: {
+      person: {
+        name: "",
+        role: "",
+      },
+      contact: {
+        city: "",
+        email: "",
+        github: "",
+        linkedin: "",
+        phone: "",
+        website: "",
+        state: "",
+      },
+      summary: "",
+      skills: "",
+      workExperiences: [
+        {
+          id: String(Date.now()),
+          enterprise: "",
+          endDate: new Date(),
+          startDate: new Date(),
+          type: "full-time",
+          workModel: "home-office",
+          achievements: [createDefaultAchievement()],
         },
-        updateResume,
-        addWorkExperience,
-        addNewAchievement,
-        updateAchievement,
-        updateWorkExperienceById,
-        removeAchievementByIndexes,
-        updateAchievementByIds,
-        removeAchievement
-    }
-})
+      ],
+    },
+    updateResume,
+    addWorkExperience,
+    addNewAchievement,
+    updateAchievement,
+    updateWorkExperienceById,
+    removeAchievementByIndexes,
+    updateAchievementByIds,
+    removeAchievement,
+  };
+});

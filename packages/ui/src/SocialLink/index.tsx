@@ -14,7 +14,7 @@ interface SocialLinkProps {
 }
 
 export function SocialLink({ name, url, className }: SocialLinkProps) {
-  className = className || ''
+  className = className || "";
   url = url || "https://google.com";
   let icon = () => <></>;
   switch (name) {

@@ -20,24 +20,22 @@ export function Top({ messages }: Props) {
     setTimeout(() => setAnimationComplete(true), 2000);
   }, []);
 
-
   useEffect(() => {
-    console.log('fui chamado 2')
+    console.log("fui chamado 2");
     setTimeout(() => {
-      setAnimationComplete(!animationComplete)
-      setInitAnimation(!animationComplete)
+      setAnimationComplete(!animationComplete);
+      setInitAnimation(!animationComplete);
     }, 2000);
   }, [animationComplete]);
 
-
   return (
     <>
-    <TypeAnimation
-      className={`max-h-[62px] w-fit inline-block text-4xl lg:text-6xl font-semibold
+      <TypeAnimation
+        className={`max-h-[62px] w-fit inline-block text-4xl lg:text-6xl font-semibold
       text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-400 to-blue-400`}
-      sequence={messages}
-    />
-    {/* <h1
+        sequence={messages}
+      />
+      {/* <h1
       className={`${poppins.className} max-h-[62px] w-fit inline-block text-4xl lg:text-6xl font-semibold ${initAnimation ? 'animate-typewriter' : ''}
       text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-400 to-blue-400
     `}

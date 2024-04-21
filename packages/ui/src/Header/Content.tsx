@@ -11,9 +11,5 @@ interface HeaderContentProps {
   className?: string;
 }
 export function Content({ children, className }: HeaderContentProps) {
-  return (
-    <div className={`${className} font-medium text-lg`}>
-      {children}
-    </div>
-  );
+  return <div className={`${className} font-medium text-lg`}>{children}</div>;
 }

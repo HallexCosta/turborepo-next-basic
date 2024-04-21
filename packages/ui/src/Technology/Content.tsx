@@ -11,7 +11,5 @@ interface Props {
 }
 
 export function Content({ text }: Props) {
-  return (
-    <span className={`text-xl lg:text-3xl text-white`}>{text}</span>
-  );
+  return <span className={`text-xl lg:text-3xl text-white`}>{text}</span>;
 }

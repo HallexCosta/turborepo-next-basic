@@ -1,12 +1,12 @@
-import '../../node_modules/normalize.css';
+import "../../node_modules/normalize.css";
 import "../../styles.css";
-import '../../styles/fonts.css'
-import('dayjs/locale/pt-br')
+import "../../styles/fonts.css";
+import("dayjs/locale/pt-br");
 import dayjs from "dayjs";
-dayjs.locale('pt-br')
+dayjs.locale("pt-br");
 // import {Poppins, Open_Sans} from 'next/font/google'
 
-export const runtime = 'edge'
+export const runtime = "edge";
 
 // const poppins =  Poppins({
 //   subsets: ['latin'],

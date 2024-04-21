@@ -6,7 +6,5 @@ interface ButtonProps {
 }
 
 export function Button({ children, className }: ButtonProps) {
-  return (
-    <button>Testing</button>
-  );
+  return <button>Testing</button>;
 }
