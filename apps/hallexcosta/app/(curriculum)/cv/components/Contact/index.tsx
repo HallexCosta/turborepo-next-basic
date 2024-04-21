@@ -3,7 +3,7 @@
 import { twMerge } from 'tailwind-merge'
 
 type ContactProps = {
-  name?: string
+  name: string
   children: React.ReactNode
   className?: string
 }

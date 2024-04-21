@@ -6,10 +6,11 @@ import { DeepNonNullable } from 'utility-types'
 import { Suspense } from 'react'
 import { createDefaultAchievement } from './common/create-default-achievement'
 import { achievementEntityToAchievementComponentMapper } from './mappers/achievement-entity-to-achievement-component-mapper'
-import {achievements} from '../../../database/schema';
-import {Achievement, WorkExperience} from './stores/work-experiences-store';
+import { achievements } from '../../../database/schema'
+import { Achievement, WorkExperience } from './stores/work-experiences-store'
 
-type Person = {   id: string
+type Person = {
+  id: string
   name: string
   username: string
   email: string
@@ -18,12 +19,14 @@ type Person = {   id: string
   skills: string
   createdAt: Date
   updatedAt: Date
-  workExperiences: Array<WorkExperience & {
-    personId: string
-    createdAt: Date
-    updatedAt: Date
-    achievements: Array<Achievement>
-  }>
+  workExperiences: Array<
+    WorkExperience & {
+      personId: string
+      createdAt: Date
+      updatedAt: Date
+      achievements: Array<Achievement>
+    }
+  >
   contact: Record<string, any>
 }
 
@@ -63,36 +66,37 @@ const page = async () => {
   function createObjectWithDefaults(obj) {
     return _.mapValues(obj, replaceNullWithEmptyString)
   }
-  const parsedPerson = _.mapValues(
-    person,
-    replaceNullWithEmptyString
-  ) as Person
+  const parsedPerson = _.mapValues(person, replaceNullWithEmptyString) as Person
   // console.log({parsedPerson})
 
   console.log(parsedPerson.workExperiences)
   if (parsedPerson.workExperiences.length) {
     // @ts-ignore
-    parsedPerson.workExperiences = parsedPerson.workExperiences.map((workExperience) => {
-      if (workExperience.achievements.length) {
-        workExperience.achievements.map(achievementEntityToAchievementComponentMapper)
-      } else {
-        workExperience.achievements = [createDefaultAchievement()]
+    parsedPerson.workExperiences = parsedPerson.workExperiences.map(
+      (workExperience) => {
+        if (workExperience.achievements.length) {
+          workExperience.achievements.map(
+            achievementEntityToAchievementComponentMapper
+          )
+        } else {
+          workExperience.achievements = [createDefaultAchievement()]
+        }
+        return {
+          id: workExperience.id,
+          enterprise: workExperience.enterprise,
+          role: workExperience.role,
+          type: workExperience.type,
+          workModel: workExperience.workModel,
+          currentlyPosition: workExperience.currentlyPosition,
+          endDate: workExperience.endDate,
+          startDate: workExperience.startDate,
+          personId: workExperience.personId,
+          createdAt: workExperience.createdAt,
+          updatedAt: workExperience.updatedAt,
+          achievements
+        }
       }
-      return {
-        id: workExperience.id,
-        enterprise: workExperience.enterprise,
-        role: workExperience.role,
-        type: workExperience.type,
-        workModel: workExperience.workModel,
-        currentlyPosition: workExperience.currentlyPosition,
-        endDate: workExperience.endDate,
-        startDate: workExperience.startDate,
-        personId: workExperience.personId,
-        createdAt: workExperience.createdAt,
-        updatedAt: workExperience.updatedAt,
-        achievements
-      }
-    })
+    )
   } else {
     parsedPerson.workExperiences = []
   }

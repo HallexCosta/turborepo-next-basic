@@ -15,7 +15,7 @@ export function Down({ messages }: TitleDownProps) {
   return (
     <>
       <TypeAnimation
-        className={`text-white text-5xl lg:text-7xl font-semibold`}
+        className={'text-white text-5xl lg:text-7xl font-semibold'}
         sequence={messages}
       />
       {/* <h1 className={`${poppins.className} text-white text-5xl lg:text-7xl font-semibold`}>
