@@ -51,7 +51,7 @@ export default function Page() {
           <Container className="lg:flex lg:flex-row">
             <div className="w-full">
               <Title.Root>
-                <Title.Top messages={["I'm Hállex Costa"]} />
+                <Title.Top messages={['I\'m Hállex Costa']} />
                 <Title.Down
                   messages={[
                     1300,
