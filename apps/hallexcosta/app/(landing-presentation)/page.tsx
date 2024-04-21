@@ -11,13 +11,13 @@ import {
   Section,
   SocialLink,
   Technology,
-  Title,
-} from "ui";
-import AnimesUnitedThumbnail from "../../assets/images/animes-united-thumbnail.png";
-import { headers } from "next/headers";
+  Title
+} from 'ui'
+import AnimesUnitedThumbnail from '../../assets/images/animes-united-thumbnail.png'
+import { headers } from 'next/headers'
 const poppins = {
-  className: "",
-};
+  className: ''
+}
 
 export default function Page() {
   return (
@@ -55,9 +55,9 @@ export default function Page() {
                 <Title.Down
                   messages={[
                     1300,
-                    "Backend developer",
+                    'Backend developer',
                     1300,
-                    "Fullstack BE-heavy developer on focus backend",
+                    'Fullstack BE-heavy developer on focus backend'
                   ]}
                 />
               </Title.Root>
@@ -254,5 +254,5 @@ export default function Page() {
         </Section>
       </main>
     </>
-  );
+  )
 }

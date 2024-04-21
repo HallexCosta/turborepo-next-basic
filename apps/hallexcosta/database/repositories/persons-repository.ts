@@ -1,7 +1,7 @@
-import { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
-import * as schema from "../schema";
-import { PersonsRepositoryInterface } from "../../app/api/repositories/presons-repository-interface";
-import { eq } from "drizzle-orm";
+import { BetterSQLite3Database } from 'drizzle-orm/better-sqlite3'
+import * as schema from '../schema'
+import { PersonsRepositoryInterface } from '../../app/api/repositories/presons-repository-interface'
+import { eq } from 'drizzle-orm'
 
 export default class PersonsRepository implements PersonsRepositoryInterface {
   public constructor(private db: BetterSQLite3Database<typeof schema>) {}
@@ -11,14 +11,14 @@ export default class PersonsRepository implements PersonsRepositoryInterface {
       with: {
         workExperiences: {
           with: {
-            achievements: true,
+            achievements: true
           },
           orderBy: (workExperiences, { desc }) => [
-            desc(workExperiences.startDate),
-          ],
+            desc(workExperiences.startDate)
+          ]
         },
-        contact: true,
-      },
-    });
+        contact: true
+      }
+    })
   }
 }

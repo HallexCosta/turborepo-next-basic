@@ -1,1 +1,1 @@
-export const useUpdateAchievementData = (references) => {};
+export const useUpdateAchievementData = (references) => {}

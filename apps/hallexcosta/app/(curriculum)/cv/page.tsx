@@ -1,17 +1,17 @@
-import Experience from "./components/Experience";
-import { Contact } from "./components/Contact";
-import { Icons } from "ui";
-import dayjs from "dayjs";
-import Person from "../../../domains/Person";
-import _ from "lodash";
-import { twMerge } from "tailwind-merge";
+import Experience from './components/Experience'
+import { Contact } from './components/Contact'
+import { Icons } from 'ui'
+import dayjs from 'dayjs'
+import Person from '../../../domains/Person'
+import _ from 'lodash'
+import { twMerge } from 'tailwind-merge'
 
-const Dot = () => <>{"•"}</>;
-export function CVTemplatePageEditable({ person, className = "" }) {
+const Dot = () => <>{'•'}</>
+export function CVTemplatePageEditable({ person, className = '' }) {
   return (
     <section
       className={twMerge(
-        "p-4 lg:px-0 lg:mx-auto lg:max-w-3xl bg-white",
+        'p-4 lg:px-0 lg:mx-auto lg:max-w-3xl bg-white',
         className
       )}
     >
@@ -103,19 +103,19 @@ export function CVTemplatePageEditable({ person, className = "" }) {
 
         {person.workExperiences.map((workExperience) => {
           if (!_.isDate(workExperience.startDate))
-            workExperience.startDate = new Date(workExperience.startDate);
+            workExperience.startDate = new Date(workExperience.startDate)
           if (_.isString(workExperience.endDate))
-            workExperience.endDate = new Date(workExperience.endDate);
+            workExperience.endDate = new Date(workExperience.endDate)
 
           const startDate = dayjs(
             workExperience.startDate.toISOString()
-          ).format("MMM/YYYY");
-          let endDate: string | null = "";
+          ).format('MMM/YYYY')
+          let endDate: string | null = ''
           if (workExperience.endDate)
             endDate = dayjs(workExperience.endDate.toISOString()).format(
-              "MMM/YYYY"
-            );
-          else endDate = null;
+              'MMM/YYYY'
+            )
+          else endDate = null
 
           return (
             <Experience.Root key={workExperience.id}>
@@ -137,12 +137,12 @@ export function CVTemplatePageEditable({ person, className = "" }) {
                       <Experience.Line key={achievement.id} withDot={true}>
                         {achievement.content}
                       </Experience.Line>
-                    );
+                    )
                   })}
                 </Experience.Lines>
               </Experience.Container>
             </Experience.Root>
-          );
+          )
         })}
       </div>
 
@@ -155,11 +155,11 @@ export function CVTemplatePageEditable({ person, className = "" }) {
             workModel="in-office"
             role="Ánalise e Desenvolvimento de Sistemas"
             type="university"
-            startDate={dayjs(new Date("2020-02-02").toISOString()).format(
-              "MMM/YYYY"
+            startDate={dayjs(new Date('2020-02-02').toISOString()).format(
+              'MMM/YYYY'
             )}
-            endDate={dayjs(new Date("2022-12-10").toISOString()).format(
-              "MMM/YYYY"
+            endDate={dayjs(new Date('2022-12-10').toISOString()).format(
+              'MMM/YYYY'
             )}
             currentActivity={false}
           />
@@ -169,11 +169,11 @@ export function CVTemplatePageEditable({ person, className = "" }) {
             workModel="in-office"
             role="Desenvolvimento de Sistemas"
             type="course"
-            startDate={dayjs(new Date("2018-07-20").toISOString()).format(
-              "MMM/YYYY"
+            startDate={dayjs(new Date('2018-07-20').toISOString()).format(
+              'MMM/YYYY'
             )}
-            endDate={dayjs(new Date("2019-12-10").toISOString()).format(
-              "MMM/YYYY"
+            endDate={dayjs(new Date('2019-12-10').toISOString()).format(
+              'MMM/YYYY'
             )}
             currentActivity={false}
           />
@@ -183,11 +183,11 @@ export function CVTemplatePageEditable({ person, className = "" }) {
             workModel="in-office"
             role="Espanhol"
             type="course"
-            startDate={dayjs(new Date("2017-02-02").toISOString()).format(
-              "MMM/YYYY"
+            startDate={dayjs(new Date('2017-02-02').toISOString()).format(
+              'MMM/YYYY'
             )}
-            endDate={dayjs(new Date("2019-06-10").toISOString()).format(
-              "MMM/YYYY"
+            endDate={dayjs(new Date('2019-06-10').toISOString()).format(
+              'MMM/YYYY'
             )}
             currentActivity={false}
           />
@@ -197,11 +197,11 @@ export function CVTemplatePageEditable({ person, className = "" }) {
             workModel="in-office"
             role="Inglês"
             type="course"
-            startDate={dayjs(new Date("2018-02-02").toISOString()).format(
-              "MMM/YYYY"
+            startDate={dayjs(new Date('2018-02-02').toISOString()).format(
+              'MMM/YYYY'
             )}
-            endDate={dayjs(new Date("2018-12-10").toISOString()).format(
-              "MMM/YYYY"
+            endDate={dayjs(new Date('2018-12-10').toISOString()).format(
+              'MMM/YYYY'
             )}
             currentActivity={false}
           />
@@ -234,7 +234,7 @@ export function CVTemplatePageEditable({ person, className = "" }) {
         {/*</Experience.Root>*/}
       </div>
     </section>
-  );
+  )
 }
 
 export function CVTemplatePage() {
@@ -434,7 +434,7 @@ export function CVTemplatePage() {
 
             <br />
             <Experience.Line>
-              Principais responsabilidades desempenhadas:{" "}
+              Principais responsabilidades desempenhadas:{' '}
             </Experience.Line>
             <br />
 
@@ -583,9 +583,9 @@ export function CVTemplatePage() {
         </Experience.Container>
       </Experience.Root>
     </section>
-  );
+  )
 }
 
 export default async function Page() {
-  return <CVTemplatePage />;
+  return <CVTemplatePage />
 }

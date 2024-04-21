@@ -1,6 +1,6 @@
-"use client";
+'use client'
 // import { Poppins } from "next/font/google";
-import { TypeAnimation } from "react-type-animation";
+import { TypeAnimation } from 'react-type-animation'
 
 // const poppins = Poppins({
 //   weight: "600",
@@ -8,7 +8,7 @@ import { TypeAnimation } from "react-type-animation";
 // });
 
 interface TitleDownProps {
-  messages: any;
+  messages: any
 }
 
 export function Down({ messages }: TitleDownProps) {
@@ -22,5 +22,5 @@ export function Down({ messages }: TitleDownProps) {
       {content}
     </h1> */}
     </>
-  );
+  )
 }

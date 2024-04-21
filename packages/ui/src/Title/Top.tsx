@@ -1,32 +1,32 @@
-"use client";
+'use client'
 // import { Poppins } from "next/font/google";
-import { TypeAnimation } from "react-type-animation";
+import { TypeAnimation } from 'react-type-animation'
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
 // const poppins = Poppins({
 //   weight: "600",
 //   subsets: ["latin"],
 // });
 interface Props {
-  messages: any;
+  messages: any
 }
 
 export function Top({ messages }: Props) {
-  const [initAnimation, setInitAnimation] = useState(false);
-  const [animationComplete, setAnimationComplete] = useState(false);
+  const [initAnimation, setInitAnimation] = useState(false)
+  const [animationComplete, setAnimationComplete] = useState(false)
 
   useEffect(() => {
-    setTimeout(() => setAnimationComplete(true), 2000);
-  }, []);
+    setTimeout(() => setAnimationComplete(true), 2000)
+  }, [])
 
   useEffect(() => {
-    console.log("fui chamado 2");
+    console.log('fui chamado 2')
     setTimeout(() => {
-      setAnimationComplete(!animationComplete);
-      setInitAnimation(!animationComplete);
-    }, 2000);
-  }, [animationComplete]);
+      setAnimationComplete(!animationComplete)
+      setInitAnimation(!animationComplete)
+    }, 2000)
+  }, [animationComplete])
 
   return (
     <>
@@ -46,5 +46,5 @@ export function Top({ messages }: Props) {
       Hello, I{"'"}m {name},
     </h1> */}
     </>
-  );
+  )
 }

@@ -1,16 +1,16 @@
-import { memo } from "react";
-import { TextInput, Textarea } from "flowbite-react";
-import { useResume } from "../stores/resume-store";
+import { memo } from 'react'
+import { TextInput, Textarea } from 'flowbite-react'
+import { useResume } from '../stores/resume-store'
 
 type TextInputAchievementProps = {
-  id?: string;
-  workExperienceId?: string;
-  onChangeText?: (e: any, inputIndex: number) => void;
-  key?: string | number;
-  content?: string;
-  index?: number;
-  workExperienceIndex?: number;
-};
+  id?: string
+  workExperienceId?: string
+  onChangeText?: (e: any, inputIndex: number) => void
+  key?: string | number
+  content?: string
+  index?: number
+  workExperienceIndex?: number
+}
 
 export const TextInputAchievement = memo(
   ({
@@ -18,19 +18,19 @@ export const TextInputAchievement = memo(
     content,
     workExperienceId,
     workExperienceIndex,
-    index,
+    index
   }: TextInputAchievementProps) => {
-    const { updateAchievement, removeAchievementByIndexes } = useResume();
+    const { updateAchievement, removeAchievementByIndexes } = useResume()
 
     const handleRemoveInput = () => {
       const options = {
-        method: "DELETE",
+        method: 'DELETE',
         headers: {
-          "Content-Type": "application/json",
-        },
-      };
+          'Content-Type': 'application/json'
+        }
+      }
 
-      alert("isNaN? " + Number.isNaN(Number(id)));
+      alert('isNaN? ' + Number.isNaN(Number(id)))
 
       // all ids from memory app is a number integer, them to send request the id should be a "Nothing a Number"
       // because the id from database is alpha-numeric.
@@ -38,10 +38,10 @@ export const TextInputAchievement = memo(
         fetch(
           `http://localhost:3001/api/achievements/${workExperienceId}/${id}`,
           options
-        );
+        )
 
-      removeAchievementByIndexes(workExperienceIndex, index);
-    };
+      removeAchievementByIndexes(workExperienceIndex, index)
+    }
 
     return (
       <div className="flex gap-1 items-center">
@@ -49,7 +49,7 @@ export const TextInputAchievement = memo(
           className="w-full"
           onChange={(e) =>
             updateAchievement(workExperienceIndex, index, {
-              content: e.target.value,
+              content: e.target.value
             })
           }
           // className="p-2.5"
@@ -64,10 +64,10 @@ export const TextInputAchievement = memo(
           <MinusIcon />
         </button>
       </div>
-    );
+    )
   }
-);
-TextInputAchievement.displayName = "TextInputAchievement";
+)
+TextInputAchievement.displayName = 'TextInputAchievement'
 
 const MinusIcon = () => (
   <svg
@@ -80,4 +80,4 @@ const MinusIcon = () => (
   >
     <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"></path>
   </svg>
-);
+)

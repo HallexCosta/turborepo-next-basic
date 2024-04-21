@@ -1,10 +1,10 @@
-import { Title } from "./Title";
-import { Container } from "./Container";
-import { Content } from "./Content";
-import { Header } from "./Header";
-import { Root } from "./Root";
-import { Lines } from "./Lines";
-import { Line } from "./Line";
+import { Title } from './Title'
+import { Container } from './Container'
+import { Content } from './Content'
+import { Header } from './Header'
+import { Root } from './Root'
+import { Lines } from './Lines'
+import { Line } from './Line'
 
 const Experience = {
   Root,
@@ -13,7 +13,7 @@ const Experience = {
   Header,
   Title,
   Lines,
-  Line,
-};
+  Line
+}
 
-export default Experience;
+export default Experience

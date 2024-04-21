@@ -1,7 +1,7 @@
-import "../../styles.css";
-import("dayjs/locale/pt-br");
-import dayjs from "dayjs";
-dayjs.locale("pt-br");
+import '../../styles.css'
+import('dayjs/locale/pt-br')
+import dayjs from 'dayjs'
+dayjs.locale('pt-br')
 // import {Poppins, Open_Sans} from 'next/font/google'
 // export const runtime = 'edge'
 //
@@ -12,14 +12,14 @@ dayjs.locale("pt-br");
 // })
 
 export default function RootLayout({
-  children,
+  children
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     // <html  lang="en" className={`${poppins.className}`}>
     <html lang="en">
       <body className="bg-white">{children}</body>
     </html>
-  );
+  )
 }

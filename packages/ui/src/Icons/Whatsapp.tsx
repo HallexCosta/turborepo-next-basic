@@ -13,4 +13,4 @@ export const Whatsapp = () => (
       />
     </g>
   </svg>
-);
+)

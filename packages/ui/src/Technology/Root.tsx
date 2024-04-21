@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 // import { Poppins } from "next/font/google";
 
 // const poppins = Poppins({
@@ -8,9 +8,9 @@ import { ReactNode } from "react";
 // });
 
 interface Props {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export function Root({ children }: Props) {
-  return <div className="flex w-full gap-4 items-center">{children}</div>;
+  return <div className="flex w-full gap-4 items-center">{children}</div>
 }

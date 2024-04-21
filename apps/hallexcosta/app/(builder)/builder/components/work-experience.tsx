@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
-import { TextInputAchievement } from "./text-input-achievement";
-import { TextInput, Label, Select, Datepicker, Checkbox } from "flowbite-react";
-import { FC, memo, useEffect, useState } from "react";
-import { Icons, Separator } from "ui";
-import { ResumeInput } from "./resume-input";
-import { ResumeSelect } from "./resume-select";
-import { ResumeDatePicker } from "./resume-date-picker";
-import { ResumeCheckbox } from "./resume-checkbox";
-import { useResume } from "../stores/resume-store";
-import { WorkExperience as WorkExperienceStore } from "../stores/work-experiences-store";
+import { TextInputAchievement } from './text-input-achievement'
+import { TextInput, Label, Select, Datepicker, Checkbox } from 'flowbite-react'
+import { FC, memo, useEffect, useState } from 'react'
+import { Icons, Separator } from 'ui'
+import { ResumeInput } from './resume-input'
+import { ResumeSelect } from './resume-select'
+import { ResumeDatePicker } from './resume-date-picker'
+import { ResumeCheckbox } from './resume-checkbox'
+import { useResume } from '../stores/resume-store'
+import { WorkExperience as WorkExperienceStore } from '../stores/work-experiences-store'
 
-type WorkExperienceProps = WorkExperienceStore & { index?: number };
+type WorkExperienceProps = WorkExperienceStore & { index?: number }
 const WorkExperience = ({
   index,
   id,
@@ -22,20 +22,20 @@ const WorkExperience = ({
   type,
   workModel,
   currentlyPosition,
-  achievements,
+  achievements
 }: WorkExperienceProps) => {
-  const limitDate = new Date();
+  const limitDate = new Date()
   const lastDayFromMonth = new Date(
     limitDate.getFullYear(),
     limitDate.getMonth() + 1,
     0
-  ).getDate();
+  ).getDate()
 
-  const { resume, addNewAchievement } = useResume();
+  const { resume, addNewAchievement } = useResume()
 
   useEffect(() => {
-    console.log({ weUseEffect: currentlyPosition, achievements });
-  }, []);
+    console.log({ weUseEffect: currentlyPosition, achievements })
+  }, [])
 
   return (
     <div className="grid grid-cols-1 bg-gray-600 p-4 mb-4 rounded-lg">
@@ -64,21 +64,21 @@ const WorkExperience = ({
             value={type}
             options={[
               {
-                label: "Tempo integral",
-                value: "full-time",
+                label: 'Tempo integral',
+                value: 'full-time'
               },
               {
-                label: "Meio periodo",
-                value: "part-time",
+                label: 'Meio periodo',
+                value: 'part-time'
               },
               {
-                label: "Estagio",
-                value: "intership",
+                label: 'Estagio',
+                value: 'intership'
               },
               {
-                label: "Terceirizado",
-                value: "outsourcing",
-              },
+                label: 'Terceirizado',
+                value: 'outsourcing'
+              }
             ]}
           />
         </div>
@@ -90,13 +90,13 @@ const WorkExperience = ({
             value={workModel}
             options={[
               {
-                label: "Presencial",
-                value: "in-office",
+                label: 'Presencial',
+                value: 'in-office'
               },
               {
-                label: "Remoto",
-                value: "home-office",
-              },
+                label: 'Remoto',
+                value: 'home-office'
+              }
             ]}
           />
         </div>
@@ -144,7 +144,7 @@ const WorkExperience = ({
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export { WorkExperience };
+export { WorkExperience }

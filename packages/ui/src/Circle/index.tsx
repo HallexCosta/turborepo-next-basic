@@ -1,7 +1,7 @@
-import { BackgroundImage } from "./BackgroundImage";
-import { Root } from "./Root";
+import { BackgroundImage } from './BackgroundImage'
+import { Root } from './Root'
 
 export const Circle = {
   Root,
-  BackgroundImage,
-};
+  BackgroundImage
+}

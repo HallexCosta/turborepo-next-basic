@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 
 interface DotProps {
-  children?: ReactNode;
+  children?: ReactNode
 }
 
 export function Dot({ children }: DotProps) {
@@ -12,5 +12,5 @@ export function Dot({ children }: DotProps) {
         {children}
       </p>
     </div>
-  );
+  )
 }

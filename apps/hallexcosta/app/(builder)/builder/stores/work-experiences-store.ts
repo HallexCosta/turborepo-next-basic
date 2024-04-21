@@ -1,44 +1,44 @@
-import { create, useStore } from "zustand";
-import _ from "lodash";
+import { create, useStore } from 'zustand'
+import _ from 'lodash'
 
 export type Achievement = {
-  id?: string;
-  content: string;
-};
+  id?: string
+  content: string
+}
 
-export type WorkExperienceType = "full-time" | "part-time" | "internship" | "";
-export type WorkExperienceModel = "in-office" | "home-office" | "";
+export type WorkExperienceType = 'full-time' | 'part-time' | 'internship' | ''
+export type WorkExperienceModel = 'in-office' | 'home-office' | ''
 
 export type WorkExperience = {
-  id?: string;
-  enterprise: string;
-  role: string;
-  type: WorkExperienceType;
-  workModel: WorkExperienceModel;
-  startDate?: Date;
-  endDate?: Date;
-  currentlyPosition: boolean;
-  achievements: Achievement[];
-};
+  id?: string
+  enterprise: string
+  role: string
+  type: WorkExperienceType
+  workModel: WorkExperienceModel
+  startDate?: Date
+  endDate?: Date
+  currentlyPosition: boolean
+  achievements: Achievement[]
+}
 
 type Action = {
-  addWorkExperience: () => void;
+  addWorkExperience: () => void
   updateWorkExperience: (
     workExperienceIndex: number,
     updatedWorkExperience: Partial<WorkExperience>
-  ) => void;
-  addAchievement: (workExperienceIndex: number) => void;
+  ) => void
+  addAchievement: (workExperienceIndex: number) => void
   updateAchievement: (
     workExperienceIndex: number,
     inputIndex: number,
     updatedAchievement: Achievement
-  ) => void;
-};
+  ) => void
+}
 
 type State = {
-  workExperiences: WorkExperience[];
-};
-type WorkExperiencesStore = Action & State;
+  workExperiences: WorkExperience[]
+}
+type WorkExperiencesStore = Action & State
 
 // export const useWorkExperiences = create<WorkExperiencesStore>(set => {
 //     const isValidAchievementsRules = (achievements: Achievement[]) => {

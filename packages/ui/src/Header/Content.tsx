@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 // import { Poppins } from "next/font/google";
 
 // const poppins = Poppins({
@@ -7,9 +7,9 @@ import { ReactNode } from "react";
 //   display: "swap",
 // });
 interface HeaderContentProps {
-  children?: ReactNode;
-  className?: string;
+  children?: ReactNode
+  className?: string
 }
 export function Content({ children, className }: HeaderContentProps) {
-  return <div className={`${className} font-medium text-lg`}>{children}</div>;
+  return <div className={`${className} font-medium text-lg`}>{children}</div>
 }

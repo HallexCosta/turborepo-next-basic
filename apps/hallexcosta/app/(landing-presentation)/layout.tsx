@@ -1,12 +1,12 @@
-import "../../node_modules/normalize.css";
-import "../../styles.css";
-import "../../styles/fonts.css";
-import("dayjs/locale/pt-br");
-import dayjs from "dayjs";
-dayjs.locale("pt-br");
+import '../../node_modules/normalize.css'
+import '../../styles.css'
+import '../../styles/fonts.css'
+import('dayjs/locale/pt-br')
+import dayjs from 'dayjs'
+dayjs.locale('pt-br')
 // import {Poppins, Open_Sans} from 'next/font/google'
 
-export const runtime = "edge";
+export const runtime = 'edge'
 
 // const poppins =  Poppins({
 //   subsets: ['latin'],
@@ -14,13 +14,13 @@ export const runtime = "edge";
 //   weight: '600'
 // })
 export default function RootLayout({
-  children,
+  children
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
       <body className="bg-back-default poppins-semibold">{children}</body>
     </html>
-  );
+  )
 }

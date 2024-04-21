@@ -1,40 +1,40 @@
-"use client";
-import { Label, Select, TextInput } from "flowbite-react";
-import { memo, useEffect } from "react";
-import { Resume, useResume } from "../stores/resume-store";
-import { DeepPartial } from "flowbite-react/lib/esm/types";
-import _ from "lodash";
+'use client'
+import { Label, Select, TextInput } from 'flowbite-react'
+import { memo, useEffect } from 'react'
+import { Resume, useResume } from '../stores/resume-store'
+import { DeepPartial } from 'flowbite-react/lib/esm/types'
+import _ from 'lodash'
 
 type ResumeInputProps = {
-  label: string;
-  tag: string;
-  data?: DeepPartial<Resume>;
-  value: string;
-  placeholder: string;
-  onChange?: void;
-  updateState?: void;
-  selectOptions?: string[];
-};
+  label: string
+  tag: string
+  data?: DeepPartial<Resume>
+  value: string
+  placeholder: string
+  onChange?: void
+  updateState?: void
+  selectOptions?: string[]
+}
 
 const ResumeInput = memo((props: ResumeInputProps) => {
-  const { resume, updateResume } = useResume();
+  const { resume, updateResume } = useResume()
 
   const handleUpdateResume = (value: string) => {
-    updateResume(createUpdateResumeData(props.tag, value));
-  };
+    updateResume(createUpdateResumeData(props.tag, value))
+  }
   const createUpdateResumeData = (tag: string, value: string) => {
-    const updatedResume: DeepPartial<Resume> = {};
-    _.set(updatedResume, tag, value);
+    const updatedResume: DeepPartial<Resume> = {}
+    _.set(updatedResume, tag, value)
 
-    console.log({ updatedResume });
-    return updatedResume;
-  };
-  const handleWorkExperiences = () => {};
+    console.log({ updatedResume })
+    return updatedResume
+  }
+  const handleWorkExperiences = () => {}
 
   useEffect(() => {
-    console.log({ loadash: _.get(resume, props.tag) });
-    updateResume(createUpdateResumeData(props.tag, props.value));
-  }, []);
+    console.log({ loadash: _.get(resume, props.tag) })
+    updateResume(createUpdateResumeData(props.tag, props.value))
+  }, [])
 
   return (
     <div>
@@ -56,12 +56,12 @@ const ResumeInput = memo((props: ResumeInputProps) => {
         <TextInput
           onChange={(e) => handleUpdateResume(e.target.value)}
           placeholder={props.placeholder}
-          value={_.get(resume, props.tag) ?? ""}
+          value={_.get(resume, props.tag) ?? ''}
         />
       )}
     </div>
-  );
-});
-ResumeInput.displayName = "ResumeInput";
+  )
+})
+ResumeInput.displayName = 'ResumeInput'
 
-export { ResumeInput };
+export { ResumeInput }

@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 
 interface RootProps {
-  children: ReactNode;
+  children: ReactNode
 }
 export function Root({ children }: RootProps) {
-  return <li>{children}</li>;
+  return <li>{children}</li>
 }

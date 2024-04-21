@@ -1,7 +1,7 @@
-import "../../styles.css";
-import("dayjs/locale/pt-br");
-import dayjs from "dayjs";
-dayjs.locale("pt-br");
+import '../../styles.css'
+import('dayjs/locale/pt-br')
+import dayjs from 'dayjs'
+dayjs.locale('pt-br')
 // import {Poppins, Open_Sans} from 'next/font/google'
 // import {useResumePreviewMode} from "../../hooks/use-resume-preview-mode";
 
@@ -19,15 +19,15 @@ dayjs.locale("pt-br");
 // })
 
 export default function RootLayout({
-  children,
+  children
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   // const {theme, showPreviewMode, disablePreviewMode} = useResumePreviewMode()
 
   return (
-    <html lang="en" className={"bg-gray-800"}>
+    <html lang="en" className={'bg-gray-800'}>
       <body>{children}</body>
     </html>
-  );
+  )
 }

@@ -1,10 +1,10 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 
 interface ButtonProps {
-  children?: ReactNode;
-  className?: string;
+  children?: ReactNode
+  className?: string
 }
 
 export function Button({ children, className }: ButtonProps) {
-  return <button>Testing</button>;
+  return <button>Testing</button>
 }

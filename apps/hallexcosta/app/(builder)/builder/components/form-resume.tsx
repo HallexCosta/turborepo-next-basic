@@ -1,35 +1,35 @@
-"use client";
-import _ from "lodash";
-import router from "next/navigation";
-import { useState } from "react";
-import { Button, Modal } from "flowbite-react";
-import { Icons } from "ui";
-import { WorkExperience as WorkExperienceStore } from "../stores/work-experiences-store";
-import { WorkExperience } from "./work-experience";
-import { Resume, useResume } from "../stores/resume-store";
-import { useEffect } from "react";
-import { DeepPartial } from "utility-types";
-import { ResumeInput } from "./resume-input";
-import { ResumeTextarea } from "./resume-textarea";
-import { db } from "../../../../database";
-import { contacts } from "../../../../database/schema";
+'use client'
+import _ from 'lodash'
+import router from 'next/navigation'
+import { useState } from 'react'
+import { Button, Modal } from 'flowbite-react'
+import { Icons } from 'ui'
+import { WorkExperience as WorkExperienceStore } from '../stores/work-experiences-store'
+import { WorkExperience } from './work-experience'
+import { Resume, useResume } from '../stores/resume-store'
+import { useEffect } from 'react'
+import { DeepPartial } from 'utility-types'
+import { ResumeInput } from './resume-input'
+import { ResumeTextarea } from './resume-textarea'
+import { db } from '../../../../database'
+import { contacts } from '../../../../database/schema'
 import {
   CVTemplatePage,
-  CVTemplatePageEditable,
-} from "../../../(curriculum)/cv/page";
-import { useResumePreviewMode } from "../../../../hooks/use-resume-preview-mode";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+  CVTemplatePageEditable
+} from '../../../(curriculum)/cv/page'
+import { useResumePreviewMode } from '../../../../hooks/use-resume-preview-mode'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
-type FormResumeProps = Resume & { workExperiences: WorkExperienceStore[] };
+type FormResumeProps = Resume & { workExperiences: WorkExperienceStore[] }
 
 const FormResume = (props: FormResumeProps) => {
-  const { showPreviewMode, enablePreviewMode } = useResumePreviewMode();
+  const { showPreviewMode, enablePreviewMode } = useResumePreviewMode()
 
   // const router = useRouter()
 
-  const limitWorkExperience = 4;
-  const limitWorkExperienceAchievements = 20;
+  const limitWorkExperience = 4
+  const limitWorkExperienceAchievements = 20
 
   const {
     resume,
@@ -37,42 +37,42 @@ const FormResume = (props: FormResumeProps) => {
     addWorkExperience,
     updateWorkExperienceById,
     removeAchievement,
-    updateAchievementByIds,
-  } = useResume();
+    updateAchievementByIds
+  } = useResume()
   // const {workExperiences, addWorkExperience} = useWorkExperiences(state=> ({ ...state }))
 
   useEffect(() => {
-    updateResume(props);
-  }, [props, updateResume]);
+    updateResume(props)
+  }, [props, updateResume])
 
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState(false)
   const onSaveResume = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const clonedWorkExperiences = _.clone(resume.workExperiences);
+    const clonedWorkExperiences = _.clone(resume.workExperiences)
 
     const fullResume: Resume & { workExperiences: WorkExperienceStore[] } = {
       ...resume,
-      workExperiences: clonedWorkExperiences,
-    };
+      workExperiences: clonedWorkExperiences
+    }
     console.log({
-      fullResume,
-    });
+      fullResume
+    })
 
     const handleCreateWorkExperiences = (workExperiences) => {
-      console.log({ workExperiences });
+      console.log({ workExperiences })
       return workExperiences.map(({ achievements, ...workExperience }) => {
         return {
           ...workExperience,
-          currentlyPosition: workExperience.currentlyPosition ? 1 : 0,
-        };
-      });
-    };
+          currentlyPosition: workExperience.currentlyPosition ? 1 : 0
+        }
+      })
+    }
     const handleCreateAchievements = (workExperiences) => {
-      console.log("handleCreateAchievements");
-      console.log(workExperiences);
+      console.log('handleCreateAchievements')
+      console.log(workExperiences)
 
-      const data: any[] = [];
+      const data: any[] = []
       for (const { achievements, ...workExperience } of workExperiences) {
         data.push({
           workExperienceId: workExperience.id,
@@ -83,23 +83,23 @@ const FormResume = (props: FormResumeProps) => {
             (achievement) =>
               !achievement.content.length &&
               Number.isNaN(Number(achievement.id))
-          ),
-        });
+          )
+        })
       }
 
-      console.log({ data });
-      return data;
-    };
+      console.log({ data })
+      return data
+    }
 
     const {
       workExperiences,
-      person: { username, ...person },
-    } = fullResume;
+      person: { username, ...person }
+    } = fullResume
 
-    const method = "POST";
+    const method = 'POST'
     const headers = {
-      "Content-Type": "application/json",
-    };
+      'Content-Type': 'application/json'
+    }
     const requestContactsUpdate = fetch(
       `http://localhost:3001/api/contacts/update/${props.person.id}`,
       {
@@ -111,11 +111,11 @@ const FormResume = (props: FormResumeProps) => {
           city: fullResume.contact.city,
           state: fullResume.contact.state,
           email: fullResume.contact.email,
-          phone: fullResume.contact.phone,
+          phone: fullResume.contact.phone
         }),
-        headers,
+        headers
       }
-    );
+    )
     // const { username, ...person} = fullResume.person
     const requestPersonUpdate = fetch(
       `http://localhost:3001/api/person/${username}`,
@@ -124,26 +124,26 @@ const FormResume = (props: FormResumeProps) => {
         body: JSON.stringify({
           ...person,
           summary: fullResume.summary,
-          skills: fullResume.skills,
+          skills: fullResume.skills
         }),
-        headers,
+        headers
       }
-    );
+    )
 
     const requestWorkExperiences = fetch(
       `http://localhost:3001/api/work-experiences/${person.id}`,
       {
         method,
         body: JSON.stringify(handleCreateWorkExperiences(workExperiences)),
-        headers,
+        headers
       }
-    );
+    )
 
     const requests = [
       requestContactsUpdate,
       requestPersonUpdate,
-      requestWorkExperiences,
-    ];
+      requestWorkExperiences
+    ]
 
     const createFetchAchievementsRequest = (
       workExperienceId: number,
@@ -152,8 +152,8 @@ const FormResume = (props: FormResumeProps) => {
       fetch(`http://localhost:3001/api/achievements/${workExperienceId}`, {
         method,
         body: JSON.stringify(achievements),
-        headers,
-      });
+        headers
+      })
 
     // const deleteFetchAchievementsRequest = (workExperienceId: number, achievements) => fetch(`http://localhost:3001/api/achievements/${workExperienceId}`, {
     //     method: 'POST',
@@ -164,85 +164,85 @@ const FormResume = (props: FormResumeProps) => {
       fetch(
         `http://localhost:3001/api/achievements/${workExperienceId}/${achievementId}`,
         {
-          method: "DELETE",
-          headers,
+          method: 'DELETE',
+          headers
         }
-      );
+      )
 
     for (const {
       workExperienceId,
       achievementsWithContent,
-      achievementsWithoutContent,
+      achievementsWithoutContent
     } of handleCreateAchievements(workExperiences)) {
       console.log({
         workExperienceId,
         achievementsWithContent,
-        achievementsWithoutContent,
-      });
+        achievementsWithoutContent
+      })
       requests.push(
         createFetchAchievementsRequest(
           workExperienceId,
           achievementsWithContent
         )
-      );
+      )
       for (const achievement of achievementsWithoutContent) {
         requests.push(
           deleteFetchAchievementsRequest(workExperienceId, achievement.id)
-        );
+        )
       }
     }
 
     const [, , workExperiencesResponse, ...achievementsResponses] =
-      await Promise.all(requests);
+      await Promise.all(requests)
 
-    const { references } = await workExperiencesResponse.json();
+    const { references } = await workExperiencesResponse.json()
 
     for (const reference of references) {
       updateWorkExperienceById(reference.workExperienceReferenceId, {
-        id: reference.workExperienceInsertedId,
-      });
+        id: reference.workExperienceInsertedId
+      })
     }
 
     // run for...of in achievementsResponses and update achievement id
-    console.log("handle achievements responses");
+    console.log('handle achievements responses')
     const handlers = {
       delete: () => {},
-      create: () => {},
-    };
+      create: () => {}
+    }
     for (const achievementResponse of achievementsResponses) {
-      const { reference, references, type } = await achievementResponse.json();
+      const { reference, references, type } = await achievementResponse.json()
 
       console.log({
         references,
-        type,
-      });
+        type
+      })
 
-      if (!reference && !references?.length) continue;
+      if (!reference && !references?.length) continue
 
-      if (type === "delete") {
-        console.log("delete reference achievement");
+      if (type === 'delete') {
+        console.log('delete reference achievement')
         removeAchievement(
           reference.workExperienceId,
           reference.achievementReferenceId
-        );
-        continue;
+        )
+        continue
       }
 
-      if (type === "create") {
+      if (type === 'create') {
         for (const reference of references) {
           const updatedAchievementData = {
-            id: reference.achievementInsertedId,
-          };
+            id: reference.achievementInsertedId
+          }
           updateAchievementByIds(
             reference.workExperienceId,
             reference.achievementReferenceId,
             updatedAchievementData
-          );
+          )
         }
       }
-      console.log(references);
+      console.log(references)
     }
-  };
+  }
 
   return showPreviewMode ? (
     <CVTemplatePageEditable person={props} />
@@ -364,12 +364,12 @@ const FormResume = (props: FormResumeProps) => {
           color="light"
           onClick={() => {
             // enablePreviewMode()
-            setOpenModal(true);
+            setOpenModal(true)
           }}
         >
           Pré-visualizar
         </Button>
-        <Link href={"/cv/hallexcosta"} target="_blank" className="w-full">
+        <Link href={'/cv/hallexcosta'} target="_blank" className="w-full">
           <Button color="green" className="w-full">
             Visualizar
           </Button>
@@ -384,7 +384,7 @@ const FormResume = (props: FormResumeProps) => {
         {/*<Modal.Footer />*/}
       </Modal>
     </form>
-  );
-};
+  )
+}
 
-export { FormResume };
+export { FormResume }

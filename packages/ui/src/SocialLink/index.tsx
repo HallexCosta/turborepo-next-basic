@@ -1,24 +1,24 @@
-"use client";
-import Link from "next/link";
+'use client'
+import Link from 'next/link'
 import {
   FacebookLogo,
   GithubLogo,
   InstagramLogo,
-  LinkedinLogo,
-} from "phosphor-react";
+  LinkedinLogo
+} from 'phosphor-react'
 
 interface SocialLinkProps {
-  name: "linkedin" | "instagram" | "facebook" | "github";
-  className?: string;
-  url?: string;
+  name: 'linkedin' | 'instagram' | 'facebook' | 'github'
+  className?: string
+  url?: string
 }
 
 export function SocialLink({ name, url, className }: SocialLinkProps) {
-  className = className || "";
-  url = url || "https://google.com";
-  let icon = () => <></>;
+  className = className || ''
+  url = url || 'https://google.com'
+  let icon = () => <></>
   switch (name) {
-    case "linkedin":
+    case 'linkedin':
       const linkedinIcon = () => (
         <Link href={url as string} target="_blank">
           <LinkedinLogo
@@ -28,10 +28,10 @@ export function SocialLink({ name, url, className }: SocialLinkProps) {
             height={27}
           />
         </Link>
-      );
-      icon = linkedinIcon;
-      break;
-    case "instagram":
+      )
+      icon = linkedinIcon
+      break
+    case 'instagram':
       const instagramIcon = () => (
         <Link href={{ href: url }} target="_blank">
           <InstagramLogo
@@ -41,11 +41,11 @@ export function SocialLink({ name, url, className }: SocialLinkProps) {
             height={27}
           />
         </Link>
-      );
+      )
 
-      icon = instagramIcon;
-      break;
-    case "github":
+      icon = instagramIcon
+      break
+    case 'github':
       const githubIcon = () => (
         <Link href={url as string} target="_blank">
           <GithubLogo
@@ -55,10 +55,10 @@ export function SocialLink({ name, url, className }: SocialLinkProps) {
             height={27}
           />
         </Link>
-      );
-      icon = githubIcon;
-      break;
-    case "facebook":
+      )
+      icon = githubIcon
+      break
+    case 'facebook':
       const facebookIcon = () => (
         <Link href={{ href: url }} target="_blank">
           <FacebookLogo
@@ -68,11 +68,11 @@ export function SocialLink({ name, url, className }: SocialLinkProps) {
             height={27}
           />
         </Link>
-      );
-      icon = facebookIcon;
-      break;
+      )
+      icon = facebookIcon
+      break
     default:
-      break;
+      break
   }
-  return icon();
+  return icon()
 }
