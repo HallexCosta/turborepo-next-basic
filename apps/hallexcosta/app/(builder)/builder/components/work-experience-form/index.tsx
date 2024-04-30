@@ -10,10 +10,16 @@ import { ResumeDatePicker } from './resume-date-picker'
 import { ResumeCheckbox } from './resume-checkbox'
 import { useResume } from '../stores/resume-store'
 import { WorkExperience as WorkExperienceStore } from '../stores/work-experiences-store'
+import {twMerge} from 'tailwind-merge';
+import {classNames} from 'primereact/utils';
 
-type WorkExperienceProps = WorkExperienceStore & { index?: number }
+type WorkExperienceProps = WorkExperienceStore & {
+  index?: number 
+  className: string
+}
 const WorkExperience = ({
   index,
+  className,
   id,
   enterprise,
   startDate,
@@ -39,28 +45,36 @@ const WorkExperience = ({
 
   return (
     <div className="grid grid-cols-1 bg-gray-600 p-4 mb-4 rounded-lg">
-      <div className="grid gap-6 mb-6 grid-cols-1 md:grid-cols-4 items-center">
-        <div>
+      <div className={twMerge('grid gap-6 mb-6 grid-cols-1 md:grid-cols-4 items-center', className)}>
+        <input
+          hidden={true}
+          name={`workExperiences[${index}].id`}
+          value={id}
+        />
+        <div className="w-full">
           <ResumeInput
             label="Empresa"
             placeholder="Empresa/Compania"
             value={enterprise}
             tag={`workExperiences[${index}].enterprise`}
+            name={`workExperiences[${index}].enterprise`}
           />
         </div>
-        <div>
+        <div className="w-full">
           <ResumeInput
             label="Cargo"
             placeholder="Ex: Desenvolvedor Backend"
             value={role}
             tag={`workExperiences[${index}].role`}
+            name={`workExperiences[${index}].role`}
           />
         </div>
-        <div>
+        <div className="w-full">
           <ResumeSelect
             label="Tipo"
             placeholder="Escolha um tipo"
             tag={`workExperiences[${index}].type`}
+            name={`workExperiences[${index}].type`}
             value={type}
             options={[
               {
@@ -82,11 +96,12 @@ const WorkExperience = ({
             ]}
           />
         </div>
-        <div>
+        <div className="w-full">
           <ResumeSelect
             label="Modelo"
             placeholder="Escolha um modelo"
             tag={`workExperiences[${index}].workModel`}
+            name={`workExperiences[${index}].workModel`}
             value={workModel}
             options={[
               {
@@ -100,17 +115,19 @@ const WorkExperience = ({
             ]}
           />
         </div>
-        <div>
+        <div className="w-full">
           <ResumeDatePicker
             label="Inicio"
             tag={`workExperiences[${index}].startDate`}
+            name={`workExperiences[${index}].startDate`}
             value={startDate ? new Date(startDate) : new Date()}
           />
         </div>
-        <div>
+        <div className="w-full">
           <ResumeDatePicker
             label="Fim"
             tag={`workExperiences[${index}].endDate`}
+            name={`workExperiences[${index}].endDate`}
             value={endDate ? new Date(endDate) : new Date()}
             disabled={currentlyPosition}
           />
@@ -121,6 +138,7 @@ const WorkExperience = ({
             label="Atualmente estou nesta posição"
             tag={`workExperiences[${index}].currentlyPosition`}
             value={currentlyPosition}
+            name={`workExperiences[${index}].currentlyPosition`}
           />
         </div>
       </div>
@@ -132,12 +150,14 @@ const WorkExperience = ({
             <Icons.Plus size={18} />
           </div>
         </div>
+
         {achievements.map((achievement, achievementIndex) => (
           <TextInputAchievement
             key={achievementIndex}
             id={achievement.id}
             workExperienceId={id}
             content={achievement.content}
+            name={`workExperiences[${index}].achievements[${achievementIndex}].content`}
             workExperienceIndex={index}
             index={achievementIndex}
           />
