@@ -4,6 +4,7 @@ import { useResume } from '../stores/resume-store'
 
 type TextInputAchievementProps = {
   id?: string
+  name: string
   workExperienceId?: string
   onChangeText?: (e: any, inputIndex: number) => void
   key?: string | number
@@ -15,6 +16,7 @@ type TextInputAchievementProps = {
 export const TextInputAchievement = memo(
   ({
     id,
+    name,
     content,
     workExperienceId,
     workExperienceIndex,
@@ -45,21 +47,32 @@ export const TextInputAchievement = memo(
 
     return (
       <div className="flex gap-1 items-center">
+        <input
+          type="hidden"
+          name={`workExperience[${workExperienceIndex}].achievements[${index}].id`}
+          value={id}
+        />
+        <input
+          type="hidden"
+          name={`workExperience[${workExperienceIndex}].achievements[${index}].workExperienceId`}
+          value={workExperienceId}
+        />
         <TextInput
           className="w-full"
-          onChange={(e) =>
-            updateAchievement(workExperienceIndex, index, {
-              content: e.target.value
-            })
-          }
+          // onChange={(e) =>
+          //   updateAchievement(workExperienceIndex, index, {
+          //     content: e.target.value
+          //   })
+          // }
           // className="p-2.5"
+          name={name}
           placeholder="Digite sua conquista"
-          value={content}
+          defaultValue={content}
           // rows={10}
         />
         <button
           onClick={handleRemoveInput}
-          className="border rounded-md w-10 h-10 flex items-center justify-center"
+          className="border border-zinc-700 rounded-md w-10 h-10 flex items-center justify-center"
         >
           <MinusIcon />
         </button>
