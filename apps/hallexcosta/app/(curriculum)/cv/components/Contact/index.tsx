@@ -1,6 +1,5 @@
-'use client'
-
 import { twMerge } from 'tailwind-merge'
+import Link from 'next/link'
 
 type ContactProps = {
   name: string
@@ -23,14 +22,14 @@ export const Contact = ({ children, name, className }: ContactProps) => {
     if (match) window.open(match, '_blank')
   }
   return (
-    <div
-      onClick={() => redirectTo(name)}
+    <Link
+      href={'https://github.com/hallexcosta'}
       className={twMerge(
         'contact-item flex items-center gap-1 cursor-pointer',
         className
       )}
     >
       {children}
-    </div>
+    </Link>
   )
 }

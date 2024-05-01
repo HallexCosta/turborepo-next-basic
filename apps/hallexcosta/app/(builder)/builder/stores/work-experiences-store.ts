@@ -10,7 +10,7 @@ export type WorkExperienceType = 'full-time' | 'part-time' | 'internship' | ''
 export type WorkExperienceModel = 'in-office' | 'home-office' | ''
 
 export type WorkExperience = {
-  id?: string
+  id: string
   enterprise: string
   role: string
   type: WorkExperienceType

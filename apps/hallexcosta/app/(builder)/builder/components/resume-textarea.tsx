@@ -14,22 +14,22 @@ type ResumeTextareaProps = {
 }
 
 const ResumeTextarea = memo((props: ResumeTextareaProps) => {
-  const { resume, updateResume } = useResume()
-
-  const handleUpdateResume = (value: string) => {
-    updateResume(createUpdateResumeData(props.tag, value))
-  }
-  const createUpdateResumeData = (tag: string, value: string) => {
-    const updatedResume: DeepPartial<Resume> = {}
-    _.set(updatedResume, tag, value)
-
-    console.log({ updatedResume })
-    return updatedResume
-  }
-  useEffect(() => {
-    console.log({ loadash: _.get(resume, props.tag) })
-    updateResume(createUpdateResumeData(props.tag, props.value))
-  }, [])
+  // const { resume, updateResume } = useResume()
+  // //
+  // const handleUpdateResume = (value: string) => {
+  //   updateResume(createUpdateResumeData(props.tag, value))
+  // }
+  // const createUpdateResumeData = (tag: string, value: string) => {
+  //   const updatedResume: DeepPartial<Resume> = {}
+  //   _.set(updatedResume, tag, value)
+  //
+  //   console.log({ updatedResume })
+  //   return updatedResume
+  // }
+  // useEffect(() => {
+  //   console.log({ loadash: _.get(resume, props.tag) })
+  //   updateResume(createUpdateResumeData(props.tag, props.value))
+  // }, [])
 
   return (
     <div>
@@ -40,11 +40,13 @@ const ResumeTextarea = memo((props: ResumeTextareaProps) => {
       )}
       {props.label && <Label>{props.label}</Label>}
       <Textarea
-        onChange={(e) => handleUpdateResume(e.target.value)}
+        // onChange={(e) => handleUpdateResume(e.target.value)}
         placeholder={props.placeholder}
-        value={_.get(resume, props.tag) ?? ''}
+        defaultValue={props.value}
+        // value={_.get(resume, props.tag) ?? ''}
         className="p-2.5"
         rows={10}
+        name={props.tag}
       />
     </div>
   )

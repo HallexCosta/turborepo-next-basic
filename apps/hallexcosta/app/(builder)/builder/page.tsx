@@ -1,15 +1,14 @@
-import { FormResume } from './components/form-resume'
-import { db } from '../../../database'
-import { eq } from 'drizzle-orm'
+import { Index } from './components/form-resume'
 import _ from 'lodash'
-import { DeepNonNullable } from 'utility-types'
 import { Suspense } from 'react'
 import { createDefaultAchievement } from './common/create-default-achievement'
 import { achievementEntityToAchievementComponentMapper } from './mappers/achievement-entity-to-achievement-component-mapper'
-import { achievements } from '../../../database/schema'
-import { Achievement, WorkExperience } from './stores/work-experiences-store'
 
-type Person = {
+import { Achievement, WorkExperience } from './stores/work-experiences-store'
+import { getPersonByUsername } from '../../fetches/get-person-by-username'
+import { replaceNullWithEmptyString } from './common/replace-null-with-empty-string'
+
+export type Person = {
   id: string
   name: string
   username: string
@@ -32,44 +31,15 @@ type Person = {
 
 const page = async () => {
   const username = 'hallexcosta'
-  let person = await db.query.persons.findFirst({
-    where: (person) => eq(person.username, username),
-    with: {
-      contact: true,
-      workExperiences: {
-        orderBy: (workExperiences, { desc }) => [
-          desc(workExperiences.startDate)
-        ],
-        with: {
-          achievements: true
-        }
-      }
-    }
-  })
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const person = await getPersonByUsername()
+
+  // let person = await getPersonByUsername(username)
   if (!person) return <h1>Person not found {username}</h1>
 
-  // console.log(person.contact)
-  // console.log(person.workExperiences)
-  function replaceNullWithEmptyString(value) {
-    if (_.isArray(value)) {
-      return value.map(createObjectWithDefaults)
-    }
-
-    if (_.isDate(value)) {
-      return value
-    } else if (_.isObject(value)) {
-      return createObjectWithDefaults(value)
-    } else {
-      return value
-    }
-  }
-  function createObjectWithDefaults(obj) {
-    return _.mapValues(obj, replaceNullWithEmptyString)
-  }
   const parsedPerson = _.mapValues(person, replaceNullWithEmptyString) as Person
-  // console.log({parsedPerson})
 
-  console.log(parsedPerson.workExperiences)
   if (parsedPerson.workExperiences.length) {
     // @ts-ignore
     parsedPerson.workExperiences = parsedPerson.workExperiences.map(
@@ -79,7 +49,8 @@ const page = async () => {
             achievementEntityToAchievementComponentMapper
           )
         } else {
-          workExperience.achievements = [createDefaultAchievement()]
+          // workExperience.achievements = [createDefaultAchievement()]
+          workExperience.achievements = []
         }
         return {
           id: workExperience.id,
@@ -93,18 +64,21 @@ const page = async () => {
           personId: workExperience.personId,
           createdAt: workExperience.createdAt,
           updatedAt: workExperience.updatedAt,
-          achievements
+          achievements: workExperience.achievements
         }
       }
     )
   } else {
     parsedPerson.workExperiences = []
   }
+  //
+  // console.log('pessoa parseada')
+  // console.log(parsedPerson)
 
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       <section className="p-4">
-        <FormResume
+        <Index
           person={{
             id: parsedPerson.id,
             username: parsedPerson.username,

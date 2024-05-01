@@ -1,7 +1,7 @@
 import Experience from './components/Experience'
 import { Contact } from './components/Contact'
-import { Icons } from 'ui'
 import dayjs from 'dayjs'
+dayjs.locale('pt-br')
 import _ from 'lodash'
 import { twMerge } from 'tailwind-merge'
 

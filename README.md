@@ -1,81 +1,46 @@
-# Turborepo starter
+# Personal Website
 
-This is an official starter Turborepo.
+Welcome to the official repository for my personal website, a project that showcases my abilities and the technologies I love working with. This README provides insights into the structure of the project, the technologies used, and how you can explore the code yourself.
 
-## Using this example
+## Project Overview
 
-Run the following command:
+This project is set up as a monorepo using TurboRepo, which allows for seamless management of multiple packages that can be developed independently but work together.
 
-```sh
-npx create-turbo@latest
+### Technologies Used
+
+- [**TurboRepo**](https://turbo.build/repo/docs): A high-performance build system optimized for JavaScript and TypeScript monorepos. It helps in managing multiple related projects in a single repository.
+- [**Next.js**](https://nextjs.org/docs): A React framework that enables functionality such as server-side rendering and generating static websites for React based projects.
+- [**TailwindCSS**](https://tailwindcss.com/): A utility-first CSS framework packed with classes that can be composed to build any design, directly in your markup.
+- [**Vercel**](https://vercel.com): The hosting platform that seamlessly integrates with Next.js and TurboRepo, providing an optimal environment for deploying modern web applications.
+
+## Repository Structure
+
+The main parts of the website are contained within the `apps/hallexcosta/(landing-presentation)` directory. Here's what you'll find in the repository:
+
+- `apps/`: Contains the source code for the website and any future projects that will be integrated.
+- `packages/`: Reusable packages that can be shared across different parts of the website or in new projects.
+
+## Getting Started
+
+To get started with this project, clone the repository and install the dependencies:
+
+```bash
+git clone https://github.com/HallexCosta/turborepo-next-basic.git
+cd turborepo-next-basic
+npm install
 ```
 
-## What's inside?
+To run the website locally, use the following command:
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```bash
+npm run dev
 ```
 
-### Develop
+Navigate to http://localhost:3001 to view the project in your browser.
 
-To develop all apps and packages, run the following command:
+Design credits to **[Dina Iakovenko](https://www.linkedin.com/in/dina-iakovenko)** whose original design can be viewed on Behance.
 
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+**References**  
+Live Site: https://hallexcosta.com  
+Repository: https://github.com/HallexCosta/turborepo-next-basic  
+Behance Design: https://www.behance.net/gallery/162243505/Portfolio-website-forfront-end-developer
