@@ -40,7 +40,7 @@ export function Project({
             className="mb-8"
           />
         ) : (
-          <Image src={imageUrl} alt="" />
+          <Image src={imageUrl} alt="" width={480} height={255} />
         )}
 
         <h3 className={`${poppins.className} text-white text-2xl`}>{title}</h3>
