@@ -1,7 +1,5 @@
 import '../../styles.css'
-import('dayjs/locale/pt-br')
-import dayjs from 'dayjs'
-dayjs.locale('pt-br')
+import Providers from './providers'
 // import {Poppins, Open_Sans} from 'next/font/google'
 // import {useResumePreviewMode} from "../../hooks/use-resume-preview-mode";
 
@@ -27,7 +25,11 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={'bg-gray-800'}>
-      <body>{children}</body>
+      {/*<QueryClientProvider client={queryClient}>*/}
+      <body>
+        <Providers>{children}</Providers>
+      </body>
+      {/*</QueryClientProvider>*/}
     </html>
   )
 }
