@@ -1,7 +1,44 @@
 import { db } from '../../../../database'
-import { contacts, persons, workExperiences } from '../../../../database/schema'
-import { and, eq } from 'drizzle-orm'
+import { workExperiences } from '../../../../database/schema'
 
+export async function POST(request: Request, { params }) {
+  try {
+    console.log('Creating in back-end')
+    const { enterprise, role, workModel, currentlyPosition } =
+      await request.json()
+    const personId = params.personId
+    const createdAt = new Date()
+
+    await db.insert(workExperiences).values({
+      enterprise,
+      role,
+      workModel,
+      currentlyPosition,
+      // startDate: workExperience.startDate,
+      // endDate: workExperience.endDate,
+      personId,
+      createdAt
+    })
+
+    const output = JSON.stringify({
+      message: 'Work Experience created'
+    })
+    const responseInit: ResponseInit = {
+      status: 200
+    }
+    return new Response(output, responseInit)
+  } catch (e) {
+    const output = JSON.stringify({
+      message: e.message
+    })
+    const responseInit: ResponseInit = {
+      status: 400
+    }
+    return new Response(output, responseInit)
+  }
+}
+
+/*
 export async function POST(request: Request, { params }) {
   console.log('STARTING WORK EXPERIENCEEEEEEEEE')
   try {
@@ -91,3 +128,4 @@ export async function POST(request: Request, { params }) {
     )
   }
 }
+*/

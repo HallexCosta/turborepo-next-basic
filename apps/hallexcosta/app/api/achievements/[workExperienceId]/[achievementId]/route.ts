@@ -1,6 +1,6 @@
 import { db } from '../../../../../database'
 import { achievements } from '../../../../../database/schema'
-import { eq } from 'drizzle-orm'
+import { and, eq } from 'drizzle-orm'
 import { NextResponse } from 'next/server'
 
 export async function DELETE(request: Request, { params }) {
@@ -35,6 +35,63 @@ export async function DELETE(request: Request, { params }) {
         status: 200
       }
     )
+  } catch (e) {
+    return new Response(
+      JSON.stringify({
+        message: e.message,
+        stack: e.stackTrace
+      }),
+      {
+        status: 400
+      }
+    )
+  }
+}
+
+export async function PATCH(request: Request, { params }) {
+  try {
+    console.log('PATCH')
+    const data = await request.json()
+
+    const [alreadyAchievement] = await db
+      .select()
+      .from(achievements)
+      .where(
+        and(
+          eq(achievements.id, params.achievementId),
+          eq(achievements.workExperienceId, params.workExperienceId)
+        )
+      )
+
+    if (!alreadyAchievement) {
+      const output = JSON.stringify({
+        message: 'Achievement not found'
+      })
+      const responseInit = {
+        status: 422
+      }
+      return new Response(output, responseInit)
+    }
+
+    await db
+      .update(achievements)
+      .set({
+        content: data.content
+      })
+      .where(
+        and(
+          eq(achievements.id, params.achievementId),
+          eq(achievements.workExperienceId, params.workExperienceId)
+        )
+      )
+
+    const output = JSON.stringify({
+      message: 'Achievement data update'
+    })
+    const responseInit = {
+      status: 200
+    }
+    return new Response(output, responseInit)
   } catch (e) {
     return new Response(
       JSON.stringify({

@@ -3,6 +3,7 @@ import { contacts, persons } from '../../../../../database/schema'
 import { eq } from 'drizzle-orm'
 
 export async function POST(request: Request, { params }) {
+  console.log('Updating contacts...')
   console.log(params)
   const data = await request.json()
   console.log({ data })
@@ -15,6 +16,7 @@ export async function POST(request: Request, { params }) {
   return new Response(
     JSON.stringify({
       message: 'Contacts updated',
+      data,
       updated
     }),
     {
