@@ -10,38 +10,25 @@ type ResumeInputProps = {
   tag: string
   data?: DeepPartial<Resume>
   value: string
+  name?: string
   placeholder: string
   onChange?: void
   updateState?: void
   selectOptions?: string[]
 }
 
+const getInputName = (tag) => {
+  const parts = tag.split('.')
+  return parts[parts.length - 1]
+}
+
 const ResumeInput = memo((props: ResumeInputProps) => {
-  const { resume, updateResume } = useResume()
-
-  const handleUpdateResume = (value: string) => {
-    updateResume(createUpdateResumeData(props.tag, value))
-  }
-  const createUpdateResumeData = (tag: string, value: string) => {
-    const updatedResume: DeepPartial<Resume> = {}
-    _.set(updatedResume, tag, value)
-
-    console.log({ updatedResume })
-    return updatedResume
-  }
-  const handleWorkExperiences = () => {}
-
-  useEffect(() => {
-    console.log({ loadash: _.get(resume, props.tag) })
-    updateResume(createUpdateResumeData(props.tag, props.value))
-  }, [])
-
   return (
     <div>
       <Label>{props.label}</Label>
 
       {props.selectOptions?.length && (
-        <Select onChange={(e) => handleUpdateResume(e.target.value)}>
+        <Select>
           {props.selectOptions.map((selectOption, index) => (
             <option key={index}>{selectOption}</option>
           ))}
@@ -54,14 +41,15 @@ const ResumeInput = memo((props: ResumeInputProps) => {
       )}
       {!props.selectOptions?.length && (
         <TextInput
-          onChange={(e) => handleUpdateResume(e.target.value)}
           placeholder={props.placeholder}
-          value={_.get(resume, props.tag) ?? ''}
+          defaultValue={props.value}
+          name={props.name ?? getInputName(props.tag)}
         />
       )}
     </div>
   )
 })
+
 ResumeInput.displayName = 'ResumeInput'
 
 export { ResumeInput }

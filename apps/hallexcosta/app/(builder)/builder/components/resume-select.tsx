@@ -7,7 +7,8 @@ import _ from 'lodash'
 
 type ResumeSelectProps = {
   label: string
-  tag: string
+  tag?: string
+  name: string
   data?: DeepPartial<Resume>
   value?: string
   placeholder: string
@@ -20,24 +21,24 @@ type ResumeSelectProps = {
 }
 
 const ResumeSelect = memo((props: ResumeSelectProps) => {
-  const { resume, updateResume } = useResume()
-
-  const handleUpdateResume = (value: string) => {
-    updateResume(createUpdateResumeData(props.tag, value))
-  }
-  const createUpdateResumeData = (tag: string, value: string | undefined) => {
-    const updatedResume: DeepPartial<Resume> = {}
-    _.set(updatedResume, tag, value)
-
-    console.log({ updatedResume })
-    return updatedResume
-  }
-
-  useEffect(() => {
-    console.log({ loadash: _.get(resume, props.tag) })
-    updateResume(createUpdateResumeData(props.tag, props.value))
-    // handleUpdateResume(props.value)
-  }, [])
+  // const { resume, updateResume } = useResume()
+  //
+  // const handleUpdateResume = (value: string) => {
+  //   updateResume(createUpdateResumeData(props.tag, value))
+  // }
+  // const createUpdateResumeData = (tag: string, value: string | undefined) => {
+  //   const updatedResume: DeepPartial<Resume> = {}
+  //   _.set(updatedResume, tag, value)
+  //
+  //   console.log({ updatedResume })
+  //   return updatedResume
+  // }
+  //
+  // useEffect(() => {
+  //   console.log({ loadash: _.get(resume, props.tag) })
+  //   updateResume(createUpdateResumeData(props.tag, props.value))
+  //   // handleUpdateResume(props.value)
+  // }, [])
 
   return (
     <div>
@@ -45,10 +46,11 @@ const ResumeSelect = memo((props: ResumeSelectProps) => {
 
       {props.options?.length && (
         <Select
-          onChange={(e) => handleUpdateResume(e.target.value)}
-          value={props.value}
+          // onChange={(e) => handleUpdateResume(e.target.value)}
+          defaultValue={props.value}
+          name={props.name}
         >
-          <option disabled selected value="">
+          <option disabled defaultValue="">
             {props.placeholder}
           </option>
           {props.options.map(({ value, label }, index) => (

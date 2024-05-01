@@ -8,6 +8,7 @@ import _ from 'lodash'
 type ResumeDatePickerProps = {
   label: string
   tag: string
+  name: string
   data?: DeepPartial<Resume>
   value: Date
   disabled?: boolean
@@ -24,24 +25,23 @@ const ResumeDatePicker = memo((props: ResumeDatePickerProps) => {
     0
   ).getDate()
 
-  const { resume, updateResume } = useResume()
-
-  const handleUpdateResume = (value: Date) => {
-    updateResume(createUpdateResumeData(props.tag, value))
-  }
-  const createUpdateResumeData = (tag: string, value: Date) => {
-    const updatedResume: DeepPartial<Resume> = {}
-    _.set(updatedResume, tag, value)
-
-    console.log({ updatedResume })
-    return updatedResume
-  }
-
-  useEffect(() => {
-    console.log(new Date('2023-05-16T03:00:00.000Z'))
-    console.log({ loadash: _.get(resume, props.tag) })
-    updateResume(createUpdateResumeData(props.tag, props.value))
-  }, [])
+  // const { resume, updateResume } = useResume()
+  //
+  // const handleUpdateResume = (value: Date) => {
+  //   updateResume(createUpdateResumeData(props.tag, value))
+  // }
+  // const createUpdateResumeData = (tag: string, value: Date) => {
+  //   const updatedResume: DeepPartial<Resume> = {}
+  //   _.set(updatedResume, tag, value)
+  //
+  //   console.log({ updatedResume })
+  //   return updatedResume
+  // }
+  //
+  // useEffect(() => {
+  //   console.log({ loadash: _.get(resume, props.tag) })
+  //   updateResume(createUpdateResumeData(props.tag, props.value))
+  // }, [])
 
   return (
     <div>
@@ -61,8 +61,9 @@ const ResumeDatePicker = memo((props: ResumeDatePickerProps) => {
         labelClearButton="Limpar"
         weekStart={0}
         autoHide={false}
+        name={props.name ?? props.tag}
         defaultDate={props.value}
-        onSelectedDateChanged={(date: Date) => handleUpdateResume(date)}
+        // onSelectedDateChanged={(date: Date) => handleUpdateResume(date)}
       />
     </div>
   )
