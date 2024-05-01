@@ -1,25 +1,25 @@
 'use client'
 import * as WorkExperienceForm from '../work-experience-form'
 import * as AchievementInput from '../achievement-input'
-import {Person} from '../../page'
+import { Person } from '../../page'
 
-import {deleteWorkExperience} from '../../actions/delete-work-experience'
-import {ConfirmDeleteWorkExperienceModal} from '../modals/confirm-delete-work-experience-modal'
-import {useRef, useState} from 'react'
-import {Label} from 'flowbite-react'
-import {Icons} from 'ui'
-import {CreateAchievementModal} from '../modals/create-achievement-modal'
+import { deleteWorkExperience } from '../../actions/delete-work-experience'
+import { ConfirmDeleteWorkExperienceModal } from '../modals/confirm-delete-work-experience-modal'
+import { useRef, useState } from 'react'
+import { Label } from 'flowbite-react'
+import { Icons } from 'ui'
+import { CreateAchievementModal } from '../modals/create-achievement-modal'
 import Link from 'next/link'
-import {DeleteWorkExperienceButton} from '../work-experience-form/buttons/delete-work-experience-button'
-import {UpdateWorkExperienceButton} from '../work-experience-form/buttons/update-work-experience-button';
-import {ConfirmUpdateWorkExperienceModal} from '../modals/confirm-update-work-experience-modal';
-import {updateWorkExperience} from '../../actions/update-work-experience';
+import { DeleteWorkExperienceButton } from '../work-experience-form/buttons/delete-work-experience-button'
+import { UpdateWorkExperienceButton } from '../work-experience-form/buttons/update-work-experience-button'
+import { ConfirmUpdateWorkExperienceModal } from '../modals/confirm-update-work-experience-modal'
+import { updateWorkExperience } from '../../actions/update-work-experience'
 
 type WorkExperienceListProps = {
   data: Omit<Person['workExperiences'], 'createdAt' | 'updatedAt'>
 }
 
-const WorkExperienceList = ({data}: WorkExperienceListProps) => {
+const WorkExperienceList = ({ data }: WorkExperienceListProps) => {
   // const [optimisticWorkExperiences, removeWorkExperience] = useOptimistic(
   //   data,
   //   handleOptimisticRemoveWorkExperience
@@ -62,7 +62,9 @@ const WorkExperienceList = ({data}: WorkExperienceListProps) => {
         ) => {
           return (
             <form
-              action={handleFetchUpdateWorkExperience(workExperience.id as string)}
+              action={handleFetchUpdateWorkExperience(
+                workExperience.id as string
+              )}
               key={workExperience.id}
             >
               <WorkExperienceForm.Root>
@@ -117,7 +119,9 @@ const WorkExperienceList = ({data}: WorkExperienceListProps) => {
                     name={'endDate'}
                     workExperienceIndex={workExperienceIndex}
                     disabled={workExperience.currentlyPosition}
-                    value={workExperience.endDate ? workExperience.endDate : null}
+                    value={
+                      workExperience.endDate ? workExperience.endDate : null
+                    }
                   />
                   <WorkExperienceForm.CurrentlyPositionCheckbox
                     name={'currentlyPosition'}
@@ -138,10 +142,10 @@ const WorkExperienceList = ({data}: WorkExperienceListProps) => {
                         }
                       }}
                     >
-                      <Icons.Plus size={18}/>
+                      <Icons.Plus size={18} />
                     </Link>
 
-                    <CreateAchievementModal/>
+                    <CreateAchievementModal />
                   </div>
 
                   {workExperience.achievements.length >= 1 &&
@@ -187,4 +191,4 @@ const WorkExperienceList = ({data}: WorkExperienceListProps) => {
   )
 }
 
-export {WorkExperienceList}
+export { WorkExperienceList }

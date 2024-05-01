@@ -2,7 +2,6 @@
 import { Button } from 'flowbite-react'
 import React, { useEffect } from 'react'
 import { useAtomValue } from 'jotai'
-import { isPendingSaveResume } from '../../../atoms/is-pending-save-resume'
 
 type Props = {
   submitting: boolean
