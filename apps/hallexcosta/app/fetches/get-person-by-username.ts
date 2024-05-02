@@ -1,5 +1,4 @@
-const getPersonByUsername = async () => {
-  const username = 'hallexcosta'
+const getPersonByUsername = async (username: string = 'hallexcosta') => {
   const response = await fetch(`http://localhost:3001/api/person/${username}`, {
     method: 'GET',
     next: {
