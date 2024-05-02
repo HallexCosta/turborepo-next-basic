@@ -1,7 +1,8 @@
 module.exports = {
   reactStrictMode: true,
   transpilePackages: ['ui'],
-  optimizeFonts: false,
+  productionBrowserSourceMaps: false, // Disable source maps in development
+  optimizeFonts: false, // Disable font optimization
   images: {
     remotePatterns: [
       {

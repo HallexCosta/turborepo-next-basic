@@ -218,7 +218,7 @@ const factoryRequestUpdateAchievement = (achievements: Achievement[]) => {
     } as RequestInit
     requests.push(
       fetch(
-        `http://localhost:3001/api/achievements/${achievement.workExperienceId}/${achievement.id}`,
+        `process.env.NEXT_PUBLIC_BASE_URL/achievements/${achievement.workExperienceId}/${achievement.id}`,
         requestInit
       )
     )
@@ -282,7 +282,7 @@ export const handleSaveResumeServer = async (
   }
   console.log('sending contacts update requests...')
   const requestContactsUpdate = await fetch(
-    `http://localhost:3001/api/contacts/update/${username}`,
+    `process.env.NEXT_PUBLIC_BASE_URL/contacts/update/${username}`,
     {
       method,
       body: JSON.stringify({
@@ -300,7 +300,7 @@ export const handleSaveResumeServer = async (
   )
   // const { username, ...person} = fullResume.person
   const requestPersonUpdate = fetch(
-    `http://localhost:3001/api/person/${username}`,
+    `process.env.NEXT_PUBLIC_BASE_URL/person/${username}`,
     {
       method,
       body: JSON.stringify({

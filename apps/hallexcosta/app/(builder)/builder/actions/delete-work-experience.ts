@@ -13,7 +13,7 @@ async function deleteWorkExperience({
   console.log(workExperienceId)
 
   const response = await fetch(
-    `http://localhost:3001/api/work-experiences/hallexcosta/${workExperienceId}/`,
+    `process.env.NEXT_PUBLIC_BASE_URL/work-experiences/hallexcosta/${workExperienceId}/`,
     {
       method: 'DELETE',
       cache: 'no-cache'

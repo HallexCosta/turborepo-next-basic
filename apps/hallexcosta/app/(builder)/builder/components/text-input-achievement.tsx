@@ -38,7 +38,7 @@ export const TextInputAchievement = memo(
       // because the id from database is alpha-numeric.
       if (Number.isNaN(Number(id)))
         fetch(
-          `http://localhost:3001/api/achievements/${workExperienceId}/${id}`,
+          `process.env.NEXT_PUBLIC_BASE_URL/achievements/${workExperienceId}/${id}`,
           options
         )
 

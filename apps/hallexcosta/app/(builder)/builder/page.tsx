@@ -1,3 +1,4 @@
+import '../../api/config'
 import { Index } from './components/form-resume'
 import _ from 'lodash'
 import { Suspense } from 'react'
@@ -76,7 +77,8 @@ const page = async () => {
   // console.log(parsedPerson)
 
   return (
-    <Suspense fallback={<h1>Loading</h1>}>
+    <Suspense fallback={<h1>Loading...</h1>}>
+      <h1>{process.env.NEXT_PUBLIC_API_BASE_URL}</h1>
       <section className="p-4">
         <Index
           person={{

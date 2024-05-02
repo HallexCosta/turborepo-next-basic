@@ -25,22 +25,22 @@ The main parts of the website are contained within the `apps/hallexcosta/(landin
 To get started with this project, clone the repository and install the dependencies:
 
 ```bash
-git clone https://github.com/HallexCosta/turborepo-next-basic.git
-cd turborepo-next-basic
-npm install
+git clone https://github.com/HallexCosta/turborepo-next-basic.git portfolios
+cd portfolios
+pnpm install
 ```
 
 To run the website locally, use the following command:
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
-Navigate to http://localhost:3001 to view the project in your browser.
+Navigate to http://localhost:3001 to view the project in your browser `apps/hallexcosta`.
 
 Design credits to **[Dina Iakovenko](https://www.linkedin.com/in/dina-iakovenko)** whose original design can be viewed on Behance.
 
 **References**  
 Live Site: https://hallexcosta.com  
 Repository: https://github.com/HallexCosta/turborepo-next-basic  
-Behance Design: https://www.behance.net/gallery/162243505/Portfolio-website-forfront-end-developer
+Behance Design Inspiration: https://www.behance.net/gallery/162243505/Portfolio-website-forfront-end-developer

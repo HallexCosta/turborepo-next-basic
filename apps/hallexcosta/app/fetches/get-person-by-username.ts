@@ -1,5 +1,10 @@
+// import '../api/config'
+
 const getPersonByUsername = async (username: string = 'hallexcosta') => {
-  const response = await fetch(`http://localhost:3001/api/person/${username}`, {
+  console.log(process.env.NODE_ENV)
+  console.log(process.env.API_BASE_URL ?? 'not value defined')
+  console.log(process.env.NEXT_PUBLIC_API_BASE_URL ?? 'not value defined')
+  const response = await fetch(`${process.env.API_BASE_URL}/person/${username}`, {
     method: 'GET',
     next: {
       tags: ['get-resume-person']

@@ -14,7 +14,7 @@ export async function createAchievement(formData: FormData) {
   ) as CreateAchievementEntry
 
   const response = await fetch(
-    `http://localhost:3001/api/achievements/${workExperienceId}`,
+    `process.env.NEXT_PUBLIC_BASE_URL/achievements/${workExperienceId}`,
     {
       method: 'POST',
       body: JSON.stringify({
