@@ -161,20 +161,16 @@ class ParseWorkExperienceFormData {
   }
 
   public toObject() {
-    // @ts-ignore
     for (const [key, value] of this.formData.entries()) {
-      this.processWorkExperiencePosition(key, value)
+      this.processWorkExperiencePosition(key, value as string)
     }
     return this.convertMapToArrayAndParse()
   }
 
   private convertMapToArrayAndParse() {
     const temp: Record<string, any>[] = []
-    // @ts-ignore
-    for (const [
-      positionIndex,
-      workExperience
-    ] of this.workExperiences.entries()) {
+    for (const positionIndex of this.workExperiences.keys()) {
+      const workExperience = this.workExperiences.get(positionIndex)
       temp[positionIndex] = this.parseDataFromWorkExperience(workExperience)
     }
     return temp
