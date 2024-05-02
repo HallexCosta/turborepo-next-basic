@@ -9,7 +9,7 @@
     "declarationMap": false,
     "incremental": true,
     "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["dom", "es5", "es2015.collection", "dom.iterable", "esnext"],
     "module": "esnext",
     "noEmit": true,
     "resolveJsonModule": true,

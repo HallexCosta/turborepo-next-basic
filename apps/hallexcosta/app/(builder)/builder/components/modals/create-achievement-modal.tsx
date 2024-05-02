@@ -1,10 +1,10 @@
 import { Button, Label, Modal } from 'flowbite-react'
-import * as Achievement from '../achievement-input'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useFormStatus } from 'react-dom'
 import { createAchievement } from '../../actions/create-achievement'
-import { Plus } from 'phosphor-react'
-import { useState, useId } from 'react'
+import { Icons } from 'ui'
+import { useState } from 'react'
+import * as Achievement from '../achievement-input'
 
 const limitAchievements = 8
 export const CreateAchievementModal = () => {
@@ -51,7 +51,7 @@ export const CreateAchievementModal = () => {
               size={20}
               onClick={handleCreateAchievementInput}
             >
-              <Plus color="white" size={16} />
+              <Icons.Plus />
             </Button>
           </div>
         </Modal.Header>

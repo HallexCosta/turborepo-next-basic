@@ -1,11 +1,13 @@
 'use client'
 import Link from 'next/link'
-import {
-  FacebookLogo,
-  GithubLogo,
-  InstagramLogo,
-  LinkedinLogo
-} from 'phosphor-react'
+// import {
+//   FacebookLogo,
+//   GithubLogo,
+//   InstagramLogo,
+//   LinkedinLogo
+// } from 'phosphor-react'
+
+import Icons from '../Icons'
 
 interface SocialLinkProps {
   name: 'linkedin' | 'instagram' | 'facebook' | 'github'
@@ -21,11 +23,11 @@ export function SocialLink({ name, url, className }: SocialLinkProps) {
     case 'linkedin':
       const linkedinIcon = () => (
         <Link href={url as string} target="_blank">
-          <LinkedinLogo
-            className={`${className} cursor-pointer`}
-            color="white"
-            width={27}
-            height={27}
+          <Icons.Linkedin
+            // className={`${className} cursor-pointer`}
+            // color="white"
+            // width={27}
+            // height={27}
           />
         </Link>
       )
@@ -34,11 +36,11 @@ export function SocialLink({ name, url, className }: SocialLinkProps) {
     case 'instagram':
       const instagramIcon = () => (
         <Link href={{ href: url }} target="_blank">
-          <InstagramLogo
-            className={`${className} cursor-pointer`}
-            color="white"
-            width={27}
-            height={27}
+          <Icons.Linkedin
+            // className={`${className} cursor-pointer`}
+            // color="white"
+            // width={27}
+            // height={27}
           />
         </Link>
       )
@@ -48,11 +50,11 @@ export function SocialLink({ name, url, className }: SocialLinkProps) {
     case 'github':
       const githubIcon = () => (
         <Link href={url as string} target="_blank">
-          <GithubLogo
-            className={`${className} cursor-pointer`}
-            color="white"
-            width={27}
-            height={27}
+          <Icons.Github
+            // className={`${className} cursor-pointer`}
+            // color="white"
+            // width={27}
+            // height={27}
           />
         </Link>
       )
@@ -61,11 +63,11 @@ export function SocialLink({ name, url, className }: SocialLinkProps) {
     case 'facebook':
       const facebookIcon = () => (
         <Link href={{ href: url }} target="_blank">
-          <FacebookLogo
-            className={`${className} cursor-pointer`}
-            color="white"
-            width={27}
-            height={27}
+          <Icons.Facebook
+            // className={`${className} cursor-pointer`}
+            // color="white"
+            // width={27}
+            // height={27}
           />
         </Link>
       )

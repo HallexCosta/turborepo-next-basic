@@ -2,7 +2,8 @@ import React from 'react'
 import { useFormStatus } from 'react-dom'
 import { Button } from 'flowbite-react'
 
-import { FloppyDisk } from 'phosphor-react'
+// import { FloppyDisk } from 'phosphor-react'
+import {Icons} from 'ui'
 
 export const UpdateWorkExperienceButton = () => {
   const status = useFormStatus()
@@ -15,7 +16,7 @@ export const UpdateWorkExperienceButton = () => {
       disabled={status.pending}
       className="pointer"
     >
-      <FloppyDisk size={20} />
+      <Icons.FloppyDisk />
     </Button>
   )
 }
