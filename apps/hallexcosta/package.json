@@ -16,7 +16,6 @@
     "better-sqlite3": "^9.4.3",
     "dayjs": "^1.11.10",
     "drizzle-orm": "^0.29.4",
-    "flowbite": "^2.3.0",
     "flowbite-react": "^0.7.2",
     "jotai": "^2.6.5",
     "lodash": "^4.17.21",

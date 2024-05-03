@@ -1,8 +1,7 @@
-import { Button, Label, Modal } from 'flowbite-react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useFormStatus } from 'react-dom'
 import { createAchievement } from '../../actions/create-achievement'
-import { Icons } from 'ui'
+import {Icons, Modal} from 'ui'
 import { useState } from 'react'
 import * as Achievement from '../achievement-input'
 
@@ -40,19 +39,21 @@ export const CreateAchievementModal = () => {
   }
 
   return (
-    <Modal show={opened} onClose={() => router.replace('/builder')}>
+    <Modal.Root show={opened}>
       <form action={handleCreateAchievement}>
-        <Modal.Header>
+        <Modal.Header onClose={() => router.replace('/builder')}>
           <div className="flex gap-4 items-center justify-center">
             <p>Conquista</p>
-            <Button
-              className="p-1"
+            <button
+              className="group flex items-center justify-center text-center font-medium relative focus:z-10 focus:outline-none cursor-not-allowed opacity-50 text-white bg-blue-700 border border-transparent enabled:hover:bg-blue-800 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 rounded-lg focus:ring-2 w-full p-1"
               color="blue"
-              size={20}
+              // size={20}
               onClick={handleCreateAchievementInput}
             >
-              <Icons.Plus />
-            </Button>
+              <Icons.Plus
+                size={20}
+              />
+            </button>
           </div>
         </Modal.Header>
 
@@ -62,7 +63,7 @@ export const CreateAchievementModal = () => {
               return (
                 <Achievement.Root key={index}>
                   <div className="flex flex-col gap-1">
-                    <Label>Conquista {index + 1}</Label>
+                    <label className="text-sm font-medium text-gray-900 dark:text-white flex">Conquista {index + 1}</label>
                     <Achievement.Content
                       name="content"
                       value={achievement.content}
@@ -82,15 +83,20 @@ export const CreateAchievementModal = () => {
           <CreateAchievementButton />
         </Modal.Footer>
       </form>
-    </Modal>
+    </Modal.Root>
   )
 }
 
 const CreateAchievementButton = () => {
   const status = useFormStatus()
   return (
-    <Button color="blue" type="submit" disabled={status.pending}>
+    <button
+      className="group flex items-center justify-center text-center font-medium relative focus:z-10 focus:outline-none cursor-not-allowed opacity-50 text-white bg-blue-700 border border-transparent enabled:hover:bg-blue-800 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 rounded-lg focus:ring-2 w-28 p-2"
+      color="blue"
+      type="submit"
+      disabled={status.pending}
+    >
       {status.pending ? 'Criando...' : 'Criar'}
-    </Button>
+    </button>
   )
 }

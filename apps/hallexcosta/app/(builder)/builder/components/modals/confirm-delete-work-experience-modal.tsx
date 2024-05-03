@@ -1,5 +1,4 @@
-import { Button, Modal } from 'flowbite-react'
-import { useFormStatus } from 'react-dom'
+import {Modal} from 'ui'
 
 type ConfirmDeleteWorkExperienceModalProps = {
   open: boolean
@@ -12,8 +11,8 @@ const ConfirmDeleteWorkExperienceModal = (
   props: ConfirmDeleteWorkExperienceModalProps
 ) => {
   return (
-    <Modal show={props.open} onClose={props.handleCloseModal}>
-      <Modal.Header>Experiência de Trabalho</Modal.Header>
+    <Modal.Root show={props.open}>
+      <Modal.Header onClose={props.handleCloseModal}>Experiência de Trabalho</Modal.Header>
       <Modal.Body>
         <h3 className="text-gray-400 text-lg font-normal text-center">
           Atenção: Essa ação não poderá ser revertida
@@ -24,23 +23,23 @@ const ConfirmDeleteWorkExperienceModal = (
       </Modal.Body>
       <Modal.Footer>
         <div className="w-full flex flex-items justify-center gap-4">
-          <Button
+          <button
             disabled={props.isDeleting}
             color="failure"
             onClick={props.handleFetchDelete}
           >
             {props.isDeleting ? 'Deletando...' : 'Sim'}
-          </Button>
-          <Button
+          </button>
+          <button
             disabled={props.isDeleting}
             color="gray"
             onClick={props.handleCloseModal}
           >
             Não
-          </Button>
+          </button>
         </div>
       </Modal.Footer>
-    </Modal>
+    </Modal.Root>
   )
 }
 

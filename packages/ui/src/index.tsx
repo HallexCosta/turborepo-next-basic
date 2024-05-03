@@ -14,5 +14,6 @@ export * from './Project'
 export * from './Technology'
 export * from './BoxInvisible'
 export * from './Timeline'
+export * from './Modal'
 
 export { default as Icons } from './Icons'

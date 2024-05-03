@@ -1,4 +1,3 @@
-import '../../api/config'
 import { Index } from './components/form-resume'
 import _ from 'lodash'
 import { Suspense } from 'react'

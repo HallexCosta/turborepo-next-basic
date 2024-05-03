@@ -1,9 +1,9 @@
 'use client'
-import { Modal, Button } from 'flowbite-react'
-import * as WorkExperienceForm from '../work-experience-form'
-import React, { useState } from 'react'
-import { createWorkExperience } from '../../actions/create-work-experience'
 import { useSearchParams, useRouter } from 'next/navigation'
+import {Modal} from 'ui'
+import * as WorkExperienceForm from '../work-experience-form'
+import React from 'react'
+import { createWorkExperience } from '../../actions/create-work-experience'
 import { CreateWorkExperienceSubmitButton } from '../work-experience-form/buttons/create-work-experience-submit-button'
 
 type CreateWorkExperienceModalProps = {
@@ -27,9 +27,9 @@ export const CreateWorkExperienceModal = (
   }
 
   return (
-    <Modal show={opened} onClose={handleOnCloseModal}>
+    <Modal.Root show={opened}>
       <form action={handleCreateWorkExperience()}>
-        <Modal.Header>Criar Experiência Profissional</Modal.Header>
+        <Modal.Header onClose={handleOnCloseModal}>Criar Experiência Profissional</Modal.Header>
         <Modal.Body>
           <WorkExperienceForm.Root className="md:grid-cols-2 md:gap-4">
             <WorkExperienceForm.EnterpriseInput name={'enterprise'} value="" />
@@ -69,6 +69,6 @@ export const CreateWorkExperienceModal = (
           <CreateWorkExperienceSubmitButton />
         </Modal.Footer>
       </form>
-    </Modal>
+    </Modal.Root>
   )
 }

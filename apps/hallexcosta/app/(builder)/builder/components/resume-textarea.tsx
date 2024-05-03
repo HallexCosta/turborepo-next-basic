@@ -1,9 +1,4 @@
-'use client'
-import { Label, Textarea, TextInput } from 'flowbite-react'
-import { memo, useEffect } from 'react'
-import { Resume, useResume } from '../stores/resume-store'
-import { DeepPartial } from 'flowbite-react/lib/esm/types'
-import _ from 'lodash'
+import { memo } from 'react'
 
 type ResumeTextareaProps = {
   title?: string
@@ -14,23 +9,6 @@ type ResumeTextareaProps = {
 }
 
 const ResumeTextarea = memo((props: ResumeTextareaProps) => {
-  // const { resume, updateResume } = useResume()
-  // //
-  // const handleUpdateResume = (value: string) => {
-  //   updateResume(createUpdateResumeData(props.tag, value))
-  // }
-  // const createUpdateResumeData = (tag: string, value: string) => {
-  //   const updatedResume: DeepPartial<Resume> = {}
-  //   _.set(updatedResume, tag, value)
-  //
-  //   console.log({ updatedResume })
-  //   return updatedResume
-  // }
-  // useEffect(() => {
-  //   console.log({ loadash: _.get(resume, props.tag) })
-  //   updateResume(createUpdateResumeData(props.tag, props.value))
-  // }, [])
-
   return (
     <div>
       {props.title && (
@@ -38,16 +16,21 @@ const ResumeTextarea = memo((props: ResumeTextareaProps) => {
           {props.title}
         </legend>
       )}
-      {props.label && <Label>{props.label}</Label>}
-      <Textarea
-        // onChange={(e) => handleUpdateResume(e.target.value)}
+      {props.label && <label className="text-sm font-medium text-gray-900 dark:text-white flex">{props.label}</label>}
+      {/*<Textarea*/}
+      {/*  placeholder={props.placeholder}*/}
+      {/*  defaultValue={props.value}*/}
+      {/*  className="p-2.5"*/}
+      {/*  rows={10}*/}
+      {/*  name={props.tag}*/}
+      {/*/>*/}
+      <textarea
         placeholder={props.placeholder}
         defaultValue={props.value}
-        // value={_.get(resume, props.tag) ?? ''}
-        className="p-2.5"
+        className="block w-full rounded-lg border disabled:cursor-not-allowed disabled:opacity-50 text-sm bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 p-2.5"
         rows={10}
         name={props.tag}
-      />
+      ></textarea>
     </div>
   )
 })

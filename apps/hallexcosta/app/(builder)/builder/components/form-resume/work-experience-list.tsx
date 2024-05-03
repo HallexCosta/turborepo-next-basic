@@ -5,14 +5,12 @@ import { Person } from '../../page'
 
 import { deleteWorkExperience } from '../../actions/delete-work-experience'
 import { ConfirmDeleteWorkExperienceModal } from '../modals/confirm-delete-work-experience-modal'
-import { useRef, useState } from 'react'
-import { Label } from 'flowbite-react'
+import { useState } from 'react'
 import { Icons } from 'ui'
 import { CreateAchievementModal } from '../modals/create-achievement-modal'
 import Link from 'next/link'
 import { DeleteWorkExperienceButton } from '../work-experience-form/buttons/delete-work-experience-button'
 import { UpdateWorkExperienceButton } from '../work-experience-form/buttons/update-work-experience-button'
-import { ConfirmUpdateWorkExperienceModal } from '../modals/confirm-update-work-experience-modal'
 import { updateWorkExperience } from '../../actions/update-work-experience'
 
 type WorkExperienceListProps = {
@@ -71,9 +69,7 @@ const WorkExperienceList = ({ data }: WorkExperienceListProps) => {
                 <WorkExperienceForm.Header className="flex justify-end">
                   <div className="flex gap-2">
                     <UpdateWorkExperienceButton />
-                    <DeleteWorkExperienceButton
-                      handleOpenModal={() => setOpenDeleteModal(true)}
-                    />
+                    <DeleteWorkExperienceButton />
                   </div>
 
                   <ConfirmDeleteWorkExperienceModal
@@ -132,7 +128,8 @@ const WorkExperienceList = ({ data }: WorkExperienceListProps) => {
 
                 <div className="grid grid-cols-1 gap-2">
                   <div className="flex items-center gap-2">
-                    <Label>Conquistas</Label>
+                    <label className="text-sm font-medium text-gray-900 dark:text-white flex">Conquistas</label>
+
                     <Link
                       className="pointer"
                       href={{
@@ -142,10 +139,10 @@ const WorkExperienceList = ({ data }: WorkExperienceListProps) => {
                         }
                       }}
                     >
-                      <Icons.Plus size={18} />
+                      <Icons.Plus size={18}/>
                     </Link>
 
-                    <CreateAchievementModal />
+                    <CreateAchievementModal/>
                   </div>
 
                   {workExperience.achievements.length >= 1 &&

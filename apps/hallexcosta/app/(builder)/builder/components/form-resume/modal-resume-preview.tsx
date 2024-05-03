@@ -1,7 +1,7 @@
-import { Modal } from 'flowbite-react'
 import { CVTemplatePageEditable } from '../../../../(curriculum)/cv/page'
 import React from 'react'
 import { Person } from '../../page'
+import { Modal } from 'ui'
 
 type ModalResumePreviewProps = {
   person: Person
@@ -12,8 +12,8 @@ type ModalResumePreviewProps = {
 
 const ModalResumePreview = (props: ModalResumePreviewProps) => {
   return (
-    <Modal show={props.openModal} onClose={props.handleCloseModal}>
-      <Modal.Header>Pré-visualizar CV: {props.name}</Modal.Header>
+    <Modal.Root show={props.openModal}>
+      <Modal.Header onClose={props.handleCloseModal}>Pré-visualizar CV: {props.name}</Modal.Header>
       <Modal.Body>
         <CVTemplatePageEditable
           className="lg:px-5 rounded-sm "
@@ -21,7 +21,7 @@ const ModalResumePreview = (props: ModalResumePreviewProps) => {
         />
       </Modal.Body>
       {/*<Modal.Footer />*/}
-    </Modal>
+    </Modal.Root>
   )
 }
 

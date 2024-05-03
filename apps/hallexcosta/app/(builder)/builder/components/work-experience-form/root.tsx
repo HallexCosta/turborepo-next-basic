@@ -1,5 +1,4 @@
 import { twMerge } from 'tailwind-merge'
-import { type } from 'node:os'
 import { ReactNode } from 'react'
 
 type RootProps = {

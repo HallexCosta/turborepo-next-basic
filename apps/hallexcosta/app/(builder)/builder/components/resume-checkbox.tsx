@@ -1,9 +1,5 @@
 'use client'
-import { Checkbox, Label, Select, TextInput } from 'flowbite-react'
-import { memo, useEffect, useState } from 'react'
-import { Resume, useResume } from '../stores/resume-store'
-import { DeepPartial } from 'flowbite-react/lib/esm/types'
-import _ from 'lodash'
+import { memo } from 'react'
 
 type ResumeCheckboxProps = {
   label: string
@@ -14,56 +10,16 @@ type ResumeCheckboxProps = {
   selectOptions?: string[]
 }
 
-// type CheckboxUpdateCurrentlyPositionProps = {
-//     endDate: Date
-// }
-
 const ResumeCheckbox = memo((props: ResumeCheckboxProps) => {
-  // const { resume, updateResume } = useResume()
-  // const [currentlyPosition, setCurrentlyPosition] = useState(props.value)
-
-  // const onToggleCheckbox = (e) => {
-  //   const stateCurrentlyPosition = !currentlyPosition
-  //   handleUpdateResume(stateCurrentlyPosition)
-  //   setCurrentlyPosition(stateCurrentlyPosition)
-  // }
-  // const handleUpdateResume = (currentlyPosition: boolean) => {
-  //   let endDate: Date | null = null
-  //   if (!currentlyPosition) {
-  //     endDate = new Date()
-  //   }
-  //   updateResume(createUpdateResumeData(props.tag, currentlyPosition, endDate))
-  // }
-  // const createUpdateResumeData = (
-  //   tag: string,
-  //   currentlyPosition: boolean,
-  //   endDate: null | Date
-  // ) => {
-  //   const updatedResume: DeepPartial<Resume> = {}
-  //   _.set(updatedResume, tag, currentlyPosition)
-  //   _.set(updatedResume, tag.replace('currentlyPosition', 'endDate'), endDate)
-  //
-  //   console.log({ updatedResume })
-  //   return updatedResume
-  // }
-
-  // useEffect(() => {
-  //   const endDate = _.get(
-  //     resume,
-  //     props.tag.replace('currentlyPosition', 'endDate')
-  //   )
-  //   console.log('UseEffect', { endDate, currentlyPosition: props.value })
-  //   updateResume(createUpdateResumeData(props.tag, props.value, endDate))
-  // }, [])
-
   return (
     <div className="flex items-center gap-2">
-      <Checkbox
+      <input
         name={props.name}
-        // onChange={onToggleCheckbox}
         defaultChecked={props.value}
+        type="checkbox"
+        className="h-4 w-4 rounded focus:ring-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 bg-gray-100 focus:ring-cyan-600 dark:ring-offset-gray-800 dark:focus:ring-cyan-600 text-cyan-600"
       />
-      <Label className="flex">{props.label}</Label>
+      <label className="text-sm font-medium text-gray-900 dark:text-white flex">{props.label}</label>
     </div>
   )
 })

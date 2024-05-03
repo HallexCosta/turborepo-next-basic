@@ -1,5 +1,5 @@
-import { Button, Modal } from 'flowbite-react'
 import { useFormStatus } from 'react-dom'
+import { Modal } from 'ui'
 
 type ConfirmUpdateWorkExperienceModalProps = {
   open: boolean
@@ -12,8 +12,8 @@ const ConfirmUpdateWorkExperienceModal = (
   props: ConfirmUpdateWorkExperienceModalProps
 ) => {
   return (
-    <Modal show={props.open} onClose={props.handleCloseModal}>
-      <Modal.Header>Experiência de Trabalho</Modal.Header>
+    <Modal.Root show={props.open} >
+      <Modal.Header onClose={props.handleCloseModal}>Experiência de Trabalho</Modal.Header>
       <Modal.Body>
         <h3 className="text-gray-400 text-lg font-normal text-center">
           Atenção: Essa ação não poderá ser revertida
@@ -24,23 +24,23 @@ const ConfirmUpdateWorkExperienceModal = (
       </Modal.Body>
       <Modal.Footer>
         <div className="w-full flex flex-items justify-center gap-4">
-          <Button
+          <button
             disabled={props.isUpdating}
             color="failure"
             onClick={props.handleFetchUpdate}
           >
             {props.isUpdating ? 'Atualizando...' : 'Sim'}
-          </Button>
-          <Button
+          </button>
+          <button
             disabled={props.isUpdating}
             color="gray"
             onClick={props.handleCloseModal}
           >
             Não
-          </Button>
+          </button>
         </div>
       </Modal.Footer>
-    </Modal>
+    </Modal.Root>
   )
 }
 
@@ -48,9 +48,9 @@ const SubmitButton = () => {
   const status = useFormStatus()
 
   return (
-    <Button disabled={status.pending} type="submit" color="info" name="update">
+    <button disabled={status.pending} type="submit" color="info" name="update">
       {status.pending ? 'Atualizando...' : 'Sim'}
-    </Button>
+    </button>
   )
 }
 
