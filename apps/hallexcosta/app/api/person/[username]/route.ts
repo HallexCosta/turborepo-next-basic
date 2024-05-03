@@ -32,6 +32,8 @@ export async function GET(request: Request, { params }) {
   const repository = new PersonsRepository(db)
   const person = await repository.findPersonByUsername(params.username)
 
+  console.log({ GERPerson: person })
+
   if (!person)
     return NextResponse.json(
       {

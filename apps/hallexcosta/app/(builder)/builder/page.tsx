@@ -34,43 +34,43 @@ const page = async () => {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const person = await getPersonByUsername()
-
+  console.log(person)
   // let person = await getPersonByUsername(username)
   if (!person) return <h1>Person not found {username}</h1>
 
-  const parsedPerson = _.mapValues(person, replaceNullWithEmptyString) as Person
-
-  if (parsedPerson.workExperiences.length) {
-    // @ts-ignore
-    parsedPerson.workExperiences = parsedPerson.workExperiences.map(
-      (workExperience) => {
-        if (workExperience.achievements.length) {
-          workExperience.achievements.map(
-            achievementEntityToAchievementComponentMapper
-          )
-        } else {
-          // workExperience.achievements = [createDefaultAchievement()]
-          workExperience.achievements = []
-        }
-        return {
-          id: workExperience.id,
-          enterprise: workExperience.enterprise,
-          role: workExperience.role,
-          type: workExperience.type,
-          workModel: workExperience.workModel,
-          currentlyPosition: workExperience.currentlyPosition,
-          endDate: workExperience.endDate,
-          startDate: workExperience.startDate,
-          personId: workExperience.personId,
-          createdAt: workExperience.createdAt,
-          updatedAt: workExperience.updatedAt,
-          achievements: workExperience.achievements
-        }
-      }
-    )
-  } else {
-    parsedPerson.workExperiences = []
-  }
+  // const parsedPerson = _.mapValues(person, replaceNullWithEmptyString) as Person
+  //
+  // if (parsedPerson.workExperiences.length) {
+  //   // @ts-ignore
+  //   parsedPerson.workExperiences = parsedPerson.workExperiences.map(
+  //     (workExperience) => {
+  //       if (workExperience.achievements.length) {
+  //         workExperience.achievements.map(
+  //           achievementEntityToAchievementComponentMapper
+  //         )
+  //       } else {
+  //         // workExperience.achievements = [createDefaultAchievement()]
+  //         workExperience.achievements = []
+  //       }
+  //       return {
+  //         id: workExperience.id,
+  //         enterprise: workExperience.enterprise,
+  //         role: workExperience.role,
+  //         type: workExperience.type,
+  //         workModel: workExperience.workModel,
+  //         currentlyPosition: workExperience.currentlyPosition,
+  //         endDate: workExperience.endDate,
+  //         startDate: workExperience.startDate,
+  //         personId: workExperience.personId,
+  //         createdAt: workExperience.createdAt,
+  //         updatedAt: workExperience.updatedAt,
+  //         achievements: workExperience.achievements
+  //       }
+  //     }
+  //   )
+  // } else {
+  //   parsedPerson.workExperiences = []
+  // }
   //
   // console.log('pessoa parseada')
   // console.log(parsedPerson)
@@ -81,23 +81,23 @@ const page = async () => {
       <section className="p-4">
         <Index
           person={{
-            id: parsedPerson.id,
-            username: parsedPerson.username,
-            name: parsedPerson.name,
-            role: parsedPerson.role
+            id: person.id ?? '',
+            username: person.username ?? '',
+            name: person.name ?? '',
+            role: person.role ?? ''
           }}
-          summary={parsedPerson.summary}
+          summary={person.summary ?? ''}
           contact={{
-            website: parsedPerson.contact.website,
-            github: parsedPerson.contact.github,
-            linkedin: parsedPerson.contact.linkedin,
-            city: parsedPerson.contact.city,
-            state: parsedPerson.contact.state,
-            email: parsedPerson.contact.email,
-            phone: parsedPerson.contact.phone
+            website: person?.contact?.website ?? '',
+            github: person?.contact?.github ?? '',
+            linkedin: person?.contact?.linkedin ?? '',
+            city: person?.contact?.city ?? '',
+            state: person?.contact?.state ?? '',
+            email: person?.contact?.email ?? '',
+            phone: person?.contact?.phone ?? ''
           }}
-          skills={parsedPerson.skills}
-          workExperiences={parsedPerson.workExperiences}
+          skills={person.skills ?? ''}
+          workExperiences={person.workExperiences ?? ''}
         />
       </section>
     </Suspense>

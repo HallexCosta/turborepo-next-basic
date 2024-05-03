@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "dotenv -- next dev --port 3001",
+    "prebuild": "pnpnm run migrate",
     "build": "dotenv -- next build",
     "start": "next start",
     "lint": "next lint",
