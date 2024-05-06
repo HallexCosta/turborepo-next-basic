@@ -128,7 +128,9 @@ const WorkExperienceList = ({ data }: WorkExperienceListProps) => {
 
                 <div className="grid grid-cols-1 gap-2">
                   <div className="flex items-center gap-2">
-                    <label className="text-sm font-medium text-gray-900 dark:text-white flex">Conquistas</label>
+                    <label className="text-sm font-medium text-gray-900 dark:text-white flex">
+                      Conquistas
+                    </label>
 
                     <Link
                       className="pointer"
@@ -139,10 +141,10 @@ const WorkExperienceList = ({ data }: WorkExperienceListProps) => {
                         }
                       }}
                     >
-                      <Icons.Plus size={18}/>
+                      <Icons.Plus size={18} />
                     </Link>
 
-                    <CreateAchievementModal/>
+                    <CreateAchievementModal />
                   </div>
 
                   {workExperience.achievements.length >= 1 &&

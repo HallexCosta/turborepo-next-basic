@@ -1,7 +1,7 @@
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useFormStatus } from 'react-dom'
 import { createAchievement } from '../../actions/create-achievement'
-import {Icons, Modal} from 'ui'
+import { Icons, Modal } from 'ui'
 import { useState } from 'react'
 import * as Achievement from '../achievement-input'
 
@@ -50,9 +50,7 @@ export const CreateAchievementModal = () => {
               // size={20}
               onClick={handleCreateAchievementInput}
             >
-              <Icons.Plus
-                size={20}
-              />
+              <Icons.Plus size={20} />
             </button>
           </div>
         </Modal.Header>
@@ -63,7 +61,9 @@ export const CreateAchievementModal = () => {
               return (
                 <Achievement.Root key={index}>
                   <div className="flex flex-col gap-1">
-                    <label className="text-sm font-medium text-gray-900 dark:text-white flex">Conquista {index + 1}</label>
+                    <label className="text-sm font-medium text-gray-900 dark:text-white flex">
+                      Conquista {index + 1}
+                    </label>
                     <Achievement.Content
                       name="content"
                       value={achievement.content}

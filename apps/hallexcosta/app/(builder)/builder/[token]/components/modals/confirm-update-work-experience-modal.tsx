@@ -12,8 +12,10 @@ const ConfirmUpdateWorkExperienceModal = (
   props: ConfirmUpdateWorkExperienceModalProps
 ) => {
   return (
-    <Modal.Root show={props.open} >
-      <Modal.Header onClose={props.handleCloseModal}>Experiência de Trabalho</Modal.Header>
+    <Modal.Root show={props.open}>
+      <Modal.Header onClose={props.handleCloseModal}>
+        Experiência de Trabalho
+      </Modal.Header>
       <Modal.Body>
         <h3 className="text-gray-400 text-lg font-normal text-center">
           Atenção: Essa ação não poderá ser revertida

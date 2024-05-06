@@ -57,7 +57,9 @@ const ResumeDatePicker = memo((props: ResumeDatePickerProps) => {
 
   return (
     <div>
-      <label className="text-sm font-medium text-gray-900 dark:text-white flex">{props.label}</label>
+      <label className="text-sm font-medium text-gray-900 dark:text-white flex">
+        {props.label}
+      </label>
 
       <p className="text-white">Em breve</p>
       <input type="date" />

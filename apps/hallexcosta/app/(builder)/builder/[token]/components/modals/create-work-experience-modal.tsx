@@ -1,6 +1,6 @@
 'use client'
 import { useSearchParams, useRouter } from 'next/navigation'
-import {Modal} from 'ui'
+import { Modal } from 'ui'
 import * as WorkExperienceForm from '../work-experience-form'
 import React from 'react'
 import { createWorkExperience } from '../../actions/create-work-experience'
@@ -29,7 +29,9 @@ export const CreateWorkExperienceModal = (
   return (
     <Modal.Root show={opened}>
       <form action={handleCreateWorkExperience()}>
-        <Modal.Header onClose={handleOnCloseModal}>Criar Experiência Profissional</Modal.Header>
+        <Modal.Header onClose={handleOnCloseModal}>
+          Criar Experiência Profissional
+        </Modal.Header>
         <Modal.Body>
           <WorkExperienceForm.Root className="md:grid-cols-2 md:gap-4">
             <WorkExperienceForm.EnterpriseInput name={'enterprise'} value="" />

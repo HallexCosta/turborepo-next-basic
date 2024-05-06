@@ -21,7 +21,9 @@ type ResumeSelectProps = {
 const ResumeSelect = memo((props: ResumeSelectProps) => {
   return (
     <div>
-      <label className="text-sm font-medium text-gray-900 dark:text-white flex">{props.label}</label>
+      <label className="text-sm font-medium text-gray-900 dark:text-white flex">
+        {props.label}
+      </label>
 
       {props.options?.length && (
         <select

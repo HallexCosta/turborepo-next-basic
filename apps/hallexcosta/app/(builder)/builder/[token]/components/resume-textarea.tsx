@@ -16,7 +16,11 @@ const ResumeTextarea = memo((props: ResumeTextareaProps) => {
           {props.title}
         </legend>
       )}
-      {props.label && <label className="text-sm font-medium text-gray-900 dark:text-white flex">{props.label}</label>}
+      {props.label && (
+        <label className="text-sm font-medium text-gray-900 dark:text-white flex">
+          {props.label}
+        </label>
+      )}
       {/*<Textarea*/}
       {/*  placeholder={props.placeholder}*/}
       {/*  defaultValue={props.value}*/}
