@@ -1,10 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  // content: [
+  //   "../../packages/ui/src/**/*.{js,ts,jsx,tsx}",
+  //   "./**/*.{js,ts,jsx,tsx}",
+  //   "./pages/**/*.{js,ts,jsx,tsx}",
+  //   "../../packages/ui/node_modules",
+  // ],
   content: [
-    "../../packages/ui/src/**/*.{js,ts,jsx,tsx}",
-    "./**/*.{js,ts,jsx,tsx}",
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "../../packages/ui/node_modules",
+    './app/**/*.{js,ts,jsx,tsx}',// new architecture from next.js
+    './pages/**/*.{js,ts,jsx,tsx}', // old architecture from next.js
+    '../../packages/ui/src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
