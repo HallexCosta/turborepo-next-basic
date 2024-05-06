@@ -21,7 +21,7 @@ interface WorkExperiencesRepositoryInterface {
   ) => void
 }
 
-export default class WorkExperiencesRepository
+export default class WorkExperiencesRepositorySqlite
   implements WorkExperiencesRepositoryInterface
 {
   public constructor(private db: BetterSQLite3Database<typeof schema>) {}

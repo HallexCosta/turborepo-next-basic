@@ -8,6 +8,8 @@ import {
 } from 'drizzle-orm/sqlite-core'
 import { relations } from 'drizzle-orm'
 import { createId } from '@paralleldrive/cuid2'
+import { VercelPgDatabase } from 'drizzle-orm/vercel-postgres/driver'
+import * as pgSchema from './schema-pg'
 
 export const persons = sqliteTable('persons', {
   id: text('id')
