@@ -24,10 +24,10 @@ export function SocialLink({ name, url, className }: SocialLinkProps) {
       const linkedinIcon = () => (
         <Link href={url as string} target="_blank">
           <Icons.Linkedin
-            // className={`${className} cursor-pointer`}
-            // color="white"
-            // width={27}
-            // height={27}
+          // className={`${className} cursor-pointer`}
+          // color="white"
+          // width={27}
+          // height={27}
           />
         </Link>
       )
@@ -37,10 +37,10 @@ export function SocialLink({ name, url, className }: SocialLinkProps) {
       const instagramIcon = () => (
         <Link href={{ href: url }} target="_blank">
           <Icons.Linkedin
-            // className={`${className} cursor-pointer`}
-            // color="white"
-            // width={27}
-            // height={27}
+          // className={`${className} cursor-pointer`}
+          // color="white"
+          // width={27}
+          // height={27}
           />
         </Link>
       )
@@ -51,10 +51,10 @@ export function SocialLink({ name, url, className }: SocialLinkProps) {
       const githubIcon = () => (
         <Link href={url as string} target="_blank">
           <Icons.Github
-            // className={`${className} cursor-pointer`}
-            // color="white"
-            // width={27}
-            // height={27}
+          // className={`${className} cursor-pointer`}
+          // color="white"
+          // width={27}
+          // height={27}
           />
         </Link>
       )
@@ -64,10 +64,10 @@ export function SocialLink({ name, url, className }: SocialLinkProps) {
       const facebookIcon = () => (
         <Link href={{ href: url }} target="_blank">
           <Icons.Facebook
-            // className={`${className} cursor-pointer`}
-            // color="white"
-            // width={27}
-            // height={27}
+          // className={`${className} cursor-pointer`}
+          // color="white"
+          // width={27}
+          // height={27}
           />
         </Link>
       )

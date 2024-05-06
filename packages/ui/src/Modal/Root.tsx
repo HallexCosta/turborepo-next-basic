@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React from 'react'
 
 type Props = {
   show: boolean
@@ -8,7 +8,7 @@ type Props = {
 }
 
 export const Root = (props: Props) => {
-  const hidden =  props.show ? '' : 'hidden'
+  const hidden = props.show ? '' : 'hidden'
   return (
     <div
       tabIndex={-1}

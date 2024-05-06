@@ -1,3 +1,6 @@
+// import css
+import './styles.css'
+
 // component exports
 export * from './Container'
 export * from './Button'

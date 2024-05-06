@@ -1,1 +1,1 @@
-module.exports = require(require.resolve("config/postcss.config"));
+module.exports = require(require.resolve('config/postcss.config'));
