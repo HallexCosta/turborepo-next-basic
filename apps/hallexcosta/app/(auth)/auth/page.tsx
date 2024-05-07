@@ -1,6 +1,6 @@
 'use client'
-import {Modal} from 'ui';
-import {useRouter} from 'next/navigation';
+import { Modal } from 'ui'
+import { useRouter } from 'next/navigation'
 
 const Page = () => {
   const router = useRouter()
@@ -8,7 +8,9 @@ const Page = () => {
   return (
     <Modal.Root show={true}>
       <Modal.Header showCloseButton={false}>
-        <p className="text-center w-full">Escolha um método de autentificaćão</p>
+        <p className="text-center w-full">
+          Escolha um método de autentificaćão
+        </p>
       </Modal.Header>
       <Modal.Body>
         <div className="flex gap-4">
