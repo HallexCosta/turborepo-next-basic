@@ -1,8 +1,9 @@
-import { db } from '../../../../database'
-import { contacts, persons } from '../../../../database/schema'
+import { db, pgDB } from '../../../../infra/database'
+import { contacts, persons } from '../../../../infra/database/schema'
 import { eq } from 'drizzle-orm'
 import { NextResponse } from 'next/server'
-import PersonsRepository from '../../../../database/repositories/persons-repository'
+import PersonsRepositorySqlite from '../../../../infra/database/repositories/persons-repository-sqlite'
+import { PersonsRepositoryPostgres } from '../../../../infra/database/repositories/persons-repository-postgres'
 
 export async function POST(request: Request, { params }) {
   const data = await request.json()
@@ -29,11 +30,10 @@ export async function POST(request: Request, { params }) {
 export async function GET(request: Request, { params }) {
   const username = params.username
 
-  const repository = new PersonsRepository(db)
+  const repository = new PersonsRepositoryPostgres(pgDB)
   const person = await repository.findPersonByUsername(params.username)
-
-  console.log({ GERPerson: person })
-
+  console.log('requisićão get')
+  console.log({ person })
   if (!person)
     return NextResponse.json(
       {
