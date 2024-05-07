@@ -1,5 +1,5 @@
 import { CVTemplatePageEditable } from '../page'
-import { getPersonByUsername } from '../../../fetches/get-person-by-username'
+import { getPersonByUsername } from '../../../backend/fetches/get-person-by-username'
 
 interface PageProps {
   params: {

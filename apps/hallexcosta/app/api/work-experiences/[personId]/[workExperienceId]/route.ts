@@ -1,5 +1,5 @@
-import WorkExperiencesRepository from '../../../../../database/repositories/work-experiences-repositoy'
-import { db } from '../../../../../database'
+import WorkExperiencesRepository from '../../../../../infra/database/repositories/work-experiences-repositoy'
+import { db } from '../../../../../infra/database'
 
 export async function DELETE(request: Request, { params }) {
   try {

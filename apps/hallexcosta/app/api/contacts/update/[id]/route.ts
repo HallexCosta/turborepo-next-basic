@@ -1,5 +1,5 @@
-import { db } from '../../../../../database'
-import { contacts, persons } from '../../../../../database/schema'
+import { db } from '../../../../../infra/database'
+import { contacts, persons } from '../../../../../infra/database/schema'
 import { eq } from 'drizzle-orm'
 
 export async function POST(request: Request, { params }) {

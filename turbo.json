@@ -2,8 +2,12 @@
   "$schema": "https://turbo.build/schema.json",
   "globalEnv": [
     "API_BASE_URL",
+    "BASE_URL",
     "NEXT_PUBLIC_API_BASE_URL",
-    "NODE_ENV"
+    "NODE_ENV",
+    "POSTGRES_URL",
+    "RESEND_API_KEY",
+    "FROM_EMAIL"
   ],
   "globalDependencies": ["**/.env.*local"],
   "pipeline": {
@@ -13,8 +17,12 @@
       "dotEnv": [".env.production.local", ".env.local", ".env.production", ".env"],
       "env": [
         "API_BASE_URL",
+        "BASE_URL",
         "NEXT_PUBLIC_API_BASE_URL",
-        "NODE_ENV"
+        "NODE_ENV",
+        "POSTGRES_URL",
+        "RESEND_API_KEY",
+        "FROM_EMAIL"
       ]
     },
     "lint": {},
@@ -25,8 +33,12 @@
       "dotEnv": [".env.development.local", ".env.local", ".env.development", ".env"],
       "env": [
         "API_BASE_URL",
+        "BASE_URL",
         "NEXT_PUBLIC_API_BASE_URL",
-        "NODE_ENV"
+        "NODE_ENV",
+        "POSTGRES_URL",
+        "RESEND_API_KEY",
+        "FROM_EMAIL"
       ]
     },
     "test": {

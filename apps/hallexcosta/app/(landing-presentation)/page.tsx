@@ -23,7 +23,7 @@ export default function Page() {
   return (
     <>
       <Header.Root>
-        <Container className="lg:justify-between">
+        <Container className="lg:justify-between items-center">
           <Header.Content className="text-white font-medium text-2xl">
             I.M portifolio
           </Header.Content>
@@ -51,7 +51,7 @@ export default function Page() {
           <Container className="lg:flex lg:flex-row">
             <div className="w-full">
               <Title.Root>
-                <Title.Top messages={['I\'m Hállex Costa']} />
+                <Title.Top messages={["I'm Hállex Costa"]} />
                 <Title.Down
                   messages={[
                     1300,

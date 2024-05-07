@@ -1,5 +1,5 @@
-import { db } from '../../../../database'
-import { workExperiences } from '../../../../database/schema'
+import { db } from '../../../../infra/database'
+import { workExperiences } from '../../../../infra/database/schema'
 
 export async function POST(request: Request, { params }) {
   try {
