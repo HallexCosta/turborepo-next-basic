@@ -1,5 +1,9 @@
-import { db } from '../../../../database'
-import { contacts, persons, achievements } from '../../../../database/schema'
+import { db } from '../../../../infra/database'
+import {
+  contacts,
+  persons,
+  achievements
+} from '../../../../infra/database/schema'
 import { and, eq } from 'drizzle-orm'
 
 interface Reference {

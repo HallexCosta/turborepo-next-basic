@@ -1,5 +1,5 @@
-import { db } from '../../../../../database'
-import { achievements } from '../../../../../database/schema'
+import { db } from '../../../../../infra/database'
+import { achievements } from '../../../../../infra/database/schema'
 import { and, eq } from 'drizzle-orm'
 import { NextResponse } from 'next/server'
 
