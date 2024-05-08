@@ -13,7 +13,7 @@ export const POST = async (request: Request, { params }) => {
 
   const repository = new PersonsRepositoryPostgres(pgDB)
 
-  if (await repository.findPersonByUsername(data.username)) {
+  if (await repository.findByUsername(data.username)) {
     return NextResponse.json(
       {
         message: 'Username already exists'

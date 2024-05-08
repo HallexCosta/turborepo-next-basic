@@ -6,7 +6,7 @@ export type PersonCreate = {
   skills?: string
 }
 export interface PersonsRepositoryInterface {
-  findPersonByUsername: (username: string, relations?: string[]) => Promise<any>
+  findByUsername: (username: string, relations?: string[]) => Promise<any>
   findById: (id: number) => Promise<any>
   create(person: PersonCreate): Promise<any>
 }

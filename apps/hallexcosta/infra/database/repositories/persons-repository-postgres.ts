@@ -8,7 +8,7 @@ import {
 
 export class PersonsRepositoryPostgres implements PersonsRepositoryInterface {
   constructor(private readonly db: VercelPgDatabaseSchema) {}
-  async findPersonByUsername(username: string, relations?: string[]) {
+  async findByUsername(username: string, relations?: string[]) {
     return this.db.query.persons.findFirst({
       where: (person) => eq(person.username, username),
       with: {

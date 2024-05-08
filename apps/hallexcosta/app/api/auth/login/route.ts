@@ -13,7 +13,7 @@ export const POST = async (request: Request, { params }) => {
   }
 
   const repository = new PersonsRepositoryPostgres(pgDB)
-  const person = await repository.findPersonByUsername(data.username)
+  const person = await repository.findByUsername(data.username)
 
   const tokensRepository = new TokensRepository(pgDB)
 
