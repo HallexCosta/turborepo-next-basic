@@ -1,12 +1,12 @@
-import WorkExperiencesRepository from '../../../../../infra/database/repositories/work-experiences-repositoy'
-import { db } from '../../../../../infra/database'
+import {db, pgDB} from '../../../../../infra/database'
+import WorkExperiencesPostgresRepository
+  from '../../../../../infra/database/repositories/work-experiences-postgres.repository'
 
 export async function DELETE(request: Request, { params }) {
   try {
-    const repository = new WorkExperiencesRepository(db)
-    const result = await repository.delete(
-      params.personId,
-      params.workExperienceId
+    const repository = new WorkExperiencesPostgresRepository(pgDB)
+    const result = await repository.deleteById(
+      Number(params.workExperienceId)
     )
 
     const output = JSON.stringify({
@@ -39,10 +39,9 @@ type UpdateWorkExperienceRequest = {
 export async function PATCH(request: Request, { params }) {
   try {
     const data: UpdateWorkExperienceRequest = await request.json()
-    const repository = new WorkExperiencesRepository(db)
-    const result = await repository.update(
-      params.personId,
-      params.workExperienceId,
+    const repository = new WorkExperiencesPostgresRepository(pgDB)
+    const result = await repository.updateById(
+      Number(params.workExperienceId),
       data
     )
 

@@ -49,7 +49,7 @@ export const workExperiences = pgTable('work_experiences', {
   workModel: varchar('work_model'),
   type: varchar('type'),
   startDate: timestamp('start_date').notNull(),
-  endDate: timestamp('end_date').notNull(),
+  endDate: timestamp('end_date'),
   currentlyPosition: boolean('currently_position'),
   personId: serial('person_id').references(() => persons.id),
   createdAt: timestamp('created_at').notNull(),
