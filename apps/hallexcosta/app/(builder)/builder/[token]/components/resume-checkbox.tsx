@@ -10,7 +10,7 @@ type ResumeCheckboxProps = {
   selectOptions?: string[]
 }
 
-const ResumeCheckbox = memo((props: ResumeCheckboxProps) => {
+const ResumeCheckbox = (props: ResumeCheckboxProps) => {
   return (
     <div className="flex items-center gap-2">
       <input
@@ -24,6 +24,6 @@ const ResumeCheckbox = memo((props: ResumeCheckboxProps) => {
       </label>
     </div>
   )
-})
-ResumeCheckbox.displayName = 'ResumeCheckbox'
+}
+// ResumeCheckbox.displayName = 'ResumeCheckbox'
 export { ResumeCheckbox }

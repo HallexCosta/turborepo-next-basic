@@ -5,6 +5,7 @@ type Payload = {
   from: string
   to: string | string[]
   subject: string
+  replayTo: string
 }
 
 export class SendEmailMagicLinkService implements Mailer {
@@ -13,15 +14,25 @@ export class SendEmailMagicLinkService implements Mailer {
     private readonly payload: Payload
   ) {}
 
-  send(magicLink: string) {
-    const text = this.templateEmailText(magicLink)
-    this.resend.emails.send({
-      ...this.payload,
-      text
-    })
+  send(hash: string) {
+    const text = this.factoryMakeTemplateAuthenticationEmailText(this.makeMagicLinkAuthentication(hash))
+    this.resend.emails.send(this.parsePayloadToResendPayload(this.payload, text))
   }
 
-  private templateEmailText(url: string) {
+  private parsePayloadToResendPayload(payload: Payload, text: string) {
+    delete this.payload.replayTo
+    return {
+      ...this.payload,
+      text,
+      reply_to: this.payload.replayTo
+    }
+  }
+
+  private makeMagicLinkAuthentication(hash: string) {
+    return`${process.env.API_BASE_URL}/auth/confirmation?token=${hash}`
+  }
+
+  private factoryMakeTemplateAuthenticationEmailText(url: string) {
     return String.raw`
   Hi there,
   We're glad you've joined us! To get started, you need to activate your account. Please click on the link below to verify your email address and complete the setup process.
@@ -35,7 +46,7 @@ export class SendEmailMagicLinkService implements Mailer {
   Best regards,
   
   Hállex Costa
-  xLLex Company
+  xLLeX Corp
   (18) 99788-7240
   hallexcosta.com
   `

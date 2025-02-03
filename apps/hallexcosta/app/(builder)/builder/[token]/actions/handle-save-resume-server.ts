@@ -3,6 +3,9 @@ import { WorkExperience } from '../stores/work-experiences-store'
 import lodash from 'lodash'
 import { parseDate } from '../common/parse-date-string-to-date'
 import { revalidatePath, revalidateTag } from 'next/cache'
+import {ContactsRepositoryPostgres} from "../../../../../infra/database/repositories/contacts-repository-postgres";
+import {pgDB} from "../../../../../infra/database";
+import {PersonsRepositoryPostgres} from "../../../../../infra/database/repositories/persons-repository-postgres";
 
 interface ProcessWorkExperiencePositionParams {
   positionIndex: number
@@ -242,6 +245,42 @@ export const handleSaveResumeServer = async (
     skills
   } = Object.fromEntries(formData)
 
+  const personRepository = new PersonsRepositoryPostgres(pgDB)
+  const person = await personRepository.findByUsername(username)
+  console.log({person})
+  const contactRepository = new ContactsRepositoryPostgres(pgDB)
+  if (person) {
+    await personRepository.updateById(person.id, {
+      summary: summary as string,
+      skills: skills as string
+    })
+
+    const alreadyContacts = await contactRepository.findByPersonId(person.id)
+    console.log({alreadyContacts})
+    if (!alreadyContacts) {
+      await contactRepository.save({
+        website,
+        github,
+        linkedin,
+        city,
+        state,
+        email,
+        phone,
+      })
+      return
+    }
+    await contactRepository.updateByPersonId(person.id, {
+      website,
+      github,
+      linkedin,
+      city,
+      state,
+      email,
+      phone,
+    })
+  }
+
+  return
   // console.log(Object.fromEntries(formData))
   const parseAchievement = new ParseAchievementFormData()
   const parseWorkExperiences = new ParseWorkExperienceFormData(

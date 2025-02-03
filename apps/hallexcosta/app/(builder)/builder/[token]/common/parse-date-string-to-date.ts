@@ -12,3 +12,8 @@ export function parseDate(dateString: string) {
 
   return null
 }
+
+export function parseDateToDatetime(date: string) {
+  date = `${date} 00:00:00`
+  return new Date(date)
+}

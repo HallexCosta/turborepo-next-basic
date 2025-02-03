@@ -4,7 +4,7 @@ import { DeepPartial } from 'utility-types'
 
 type ResumeInputProps = {
   label: string
-  tag: string
+  tag?: string
   data?: DeepPartial<Resume>
   value: string
   name?: string

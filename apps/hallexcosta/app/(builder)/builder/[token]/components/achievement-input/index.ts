@@ -1,4 +1,5 @@
 export * from './root'
 export * from './content'
+export * from './contents'
 export * from './id'
 export * from './work-experience-id'

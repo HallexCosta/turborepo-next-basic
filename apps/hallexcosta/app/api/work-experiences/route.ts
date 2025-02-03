@@ -1,24 +1,73 @@
-import { db } from '../../../../infra/database'
-import { workExperiences } from '../../../../infra/database/schema'
+import {db, pgDB} from '../../../infra/database'
+import { workExperiences } from '../../../infra/database/schema'
+import WorkExperiencesPostgresRepository
+  from '../../../infra/database/repositories/work-experiences-postgres.repository'
+import {headers} from 'next/headers'
+import {NextResponse} from 'next/server'
+import {TokensRepository} from '../../../infra/database/repositories/tokens.repository'
 
 export async function POST(request: Request, { params }) {
+  const authorization = headers().get('authorization')?.split(' ')
+  const authToken = authorization ? authorization[1] : null
+  console.log({authToken})
+  if (!authToken) return NextResponse.json({
+    message: 'Auth token not found'
+  }, {
+    status:401
+  })
+
   try {
     console.log('Creating in back-end')
-    const { enterprise, role, workModel, currentlyPosition } =
-      await request.json()
-    const personId = params.personId
-    const createdAt = new Date()
-
-    await db.insert(workExperiences).values({
+    const {
       enterprise,
       role,
       workModel,
       currentlyPosition,
-      // startDate: workExperience.startDate,
-      // endDate: workExperience.endDate,
-      personId,
-      createdAt
+      type,
+      endDate,
+      startDate
+    } = await request.json()
+
+    console.log({
+      enterprise,
+      role,
+      workModel,
+      currentlyPosition,
+      type,
+      endDate,
+      startDate
     })
+
+    const tokensRepository = new TokensRepository(pgDB)
+    const token = await tokensRepository.findByHashAndStateId(authToken, TokensRepository.STATE_ACTIVE)
+    if (!token) return NextResponse.json({
+      message: `This token is not valid: ${authToken}`
+    }, {
+      status:401
+    })
+
+    const workExperienceRepository = new WorkExperiencesPostgresRepository(pgDB)
+    await workExperienceRepository.save({
+      enterprise,
+      role,
+      workModel,
+      currentlyPosition: false,
+      type,
+      endDate: endDate ? new Date(endDate) : null,
+      startDate: new Date(startDate),
+      personId: token.personId,
+    })
+
+    // await db.insert(workExperiences).values({
+    //   enterprise,
+    //   role,
+    //   workModel,
+    //   currentlyPosition,
+    //   // startDate: workExperience.startDate,
+    //   // endDate: workExperience.endDate,
+    //   personId,
+    //   createdAt
+    // })
 
     const output = JSON.stringify({
       message: 'Work Experience created'

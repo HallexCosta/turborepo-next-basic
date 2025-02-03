@@ -1,8 +1,8 @@
-'use client'
-import { Icons } from 'ui'
-import React from 'react'
-import { CreateWorkExperienceModal } from '../modals/create-work-experience-modal'
-import Link from 'next/link'
+"use client";
+import { Icons } from "@portfolios/ui";
+import Link from "next/link";
+import React from "react";
+import { CreateWorkExperienceModal } from "../modals/create-work-experience-modal";
 // import {useEffect} from "react";
 
 // const getWorkExperiencesCached = unstable_cache(
@@ -20,31 +20,31 @@ import Link from 'next/link'
 // )
 
 type AddNewWorkExperienceButtonProps = {
-  workExperienceIndex: number
-  createWorkExperience: (formData: FormData) => void
-}
+	workExperienceIndex: number;
+	createWorkExperience: (formData: FormData) => void;
+};
 
 const AddNewWorkExperienceButton = ({
-  workExperienceIndex,
-  createWorkExperience
+	workExperienceIndex,
+	createWorkExperience,
 }: AddNewWorkExperienceButtonProps) => {
-  return (
-    <div>
-      <Link
-        href={{
-          query: {
-            createWorkExperienceModalOpen: ''
-          }
-        }}
-      >
-        <Icons.Plus />
-      </Link>
-      {/*<button type="button" onClick={handleOnOpenModal}>*/}
-      {/*</button>*/}
+	return (
+		<div>
+			<Link
+				href={{
+					query: {
+						createWorkExperienceModalOpen: "",
+					},
+				}}
+			>
+				<Icons.Plus />
+			</Link>
+			{/*<button type="button" onClick={handleOnOpenModal}>*/}
+			{/*</button>*/}
 
-      <CreateWorkExperienceModal workExperienceIndex={workExperienceIndex} />
-    </div>
-  )
-}
+			<CreateWorkExperienceModal workExperienceIndex={workExperienceIndex} />
+		</div>
+	);
+};
 
-export { AddNewWorkExperienceButton }
+export { AddNewWorkExperienceButton };

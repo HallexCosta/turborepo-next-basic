@@ -16,11 +16,11 @@ export type WorkExperienceCreate = Omit<WorkExperienceEntity, 'id' | 'createdAt'
 export type WorkExperienceUpdate = Partial<WorkExperienceCreate>
 
 export interface WorkExperiencesRepositoryInterface {
-  //findById: (id: number) => Promise<any>
+  findById: (id: number) => Promise<any>
   deleteById: (workExperienceId: number) => void
   updateById: (
     workExperienceId: number,
     data: WorkExperienceUpdate
   ) => void
-  //create(person: WorkExperienceCreate): Promise<any>
+  save(person: WorkExperienceCreate): Promise<any>
 }

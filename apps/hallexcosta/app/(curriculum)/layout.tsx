@@ -1,4 +1,6 @@
 import '../../styles.css'
+import '../../styles/font-arial.css'
+// import '../../styles/font-open-sans.css'
 import('dayjs/locale/pt-br')
 import dayjs from 'dayjs'
 dayjs.locale('pt-br')

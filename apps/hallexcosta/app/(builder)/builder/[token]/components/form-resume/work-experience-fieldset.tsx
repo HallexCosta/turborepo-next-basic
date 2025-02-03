@@ -16,7 +16,7 @@ const WorkExperienceFieldset = ({
   workExperiences
 }: WorkExperienceFieldsetProps) => {
   return (
-    <fieldset>
+    <fieldset className="mt-6">
       <legend className="mb-4 w-full flex items-center gap-4">
         <span className="text-xl text-white font-bold">{title}</span>
 

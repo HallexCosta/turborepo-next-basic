@@ -2,18 +2,9 @@
 
 import { revalidatePath, revalidateTag } from 'next/cache'
 
-type DeleteWorkExperienceProps = {
-  workExperienceId: string
-}
-
-async function deleteWorkExperience({
-  workExperienceId
-}: DeleteWorkExperienceProps) {
-  console.log('callend')
-  console.log(workExperienceId)
-
+async function deleteWorkExperience(workExperienceId: number) {
   const response = await fetch(
-    `process.env.NEXT_PUBLIC_BASE_URL/work-experiences/hallexcosta/${workExperienceId}/`,
+    `${process.env.API_BASE_URL}/work-experiences/${workExperienceId}`,
     {
       method: 'DELETE',
       cache: 'no-cache'
@@ -21,9 +12,6 @@ async function deleteWorkExperience({
   )
 
   const data = await response.json()
-
-  console.log('será que foi deletado?')
-  console.log(data)
 
   revalidatePath('/builder')
   // revalidateTag('get-resume-person')

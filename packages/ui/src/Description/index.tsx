@@ -6,12 +6,12 @@
 //   display: "swap",
 // });
 interface DescriptionProps {
-  content: string
+	content: string;
 }
 
 export function Description({ content }: DescriptionProps) {
-  return (
-    // <p className={`${poppins.className} text-sm text-gray-500 max-w-2xl`}>
-    <p className={'text-sm text-gray-500 max-w-2xl'}>{content}</p>
-  )
+	return (
+		// <p className={`${poppins.className} text-sm text-gray-500 max-w-2xl`}>
+		<p className={"text-md text-gray-500 font-semibold max-w-2xl"}>{content}</p>
+	);
 }

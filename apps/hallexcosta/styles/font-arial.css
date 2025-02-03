@@ -1,0 +1,8 @@
+body,section,h1,h2,h3,h4,h5,span,p,div,b,i,ul,li
+.arial {
+    font-family: "Arial", 'Times New Roman', Times, serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}

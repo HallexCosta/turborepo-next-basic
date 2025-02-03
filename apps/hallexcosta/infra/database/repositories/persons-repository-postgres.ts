@@ -3,7 +3,7 @@ import { VercelPgDatabaseSchema } from '../index'
 import { persons } from '../schema-pg'
 import {
   PersonCreate,
-  PersonsRepositoryInterface
+  PersonsRepositoryInterface, PersonUpdate
 } from '../../../app/backend/repositories/persons-repository.interface'
 
 export class PersonsRepositoryPostgres implements PersonsRepositoryInterface {
@@ -48,5 +48,14 @@ export class PersonsRepositoryPostgres implements PersonsRepositoryInterface {
       createdAt: new Date(),
       updatedAt: new Date()
     })
+  }
+
+  async updateById(personId: number, personUpdated: PersonUpdate) {
+    await this.db.update(persons)
+      .set({
+        ...personUpdated,
+        updatedAt: new Date()
+      })
+      .where(eq(persons.id, personId))
   }
 }

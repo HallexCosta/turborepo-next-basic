@@ -36,27 +36,21 @@ export const POST = async (request: Request, { params }) => {
     hash,
     stateId: TokensRepository.STATE_INACTIVE
   })
+  const resend = new Resend(process.env.RESEND_API_KEY as string)
+
+  const sendEmailMagicLinkService = new SendEmailMagicLinkService(resend, {
+    from: process.env.FROM_EMAIL as string,
+    to: [person.email as string],
+    subject: '[Action Required]: Confirm your authentication',
+    replayTo: process.env.REPLAY_TO as string
+  })
+  sendEmailMagicLinkService.send(hash)
+
   const responseBody = {
     username: person.username,
     token,
     hash
   }
-  const resend = new Resend(process.env.RESEND_API_KEY as string)
-  const url = `${process.env.API_BASE_URL}/auth/confirmation?token=${hash}`
-  // const text = createTextEmailTemplate(url)
-  // const email = await resend.emails.send({
-  //   from: process.env.FROM_EMAIL as string,
-  //   to: [person.email as string],
-  //   subject: '[Action Required]: Confirm your authentication',
-  //   text
-  // })
-  const sendEmailMagicLinkService = new SendEmailMagicLinkService(resend, {
-    from: process.env.FROM_EMAIL as string,
-    to: [person.email as string],
-    subject: '[Action Required]: Confirm your authentication'
-  })
-  sendEmailMagicLinkService.send(url)
-
   const responseInit = {
     status: 200
   }

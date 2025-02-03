@@ -1,3 +1,5 @@
-export const Title = ({ children }) => (
-  <h2 className="text-lg font-bold">{children}</h2>
+import { twMerge } from 'tailwind-merge'
+
+export const Title = ({ children, className = '' }) => (
+  <span className={twMerge('arial text-base font-bold', className)}>{children}</span>
 )

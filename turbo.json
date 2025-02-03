@@ -7,7 +7,8 @@
     "NODE_ENV",
     "POSTGRES_URL",
     "RESEND_API_KEY",
-    "FROM_EMAIL"
+    "FROM_EMAIL",
+    "REPLAY_TO"
   ],
   "globalDependencies": ["**/.env.*local"],
   "pipeline": {
@@ -22,7 +23,8 @@
         "NODE_ENV",
         "POSTGRES_URL",
         "RESEND_API_KEY",
-        "FROM_EMAIL"
+        "FROM_EMAIL",
+        "REPLAY_TO"
       ]
     },
     "lint": {},
@@ -38,7 +40,8 @@
         "NODE_ENV",
         "POSTGRES_URL",
         "RESEND_API_KEY",
-        "FROM_EMAIL"
+        "FROM_EMAIL",
+        "REPLAY_TO"
       ]
     },
     "test": {

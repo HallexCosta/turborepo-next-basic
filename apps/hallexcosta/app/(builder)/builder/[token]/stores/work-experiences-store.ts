@@ -10,13 +10,13 @@ export type WorkExperienceType = 'full-time' | 'part-time' | 'internship' | ''
 export type WorkExperienceModel = 'in-office' | 'home-office' | ''
 
 export type WorkExperience = {
-  id: string
+  id: number
   enterprise: string
   role: string
   type: WorkExperienceType
   workModel: WorkExperienceModel
-  startDate?: Date
-  endDate?: Date
+  startDate: string
+  endDate?: string
   currentlyPosition: boolean
   achievements: Achievement[]
 }

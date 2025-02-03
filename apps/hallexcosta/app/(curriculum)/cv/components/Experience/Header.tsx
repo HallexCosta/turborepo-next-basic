@@ -49,7 +49,7 @@ export const Header = ({
   workModel = ''
 }: HeaderProps) => {
   return (
-    <div className="header flex flex-col">
+    <div className="header flex flex-col pl-1">
       <CompanyInfo
         enterprise={enterprise}
         startDate={startDate}
@@ -59,9 +59,9 @@ export const Header = ({
       />
 
       <div className="flex">
-        <h4 className="my-role text-sm font-bold">
+        <span className="arial text-base">
           {role} • {workTypes[type]}
-        </h4>
+        </span>
       </div>
     </div>
   )
@@ -81,10 +81,10 @@ const CompanyInfo = ({
 
   return (
     <div className="flex items-center">
-      <h4 className="text-xs font-bold">
+      <span className="arial text-base">
         {enterprise} • {workModels[workModel]} • {startDate} -{' '}
         {handleEndDate(endDate)}
-      </h4>
+      </span>
     </div>
   )
 }

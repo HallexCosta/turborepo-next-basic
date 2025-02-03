@@ -1,12 +1,19 @@
-import { ReactNode } from 'react'
+import type { ReactNode } from "react";
+import { cx } from "../cx";
 
 interface HeaderRootProps {
-  children: ReactNode
+	children: ReactNode;
+	className: string;
 }
-export function Root({ children }: HeaderRootProps) {
-  return (
-    <header className="p-10 lg:p-0 h-28 flex items-center justify-between">
-      {children}
-    </header>
-  )
+export function Root({ children, className }: HeaderRootProps) {
+	return (
+		<header
+			className={cx(
+				"max-w-screen-xl mt-4 p-10 lg:p-0 h-28 flex items-center justify-between",
+				className,
+			)}
+		>
+			{children}
+		</header>
+	);
 }

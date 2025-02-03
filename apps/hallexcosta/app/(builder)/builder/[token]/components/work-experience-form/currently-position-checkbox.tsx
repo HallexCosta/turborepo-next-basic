@@ -12,7 +12,7 @@ export const CurrentlyPositionCheckbox = (
   return (
     <ResumeCheckbox
       label="Atualmente estou nesta posição"
-      tag={`workExperiences[${props.workExperienceIndex}].currentlyPosition`}
+      tag="currentlyPosition"
       value={props.value}
       name={props.name}
     />

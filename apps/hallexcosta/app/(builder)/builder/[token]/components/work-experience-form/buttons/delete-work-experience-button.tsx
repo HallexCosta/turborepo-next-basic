@@ -1,12 +1,13 @@
 import { useFormStatus } from 'react-dom'
+import {deleteWorkExperience} from '../../../actions/delete-work-experience'
 
-export const DeleteWorkExperienceButton = () => {
-  const status = useFormStatus()
+export const DeleteWorkExperienceButton = ({onDelete}) => {
+
   return (
     <button
-      type="submit"
-      color="blue"
-      disabled={status.pending}
+      type="button"
+      onClick={onDelete}
+      disabled={false}
       className="group flex items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none text-white bg-red-700 border border-transparent enabled:hover:bg-red-800 focus:ring-red-300 dark:bg-red-600 dark:enabled:hover:bg-red-700 dark:focus:ring-red-900 rounded-lg focus:ring-2"
     >
       <span className="flex items-center transition-all duration-200 rounded-md text-xs px-2 py-1">

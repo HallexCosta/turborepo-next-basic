@@ -7,6 +7,7 @@ import { Plus } from './Plus'
 import { FloppyDisk } from './FloppyDisk'
 import { Instagram } from './Instagram'
 import { Facebook } from './Facebook'
+import {Insert} from './Insert'
 
 const Icons = {
   Email,
@@ -17,7 +18,8 @@ const Icons = {
   Location,
   Whatsapp,
   Plus,
-  FloppyDisk
+  FloppyDisk,
+  Insert
 }
 
 export default Icons

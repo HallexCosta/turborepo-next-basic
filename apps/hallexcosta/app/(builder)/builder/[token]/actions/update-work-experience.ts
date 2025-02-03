@@ -2,41 +2,45 @@
 
 import { revalidatePath } from 'next/cache'
 import { parseCurrentlyPosition } from '../common/parse-currently-position'
-import { parseDate } from '../common/parse-date-string-to-date'
+import {parseDate, parseDateToDatetime} from '../common/parse-date-string-to-date'
 
 type UpdateWorkExperienceProps = {
-  workExperienceId: string
+  workExperienceId: number
   formData: FormData
 }
 
-async function updateWorkExperience({
+async function updateWorkExperience(
+  authToken,
   workExperienceId,
   formData
-}: UpdateWorkExperienceProps) {
+) {
   const body = {
     enterprise: formData.get('enterprise'),
     role: formData.get('role'),
     type: formData.get('type'),
     workModel: formData.get('workModel'),
-    startDate: parseDate(formData.get('startDate') as string),
-    endDate: parseDate(formData.get('endDate') as string),
+    startDate: parseDateToDatetime(formData.get('startDate') as string),
+    endDate: parseDateToDatetime(formData.get('endDate') as string),
     currentlyPosition: parseCurrentlyPosition(formData.get('currentlyPosition'))
   }
+  console.log({body})
+  // return
 
   const response = await fetch(
-    `process.env.NEXT_PUBLIC_BASE_URL/work-experiences/hallexcosta/${workExperienceId}`,
+    `${process.env.API_BASE_URL}/work-experiences/${workExperienceId}`,
     {
       method: 'PATCH',
       cache: 'no-cache',
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
+      headers: {
+        authorization: `Bearer ${authToken}`,
+      }
     }
   )
 
   const data = await response.json()
 
-  console.log(data)
-
-  revalidatePath('/builder')
+  revalidatePath(`/builder/${authToken}`)
 }
 
 export { updateWorkExperience }

@@ -5,6 +5,11 @@ import { Index } from './components/form-resume'
 import { Achievement, WorkExperience } from './stores/work-experiences-store'
 import { getPersonByToken } from '../../../backend/fetches/get-person-by-token'
 import { redirect } from 'next/navigation'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import 'react-toastify/dist/ReactToastify.css'
+import {Tooltips} from './components/tooltips'
+
 
 export type Person = {
   id: string
@@ -30,7 +35,7 @@ export type Person = {
 const page = async ({ params }) => {
   console.log(params.token)
   const person = await getPersonByToken(params.token as string)
-
+  console.log(person)
   if (!person) return redirect('/auth')
 
   return (
@@ -58,6 +63,9 @@ const page = async ({ params }) => {
           workExperiences={person.workExperiences ?? ''}
         />
       </section>
+      <ToastContainer />
+
+      <Tooltips />
     </Suspense>
   )
 }

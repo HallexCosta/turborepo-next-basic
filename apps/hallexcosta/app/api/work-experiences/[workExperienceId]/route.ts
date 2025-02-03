@@ -1,6 +1,6 @@
-import {db, pgDB} from '../../../../../infra/database'
+import {db, pgDB} from '../../../../infra/database'
 import WorkExperiencesPostgresRepository
-  from '../../../../../infra/database/repositories/work-experiences-postgres.repository'
+  from '../../../../infra/database/repositories/work-experiences-postgres.repository'
 
 export async function DELETE(request: Request, { params }) {
   try {
@@ -32,8 +32,8 @@ type UpdateWorkExperienceRequest = {
   role: string
   type: string
   workModel: string
-  startDate: Date
-  endDate: Date | null
+  startDate: string
+  endDate: string | null
   currentlyPosition: boolean
 }
 export async function PATCH(request: Request, { params }) {
@@ -42,7 +42,11 @@ export async function PATCH(request: Request, { params }) {
     const repository = new WorkExperiencesPostgresRepository(pgDB)
     const result = await repository.updateById(
       Number(params.workExperienceId),
-      data
+      {
+        ...data,
+        startDate: new Date(data.startDate),
+        endDate: data.endDate ? new Date(data.endDate) : null
+      }
     )
 
     const output = JSON.stringify({

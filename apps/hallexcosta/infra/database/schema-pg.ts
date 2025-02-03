@@ -87,9 +87,7 @@ export const achievementsRelations = relations(achievements, ({ one }) => ({
 }))
 
 export const contacts = pgTable('contacts', {
-  id: text('id')
-    .primaryKey()
-    .$defaultFn(() => createId()),
+  id: serial('id').primaryKey(),
   website: varchar('website').default(''),
   github: varchar('github').default(''),
   linkedin: varchar('linkedin').default(''),

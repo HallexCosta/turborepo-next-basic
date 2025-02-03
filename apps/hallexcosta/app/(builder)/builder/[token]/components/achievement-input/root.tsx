@@ -7,5 +7,5 @@ type Props = {
 }
 
 export const Root = (props: Props) => {
-  return <div className={twMerge('', props.className)}>{props.children}</div>
+  return <div className={twMerge('flex gap-2', props.className)}>{props.children}</div>
 }

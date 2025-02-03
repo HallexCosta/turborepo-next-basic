@@ -1,10 +1,15 @@
-import { db } from '../../../../infra/database'
+import {db, pgDB} from '../../../../infra/database'
 import {
   contacts,
   persons,
   achievements
 } from '../../../../infra/database/schema'
 import { and, eq } from 'drizzle-orm'
+import {AchievementsRepositoryInterface} from "../../../backend/repositories/achievements-repository.interface";
+import {headers} from "next/headers";
+import {NextResponse} from "next/server";
+import {TokensRepository} from "../../../../infra/database/repositories/tokens.repository";
+import {AchievementsRepositoryPostgres} from "../../../../infra/database/repositories/achievements-repository-postgres";
 
 interface Reference {
   workExperienceId: string
@@ -15,18 +20,45 @@ interface Reference {
 export async function POST(request: Request, { params }) {
   try {
     console.log('Creating achievement ...')
+    const workExperienceId = params.workExperienceId
     const { content } = await request.json()
 
-    await db.insert(achievements).values({
+    const [, authToken] = headers().get('authorization')?.split(' ') ?? []
+
+    if (!authToken) {
+      return NextResponse.json({
+        message: 'Auth token not found'
+      }, { status: 401 })
+    }
+
+    const tokensRepository = new TokensRepository(pgDB)
+    const token = tokensRepository.findByHashAndStateId(authToken, TokensRepository.STATE_ACTIVE)
+    if (!token) {
+      return NextResponse.json({
+        message: 'Token not valid'
+      }, { status: 401 })
+    }
+
+    const achievementsRepository = new AchievementsRepositoryPostgres(pgDB)
+
+    await achievementsRepository.save({
       content,
-      workExperienceId: params.workExperienceId,
-      duration: '',
-      createdAt: new Date()
+      workExperienceId,
+      withDot: false,
+      updatedAt: null,
+      createdAt: new Date(),
     })
+
+    // await db.insert(achievements).values({
+    //   content,
+    //   workExperienceId: params.workExperienceId,
+    //   duration: '',
+    //   createdAt: new Date()
+    // })
 
     return new Response(
       JSON.stringify({
-        message: 'Achievement data create'
+        message: 'Achievement created'
       }),
       {
         status: 200

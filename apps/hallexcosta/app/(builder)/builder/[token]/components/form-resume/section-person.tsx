@@ -10,7 +10,7 @@ const SectionPerson = (props: any) => {
             label="Seu nome"
             value={props.name}
             placeholder="Ex: Hállex Costa"
-            tag="person.name"
+            name="name"
           />
         </div>
         <div>
@@ -18,7 +18,7 @@ const SectionPerson = (props: any) => {
             label="Seu cargo"
             value={props.role}
             placeholder="Ex: Developer Fullstack BE-heavy"
-            tag="person.role"
+            name="role"
           />
         </div>
       </div>
